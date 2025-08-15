@@ -6,7 +6,7 @@ export default function ContactBar() {
     return (
         <div
             className={`
-                hidden lg:block border-b dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 bg-gray-50 border-gray-200 text-gray-600
+                hidden lg:block border-b dark:bg-zinc-800 dark:border-zinc-700 dark:text-gray-300 bg-gray-50 border-gray-200 text-gray-600
             `}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

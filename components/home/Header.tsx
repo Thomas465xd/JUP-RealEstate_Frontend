@@ -6,16 +6,9 @@ import { Menu, X, Phone, Mail, Sun, Moon } from "lucide-react";
 import ContactBar from "./ContactBar";
 import Logo from "../utility/Logo";
 import AuthButtons from "../auth/AuthButtons";
+import ThemeToggle from "../utility/DarkMode";
 
-interface HeaderProps {
-	darkMode?: boolean;
-	onToggleDarkMode?: () => void;
-}
-
-export default function Header({
-	darkMode = false,
-	onToggleDarkMode,
-}: HeaderProps) {
+export default function Header() {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const [isScrolled, setIsScrolled] = useState(false);
 
@@ -40,14 +33,15 @@ export default function Header({
 
 	return (
 		<div
-			className={`sticky top-0 z-50 transition-all duration-300 ${
-				darkMode ? "bg-gray-900" : "bg-white"
-			} ${isScrolled ? "shadow-lg backdrop-blur-sm bg-opacity-95" : ""}`}
+			className={`
+                dark:bg-zinc-900 bg-white sticky top-0 z-50 transition-all duration-300 
+			    ${isScrolled ? "shadow-lg backdrop-blur-sm bg-opacity-95" : ""}
+            `}
 		>
 
 			{/* Main Header */}
 			<header
-				className={`relative ${darkMode ? "bg-gray-900" : "bg-white"}`}
+				className={`relative dark:bg-zinc-900 bg-white`}
 			>
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="flex justify-between items-center h-16 lg:h-20">
@@ -60,11 +54,10 @@ export default function Header({
 								<Link
 									key={item.href}
 									href={item.href}
-									className={`text-sm font-medium transition-colors duration-200 hover:text-orange-500 ${
-										darkMode
-											? "text-gray-300"
-											: "text-gray-700"
-									}`}
+									className={`
+                                        text-sm font-medium transition-colors duration-200 
+                                        hover:text-red-500 dark:text-zinc-300 text-zinc-700
+                                    `}
 								>
 									{item.label}
 								</Link>
@@ -74,20 +67,9 @@ export default function Header({
 						{/* Right Side Actions */}
 						<div className="flex items-center space-x-4">
 							{/* Mobile Dark Mode Toggle */}
-							<button
-								onClick={onToggleDarkMode}
-								className={`lg:hidden p-2 rounded-full transition-colors ${
-									darkMode
-										? "text-yellow-400 hover:bg-gray-800"
-										: "text-gray-500 hover:bg-gray-100"
-								}`}
-							>
-								{darkMode ? (
-									<Sun className="h-5 w-5" />
-								) : (
-									<Moon className="h-5 w-5" />
-								)}
-							</button>
+                            <div className="lg:hidden">
+                                <ThemeToggle/>
+                            </div>
 
 							{/* Auth Buttons */}
                             <AuthButtons />
@@ -95,11 +77,7 @@ export default function Header({
 							{/* Mobile Menu Button */}
 							<button
 								onClick={() => setIsMenuOpen(!isMenuOpen)}
-								className={`lg:hidden p-2 rounded-md transition-colors ${
-									darkMode
-										? "text-gray-300 hover:bg-gray-800"
-										: "text-gray-700 hover:bg-gray-100"
-								}`}
+								className={`lg:hidden p-2 rounded-md transition-colors dark:text-gray-300 dark:hover:bg-gray-800 text-gray-700 hover:bg-gray-100`}
 							>
 								{isMenuOpen ? (
 									<X className="h-6 w-6" />
@@ -120,11 +98,7 @@ export default function Header({
 					}`}
 				>
 					<div
-						className={`border-t ${
-							darkMode
-								? "bg-gray-800 border-gray-700"
-								: "bg-gray-50 border-gray-200"
-						}`}
+						className={`border-t dark:bg-zinc-800 drak:border-zinc-700 bg-zinc-50 border-gray-200`}
 					>
 						<div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 space-y-3">
 							{navigationItems.map((item) => (
@@ -132,11 +106,7 @@ export default function Header({
 									key={item.href}
 									href={item.href}
 									onClick={() => setIsMenuOpen(false)}
-									className={`block py-2 px-3 rounded-md text-base font-medium transition-colors ${
-										darkMode
-											? "text-gray-300 hover:bg-gray-700 hover:text-white"
-											: "text-gray-700 hover:bg-white hover:text-orange-600"
-									}`}
+									className={`block py-2 px-3 rounded-md text-base font-medium transition-colors dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white text-gray-700 hover:bg-white hover:text-red-600`}
 								>
 									{item.label}
 								</Link>
@@ -144,28 +114,16 @@ export default function Header({
 
 							{/* Mobile Contact Info */}
 							<div
-								className={`pt-4 mt-4 border-t space-y-2 ${
-									darkMode
-										? "border-gray-700"
-										: "border-gray-200"
-								}`}
+								className={`pt-4 mt-4 border-t space-y-2 dark:border-zinc-700 border-zinc-200`}
 							>
 								<div
-									className={`flex items-center space-x-2 text-sm ${
-										darkMode
-											? "text-gray-400"
-											: "text-gray-600"
-									}`}
+									className={`flex items-center space-x-2 text-sm dark:text-zinc-400 text-zinc-600`}
 								>
 									<Phone className="h-4 w-4" />
 									<span>+56 9 9863 3775</span>
 								</div>
 								<div
-									className={`flex items-center space-x-2 text-sm ${
-										darkMode
-											? "text-gray-400"
-											: "text-gray-600"
-									}`}
+									className={`flex items-center space-x-2 text-sm dark:text-zinc-400 text-zinc-600`}
 								>
 									<Mail className="h-4 w-4" />
 									<span>contacto@ovopropiedades.cl</span>
