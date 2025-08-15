@@ -1,17 +1,11 @@
 import { type Metadata } from "next";
 import {
 	ClerkProvider,
-	SignInButton,
-	SignUpButton,
-	SignedIn,
-	SignedOut,
-	UserButton,
 } from "@clerk/nextjs";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Theme } from "@/components/providers/ThemeProvider";
 import ToastProvider from "@/components/providers/ToastProviders";
-import Link from "next/link";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -41,23 +35,6 @@ export default function RootLayout({
 				>
                     <Theme>
                         <ToastProvider />
-                        <header className="flex justify-end items-center p-4 gap-4 h-16">
-                            <SignedOut>
-                                <Link href="/sign-in">
-                                    <button className="bg-black text-ceramic-white rounded-full font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 cursor-pointer">
-                                        Sign In
-                                    </button>
-                                </Link>
-                                <Link href="/sign-up">
-                                    <button className="bg-[#6c47ff] text-ceramic-white rounded-full font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 cursor-pointer">
-                                        Sign Up
-                                    </button>
-                                </Link>
-                            </SignedOut>
-                            <SignedIn>
-                                <UserButton />
-                            </SignedIn>
-                        </header>
                         {children}
                     </Theme>
 				</body>
