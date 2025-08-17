@@ -2,11 +2,12 @@
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
-import { Menu, X, Phone, Mail, Sun, Moon } from "lucide-react";
+import { Menu, X, Phone, Mail, Sun, Moon, MapPin } from "lucide-react";
 import ContactBar from "./ContactBar";
 import Logo from "../utility/Logo";
 import AuthButtons from "../auth/AuthButtons";
 import ThemeToggle from "../utility/DarkMode";
+import NavBar from "./NavBar";
 
 export default function Header() {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -21,15 +22,7 @@ export default function Header() {
 		return () => window.removeEventListener("scroll", handleScroll);
 	}, []);
 
-	const navigationItems = [
-		{ href: "/", label: "Inicio" },
-		{ href: "/properties", label: "Propiedades" },
-		{ href: "/buy", label: "Comprar" },
-		{ href: "/sell", label: "Vender" },
-		{ href: "/rent", label: "Arrendiendo" },
-		{ href: "/about", label: "Sobre Nosotros" },
-		{ href: "/contact", label: "Contacto" },
-	];
+
 
 	return (
 		<div
@@ -44,33 +37,14 @@ export default function Header() {
 				className={`relative dark:bg-zinc-900 bg-white`}
 			>
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-					<div className="flex justify-between items-center h-16 lg:h-20">
+					<div className="flex justify-between items-center mx-0 md:mx-8 h-20 lg:h-24">
 						{/* Logo */}
                         <Logo />
 
-						{/* Desktop Navigation */}
-						<nav className="hidden lg:flex items-center space-x-8">
-							{navigationItems.map((item) => (
-								<Link
-									key={item.href}
-									href={item.href}
-									className={`
-                                        text-sm font-medium transition-colors duration-200 
-                                        hover:text-red-500 dark:text-zinc-300 text-zinc-700
-                                    `}
-								>
-									{item.label}
-								</Link>
-							))}
-						</nav>
+                        <NavBar />
 
 						{/* Right Side Actions */}
 						<div className="flex items-center space-x-4">
-							{/* Mobile Dark Mode Toggle */}
-                            <div className="lg:hidden">
-                                <ThemeToggle/>
-                            </div>
-
 							{/* Auth Buttons */}
                             <AuthButtons />
 
@@ -101,16 +75,11 @@ export default function Header() {
 						className={`border-t dark:bg-zinc-800 drak:border-zinc-700 bg-zinc-50 border-gray-200`}
 					>
 						<div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 space-y-3">
-							{navigationItems.map((item) => (
-								<Link
-									key={item.href}
-									href={item.href}
-									onClick={() => setIsMenuOpen(false)}
-									className={`block py-2 px-3 rounded-md text-base font-medium transition-colors dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white text-gray-700 hover:bg-white hover:text-red-600`}
-								>
-									{item.label}
-								</Link>
-							))}
+
+                            <NavBar 
+                                mobile 
+                                menuOpen={isMenuOpen}
+                            />
 
 							{/* Mobile Contact Info */}
 							<div
@@ -128,6 +97,12 @@ export default function Header() {
 									<Mail className="h-4 w-4" />
 									<span>contacto@ovopropiedades.cl</span>
 								</div>
+                                <div 
+                                    className={`flex items-center space-x-2 text-sm dark:text-zinc-400 text-zinc-600`}
+                                >
+                                    <MapPin className="h-4 w-4" />
+                                    <span>Santiago, Chile</span>
+                                </div>
 							</div>
 						</div>
 					</div>

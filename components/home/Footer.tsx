@@ -1,21 +1,25 @@
 import { Facebook, Instagram, Linkedin, Mail } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
+import LogoImage from "@/public/logo-blanco.png"; // now it's a static import
 
 export default function Footer() {
 	return (
 		<footer className="bg-zinc-800 text-white py-12">
 			<div className="max-w-screen-2xl mx-auto px-4 md:px-8">
 				{/* Main Footer Content */}
-				<div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-8 mb-8">
+				<div className="grid grid-cols-1 place-items-center sm:grid-cols-3 lg:grid-cols-4 gap-8 mb-8">
 					{/* Logo & About */}
 					<div className="flex flex-col items-center md:items-start">
 						<div className="mb-4">
-							<img
-								src="/logo.svg"
-								alt="JUP Propiedades Logo"
-								width={160}
-								height={60}
-							/>
+                            <Image
+                                src={LogoImage}
+                                alt="Company Logo"
+                                width={160}   // same as w-10 (10 * 4 = 40px)
+                                priority
+                                className="object-contain"
+                                placeholder="empty" // disables blur placeholder
+                            />
 						</div>
 						<p className="text-sm text-gray-300 mt-2 text-center md:text-left">
 							Providing quality spare parts and exceptional
@@ -24,7 +28,7 @@ export default function Footer() {
 					</div>
 
 					{/* Quick Links */}
-					<div>
+					<div className="">
 						<h3 className="text-lg font-bold mb-4">Propiedades</h3>
 						<ul className="space-y-2">
 							<li>
