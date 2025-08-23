@@ -84,6 +84,7 @@ export const propertyResponseSchema = paginationSchema.extend({
 
 //? Type exports
 export type Property = z.infer<typeof propertySchema>
+export type PropertyForm = Omit<Property, "_id" | "createdAt" | "updatedAt">
 export type PropertyResponse = z.infer<typeof propertyResponseSchema>
 
 /** Advanced Search */

@@ -52,7 +52,7 @@ export default function SearchBar() {
 
 	return (
 		<section
-			className={`min-h-screen transition-colors duration-300`}
+			className={`transition-colors duration-300`}
 		>
                 {/* Search Container */}
                 <div className="w-full">
