@@ -9,12 +9,12 @@ export default function NavBar({ mobile = false } : NavBarProps) {
 
 	const navigationItems = [
 		{ href: "/", label: "Inicio" },
-		{ href: "/properties", label: "Propiedades" },
-		{ href: "/buy", label: "Comprar" },
-		{ href: "/sell", label: "Vender" },
-		{ href: "/rent", label: "Arrendiendo" },
-		{ href: "/about", label: "Sobre Nosotros" },
-		{ href: "/contact", label: "Contacto" },
+		{ href: "/home/properties", label: "Propiedades" },
+		{ href: "/home/buy", label: "Comprar" },
+		{ href: "/home/sell", label: "Vender" },
+		{ href: "/home/rent", label: "Arrendiendo" },
+		{ href: "/home/about", label: "Sobre Nosotros" },
+		{ href: "/home/contact", label: "Contacto" },
 	];
 
     return (

@@ -6,12 +6,12 @@ import AboutSection from "@/components/home/AboutSection";
 
 export default function page() {
     return (
-        <>
-            <Hero />
+        <main>
+            <Hero searchBar includeImageSection />
             <FeaturedListing />
             <AboutSection />
             <Testimonials />
             <Footer />
-        </>
+        </main>
     )
 }

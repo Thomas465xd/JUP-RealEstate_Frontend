@@ -7,18 +7,21 @@ import SearchBar from './SearchBar';
 
 type HeroProps = {
     includeImageSection?: boolean; 
+    shortHero?: boolean; // choose wether to display a minified version of the hero image or not
+    searchBar?: boolean; // choose wether to display the serach bar or not
 }
 
-export default function Hero({ includeImageSection = true } : HeroProps) {
+export default function Hero({ includeImageSection = false, shortHero = false, searchBar = false } : HeroProps) {
     return (
         <>
             {/* Top Contact Bar */}
             <ContactBar />
+            
             {/* Main Header */}
             <Header />
         
             {includeImageSection && (
-                <section className="relative h-[70vh] flex items-center justify-center">
+                <section className="relative h-[70vh] 2xl:h-[60vh] flex items-center justify-center">
                     
                     <Image
                         src={heroImage}
@@ -35,7 +38,22 @@ export default function Hero({ includeImageSection = true } : HeroProps) {
                 </section>
             )}
 
-            <SearchBar />
+            {shortHero && (
+                <section className="relative h-[30vh] flex items-center justify-center">
+                    <Image
+                        src={heroImage}
+                        alt="Hero background"
+                        fill
+                        priority
+                        className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-black/40" /> {/* overlay */}
+                </section>
+            )}
+
+            {searchBar && (
+                <SearchBar />
+            )}
         </>
     )
 }
