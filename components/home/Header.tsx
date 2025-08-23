@@ -26,6 +26,7 @@ export default function Header() {
 
 	return (
 		<div
+            suppressHydrationWarning
 			className={`
                 dark:bg-zinc-900 bg-white sticky top-0 z-50 transition-all duration-300 
 			    ${isScrolled ? "shadow-lg backdrop-blur-sm bg-opacity-95" : ""}

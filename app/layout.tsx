@@ -6,6 +6,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Theme } from "@/components/providers/ThemeProvider";
 import ToastProvider from "@/components/providers/ToastProviders";
+import ReactQueryProvider from "@/components/providers/QueryClientProvider";
+import { TokenProvider } from "@/components/providers/TokenProvider";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -37,10 +39,14 @@ export default function RootLayout({
                     suppressHydrationWarning
 					className={`${geistSans.variable} ${geistMono.variable} antialiased`}
 				>
-                    <Theme>
-                        <ToastProvider />
-                        {children}
-                    </Theme>
+                    <TokenProvider>
+                        <ReactQueryProvider>
+                            <Theme>
+                                <ToastProvider />
+                                {children}
+                            </Theme>
+                        </ReactQueryProvider>
+                    </TokenProvider>
 				</body>
 			</html>
 		</ClerkProvider>
