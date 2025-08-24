@@ -1,14 +1,11 @@
 //TODO: Format UF from 10000 to 10.000,00
 // TODO: FORMAT UF to CLP
 
-import { getUF } from "@/lib/uf";
-
 export function formatToCLP(value: number): string {
     return `$ ${Math.round(value).toLocaleString("es-CL")}`;
 }
 
-export async function formatUFtoCLP(value: number): Promise<string> {
-    const ufRate = await getUF(); // fetch dynamic value
+export function formatUFtoCLP(value: number, ufRate: number): string {
     const clpValue = value * ufRate;
     return formatToCLP(clpValue);
 }

@@ -1,8 +1,9 @@
 import { toast } from "react-toastify";
 
+// lib/getUF.ts
 export async function getUF(): Promise<number> {
     const res = await fetch("https://mindicador.cl/api/uf", {
-        cache: "no-store", // always fresh
+        next: { revalidate: 86400 }, // cache for 1 day
     });
 
     if (!res.ok) {
@@ -11,6 +12,5 @@ export async function getUF(): Promise<number> {
     };
 
     const data = await res.json();
-
     return data.serie[0].valor; // today's UF in CLP
 }

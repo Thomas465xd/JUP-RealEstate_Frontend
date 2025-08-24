@@ -1,7 +1,13 @@
 import PropertyTable from "@/components/admin/PropertyTable";
 import Heading from "@/components/utility/Heading";
+import { getUF } from "@/lib/uf";
+import { House } from "lucide-react";
+import Link from "next/link";
 
-export default function page() {
+export default async function page() {
+    const ufValue = await getUF(); // Fetch once per request
+    console.log(ufValue)
+
     return (
         <section className="bg-zinc-100 dark:bg-zinc-900 p-20">
             <Heading
@@ -11,13 +17,29 @@ export default function page() {
                 Panel de Administración
             </Heading>
 
-            <p className="mb-4 dark:text-zinc-300">
-                Administra todas tus propiedades registradas  
-            </p>
+            <div className="flex justify-between items-center ">
+                <p className="dark:text-zinc-300">
+                    Administra todas tus propiedades registradas  
+                </p>
+
+                <Link
+                    href={"/admin/create"}
+                    className="group bg-gradient-to-r from-zinc-700 via-zinc-600 to-zinc-800 bg-[length:200%_200%] 
+                            bg-[position:0%_50%] hover:bg-[position:100%_50%] transition-all duration-500 
+                            px-8 py-2 rounded-md flex items-center gap-2 text-white"
+                >
+                    <House size={20} />
+                    Crear Propiedad
+                </Link>
+
+            </div>
 
             <div className="border-2 border-zinc-800 dark:border-zinc-300 my-4 rounded max-w-2xl"></div>
 
-            <PropertyTable />
+
+            <PropertyTable
+                ufValue={ufValue}
+            />
         </section>
     )
 }

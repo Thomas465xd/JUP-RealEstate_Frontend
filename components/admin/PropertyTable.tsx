@@ -1,5 +1,5 @@
 "use client";
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Property } from "@/src/types";
 import { copyToClipboard } from "@/src/utils/copy";
 import {
@@ -27,6 +27,10 @@ import { toast } from "react-toastify";
 import Loader from "../utility/Loader";
 import { getProperties, deleteProperty } from "@/src/api/PropertyAPI";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { formatUF, formatUFtoCLP } from "@/src/utils/price";
+import { formatDate } from "@/src/utils/date";
+import { getUF } from "@/lib/uf";
+import Dialog from "../utility/Dialog";
 
 // Property type icons mapping
 const getPropertyIcon = (type: Property["type"]) => {
@@ -79,33 +83,11 @@ const getStatusInfo = (status: Property["status"]) => {
 	return statusMap[status] || statusMap.disponible;
 };
 
-// Format price in Chilean Pesos
-const formatPrice = (price: number) => {
-	return new Intl.NumberFormat('es-CL', {
-		style: 'currency',
-		currency: 'CLP',
-		minimumFractionDigits: 0,
-		maximumFractionDigits: 0
-	}).format(price);
-};
+type PropertyTableProps = {
+    ufValue: number; 
+}
 
-// Format date
-const formatDate = (date: Date) => {
-	return new Intl.DateTimeFormat('es-CL', {
-		year: 'numeric',
-		month: 'short',
-		day: 'numeric'
-	}).format(date);
-};
-
-// Dialog component placeholder (assuming it exists)
-const Dialog = ({ children, position }: { children: React.ReactNode; position: string }) => (
-	<div className="absolute invisible group-hover:visible bg-black text-white text-xs rounded px-2 py-1 z-10">
-		{children}
-	</div>
-);
-
-export default function PropertyTable() {
+export default function PropertyTable({ ufValue } : PropertyTableProps) {
 	// Router
 	const router = useRouter();
 	const queryClient = useQueryClient();
@@ -233,7 +215,7 @@ export default function PropertyTable() {
 							<th className="px-6 py-4 font-medium">
 								<div className="flex items-center gap-2">
 									<span>$</span>
-									<span>Precio</span>
+									<span>Precio (UF)</span>
 								</div>
 							</th>
 							<th className="px-6 py-4 font-medium">
@@ -307,7 +289,7 @@ export default function PropertyTable() {
 										</td>
 										
 										<td className="px-6 py-4 text-sm font-medium text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
-											{formatPrice(property.price)}
+											{formatUF(property.price)}
 										</td>
 										
 										<td className="px-6 py-4 text-sm whitespace-nowrap">
@@ -400,6 +382,15 @@ export default function PropertyTable() {
 															</p>
 														</div>
 
+														<div>
+															<span className="text-xs text-zinc-500 dark:text-zinc-400">
+																Precio en Pesos:
+															</span>
+															<p className="text-zinc-800 dark:text-zinc-200">
+																{formatUFtoCLP(property.price, ufValue)}
+															</p>
+														</div>
+
 														<div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-2">
 															<div>
 																<span className="text-xs text-zinc-500 dark:text-zinc-400">
@@ -450,7 +441,7 @@ export default function PropertyTable() {
 															</div>
 														</div>
 
-														<div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+														<div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-2">
 															<div>
 																<span className="text-xs text-zinc-500 dark:text-zinc-400">
 																	Condominio:

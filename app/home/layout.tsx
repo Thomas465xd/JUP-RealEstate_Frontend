@@ -1,3 +1,4 @@
+import Footer from "@/components/home/Footer";
 import Hero from "@/components/home/Hero";
 import { ReactNode } from "react";
 
@@ -10,6 +11,7 @@ export default function RootLayout({
 		<>
 			<Hero includeImageSection={false} shortHero />
 			{children}
+            <Footer />
 		</>
 	);
 }

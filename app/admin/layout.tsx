@@ -1,3 +1,4 @@
+import Footer from "@/components/home/Footer";
 import Hero from "@/components/home/Hero";
 
 export default function AdminDashboard({
@@ -9,6 +10,7 @@ export default function AdminDashboard({
         <main>
             <Hero includeImageSection={false} />
             {children}
+            <Footer />
         </main>
     )
 }
