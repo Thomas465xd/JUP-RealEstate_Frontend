@@ -3,13 +3,19 @@ import Heading from "@/components/utility/Heading";
 
 export default function page() {
     return (
-        <section className="bg-zinc-100 dark:bg-zinc-800 p-20">
+        <section className="bg-zinc-100 dark:bg-zinc-900 p-20">
             <Heading
                 size="2xl"
                 font="bold"
             >
                 Panel de Administración
             </Heading>
+
+            <p className="mb-4 dark:text-zinc-300">
+                Administra todas tus propiedades registradas  
+            </p>
+
+            <div className="border-2 border-zinc-800 dark:border-zinc-300 my-4 rounded max-w-2xl"></div>
 
             <PropertyTable />
         </section>

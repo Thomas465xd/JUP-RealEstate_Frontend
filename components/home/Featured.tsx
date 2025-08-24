@@ -20,7 +20,7 @@ export default function Featured() {
     if(isLoading) return <Loader />
 
     if(data) return (
-        <div className='p-12 lg:p-40'>
+        <div className='p-12 lg:p-40 bg-zinc-100 dark:bg-zinc-900'>
             <h1 className="font-extrabold uppercase text-3xl">Propiedades Destacadas</h1>
 
             <PropertyListing 

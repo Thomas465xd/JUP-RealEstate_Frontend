@@ -21,9 +21,10 @@ import { Property } from "@/src/types";
 // Props
 type PropertyCardProps = {
     property: Property;
+    isFeatured?: Boolean;
 }
 
-export default function PropertyCard({ property  } : PropertyCardProps) {
+export default function PropertyCard({ property, isFeatured = false  } : PropertyCardProps) {
 	const [currentImageIndex, setCurrentImageIndex] = useState(0);
 	const [isLiked, setIsLiked] = useState(false);
 
