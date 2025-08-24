@@ -72,7 +72,9 @@ export async function getPropertyById(propertyId: string) {
 export async function createProperty(formData: PropertyForm) {
     try {
         const url = "/properties/create";
+        console.log(formData)
         const { data } = await api.post(url, formData);
+        console.log(data)
 
         //console.log("✅ Respuesta exitosa de la API:", response.data);
 
