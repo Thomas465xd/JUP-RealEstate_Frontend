@@ -78,14 +78,18 @@ export const propertySchema = z.object({
     updatedAt: z.string().datetime().transform((str) => new Date(str)),
 })
 
-export const propertyResponseSchema = paginationSchema.extend({
+export const propertyResponseSchema = z.object({
+    property: propertySchema
+})
+
+export const propertiesResponseSchema = paginationSchema.extend({
     properties: z.array(propertySchema),
 });
 
 //? Type exports
 export type Property = z.infer<typeof propertySchema>
 export type PropertyForm = Omit<Property, "_id" | "createdAt" | "updatedAt">
-export type PropertyResponse = z.infer<typeof propertyResponseSchema>
+export type PropertiesResponse = z.infer<typeof propertiesResponseSchema>
 
 /** Advanced Search */
 

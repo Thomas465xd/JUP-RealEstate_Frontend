@@ -1,6 +1,6 @@
 import api from "@/lib/axios";
 import { isAxiosError } from "axios";
-import { PropertyForm, propertyResponseSchema } from "../types";
+import { PropertyForm, propertiesResponseSchema, propertySchema } from "../types";
 
 export async function getProperties({page, perPage} : { page: number, perPage: number}) {
     try {
@@ -9,7 +9,7 @@ export async function getProperties({page, perPage} : { page: number, perPage: n
 
         //console.log("✅ Respuesta exitosa de la API:", response.data);
 
-        const response = propertyResponseSchema.safeParse(data);
+        const response = propertiesResponseSchema.safeParse(data);
         if(response.success) {
             //console.log("✅ Respuesta exitosa de la API:", response.data);
             return response.data;
@@ -34,14 +34,14 @@ export async function getProperties({page, perPage} : { page: number, perPage: n
     }
 }
 
-export async function getPropertyById({page, perPage} : { page: number, perPage: number}) {
+export async function getPropertyById(propertyId: string) {
     try {
-        const url = `/properties?page=${page}&perPage=${perPage}`;
+        const url = `/properties/${propertyId}`;
         const { data } = await api.get(url);
 
         //console.log("✅ Respuesta exitosa de la API:", response.data);
 
-        const response = propertyResponseSchema.safeParse(data);
+        const response = propertySchema.safeParse(data);
         if(response.success) {
             //console.log("✅ Respuesta exitosa de la API:", response.data);
             return response.data;
