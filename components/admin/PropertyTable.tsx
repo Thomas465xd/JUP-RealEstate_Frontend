@@ -316,7 +316,7 @@ export default function PropertyTable({ ufValue } : PropertyTableProps) {
 
 												<button 
 													className="text-green-600 hover:text-green-800 transition-colors duration-300 flex items-center gap-1"
-													onClick={() => router.push(`/admin/properties/edit/${property._id}`)}
+													onClick={() => router.push(`/admin/edit/${property._id}`)}
 													title="Editar propiedad"
 												>
 													<Pen size={14} />

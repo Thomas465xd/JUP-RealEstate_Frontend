@@ -17,6 +17,7 @@ import {
 	Store,
 } from "lucide-react";
 import { Property } from "@/src/types";
+import { formatUF } from "@/src/utils/price";
 
 // Props
 type PropertyCardProps = {
@@ -220,7 +221,7 @@ export default function PropertyCard({ property, isFeatured = false  } : Propert
 
                 <div className="underline mb-2">
                     <div className="text-xl font-bold text-gray-900 dark:text-white">
-                        {`${property.price} UF`}
+                        {`${formatUF(property.price)} UF`}
                     </div>
                 </div>
 

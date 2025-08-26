@@ -1,7 +1,7 @@
 import PropertyTable from "@/components/admin/PropertyTable";
 import Heading from "@/components/utility/Heading";
 import { getUF } from "@/lib/uf";
-import { House } from "lucide-react";
+import { House, PencilRuler } from "lucide-react";
 import Link from "next/link";
 
 export default async function page() {
@@ -28,7 +28,7 @@ export default async function page() {
                             bg-[position:0%_50%] hover:bg-[position:100%_50%] transition-all duration-500 
                             px-8 py-2 rounded-md flex items-center gap-2 text-white"
                 >
-                    <House size={20} />
+                    <PencilRuler size={20} />
                     Crear Propiedad
                 </Link>
 

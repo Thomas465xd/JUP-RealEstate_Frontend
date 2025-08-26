@@ -1,6 +1,6 @@
 import api from "@/lib/axios";
 import { isAxiosError } from "axios";
-import { PropertyForm, propertiesResponseSchema, propertySchema } from "../types";
+import { PropertyForm, propertiesResponseSchema, propertyResponseSchema, propertySchema } from "../types";
 
 export async function getProperties({page, perPage} : { page: number, perPage: number}) {
     try {
@@ -41,7 +41,7 @@ export async function getPropertyById(propertyId: string) {
 
         //console.log("✅ Respuesta exitosa de la API:", response.data);
 
-        const response = propertySchema.safeParse(data);
+        const response = propertyResponseSchema.safeParse(data);
         if(response.success) {
             //console.log("✅ Respuesta exitosa de la API:", response.data);
             return response.data;

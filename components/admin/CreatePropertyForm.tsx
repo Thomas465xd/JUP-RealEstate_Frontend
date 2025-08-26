@@ -9,9 +9,11 @@ import {
 	DollarSign,
 	Camera,
 	Plus,
-    ArrowLeft,
-    ExternalLinkIcon,
     House,
+    PencilRuler,
+    Car,
+    BedDouble,
+    Bath,
 } from "lucide-react";
 import { PropertyForm } from "@/src/types";
 import ErrorMessage from "../utility/ErrorMessage";
@@ -175,7 +177,6 @@ export default function CreatePropertyForm() {
                 <div className="flex justify-between items-center">
                     <div className="mb-8">
                         <h1 className="text-3xl font-bold flex items-center gap-3">
-                            <House className="text-blue-500" size={32} />
                             Registrar Nueva Propiedad
                         </h1>
                         <p className="mt-2 text-zinc-600 dark:text-zinc-400">
@@ -290,11 +291,7 @@ export default function CreatePropertyForm() {
 										placeholder="Describe las características principales de la propiedad..."
 										className="w-full px-4 py-3 rounded-lg border border-zinc-300 dark:border-zinc-600 bg-white dark:bg-zinc-700 text-zinc-900 dark:text-white placeholder-zinc-500 dark:placeholder-zinc-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none resize-none transition-colors"
 									/>
-									{errors.description && (
-										<p className="mt-1 text-sm text-red-500">
-											{errors.description.message}
-										</p>
-									)}
+                                    {errors.description && <ErrorMessage variant="inline">{errors.description.message}</ErrorMessage>}
 								</div>
 							</div>
 						</div>
@@ -333,16 +330,12 @@ export default function CreatePropertyForm() {
 											className="w-full pl-12 pr-4 py-3 rounded-lg border border-zinc-300 dark:border-zinc-600 bg-white dark:bg-zinc-700 text-zinc-900 dark:text-white placeholder-zinc-500 dark:placeholder-zinc-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none transition-colors"
 										/>
 									</div>
-									{errors.price && (
-										<p className="mt-1 text-sm text-red-500">
-											{errors.price.message}
-										</p>
-									)}
+									{errors.price && <ErrorMessage variant="inline">{errors.price.message}</ErrorMessage>}
 								</div>
 
 								<div>
-									<label className="block text-sm font-medium mb-2">
-										Área (m²) *
+									<label className="flex gap-2 items-center text-sm font-medium mb-2">
+										<PencilRuler size={16}/> Área (m²) *
 									</label>
 									<input
 										{...register("area", {
@@ -358,11 +351,7 @@ export default function CreatePropertyForm() {
 										placeholder="120"
 										className="w-full px-4 py-3 rounded-lg border border-zinc-300 dark:border-zinc-600 bg-white dark:bg-zinc-700 text-zinc-900 dark:text-white placeholder-zinc-500 dark:placeholder-zinc-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none transition-colors"
 									/>
-									{errors.area && (
-										<p className="mt-1 text-sm text-red-500">
-											{errors.area.message}
-										</p>
-									)}
+									{errors.area && <ErrorMessage variant="inline">{errors.area.message}</ErrorMessage>}
 								</div>
 
 								<div>
@@ -385,11 +374,7 @@ export default function CreatePropertyForm() {
 											</option>
 										))}
 									</select>
-									{errors.region && (
-										<p className="mt-1 text-sm text-red-500">
-											{errors.region.message}
-										</p>
-									)}
+									{errors.region && <ErrorMessage variant="inline">{errors.region.message}</ErrorMessage>}
 								</div>
 
 								<div>
@@ -410,11 +395,7 @@ export default function CreatePropertyForm() {
 										placeholder="Las Condes, Santiago"
 										className="w-full px-4 py-3 rounded-lg border border-zinc-300 dark:border-zinc-600 bg-white dark:bg-zinc-700 text-zinc-900 dark:text-white placeholder-zinc-500 dark:placeholder-zinc-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none transition-colors"
 									/>
-									{errors.cityArea && (
-										<p className="mt-1 text-sm text-red-500">
-											{errors.cityArea.message}
-										</p>
-									)}
+									{errors.cityArea && <ErrorMessage variant="inline">{errors.cityArea.message}</ErrorMessage>}
 								</div>
 
 								<div className="md:col-span-2">
@@ -435,11 +416,7 @@ export default function CreatePropertyForm() {
 										placeholder="Av. Providencia 1234, Providencia"
 										className="w-full px-4 py-3 rounded-lg border border-zinc-300 dark:border-zinc-600 bg-white dark:bg-zinc-700 text-zinc-900 dark:text-white placeholder-zinc-500 dark:placeholder-zinc-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none transition-colors"
 									/>
-									{errors.address && (
-										<p className="mt-1 text-sm text-red-500">
-											{errors.address.message}
-										</p>
-									)}
+									{errors.address && <ErrorMessage variant="inline">{errors.address.message}</ErrorMessage>}
 								</div>
 							</div>
 						</div>
@@ -452,8 +429,8 @@ export default function CreatePropertyForm() {
 
 							<div className="grid grid-cols-1 md:grid-cols-3 gap-4">
 								<div>
-									<label className="block text-sm font-medium mb-2">
-										Dormitorios *
+									<label className="flex items-center gap-2 text-sm font-medium mb-2">
+										<BedDouble size={20} /> Dormitorios *
 									</label>
 									<input
 										{...register("dorms", {
@@ -471,16 +448,12 @@ export default function CreatePropertyForm() {
 										placeholder="3"
 										className="w-full px-4 py-3 rounded-lg border border-zinc-300 dark:border-zinc-600 bg-white dark:bg-zinc-700 text-zinc-900 dark:text-white placeholder-zinc-500 dark:placeholder-zinc-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none transition-colors"
 									/>
-									{errors.dorms && (
-										<p className="mt-1 text-sm text-red-500">
-											{errors.dorms.message}
-										</p>
-									)}
+									{errors.dorms && <ErrorMessage variant="inline">{errors.dorms.message}</ErrorMessage>}
 								</div>
 
 								<div>
-									<label className="block text-sm font-medium mb-2">
-										Baños *
+									<label className="flex items-center gap-2 text-sm font-medium mb-2">
+										<Bath size={20} /> Baños *
 									</label>
 									<input
 										{...register("bathrooms", {
@@ -498,16 +471,12 @@ export default function CreatePropertyForm() {
 										placeholder="2"
 										className="w-full px-4 py-3 rounded-lg border border-zinc-300 dark:border-zinc-600 bg-white dark:bg-zinc-700 text-zinc-900 dark:text-white placeholder-zinc-500 dark:placeholder-zinc-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none transition-colors"
 									/>
-									{errors.bathrooms && (
-										<p className="mt-1 text-sm text-red-500">
-											{errors.bathrooms.message}
-										</p>
-									)}
+									{errors.bathrooms && <ErrorMessage variant="inline">{errors.bathrooms.message}</ErrorMessage>}
 								</div>
 
 								<div>
-									<label className="block text-sm font-medium mb-2">
-										Estacionamientos *
+									<label className="flex items-center gap-2 text-sm font-medium mb-2">
+										<Car size={20} /> Estacionamientos *
 									</label>
 									<input
 										{...register("parkingSpaces", {
@@ -525,11 +494,7 @@ export default function CreatePropertyForm() {
 										placeholder="2"
 										className="w-full px-4 py-3 rounded-lg border border-zinc-300 dark:border-zinc-600 bg-white dark:bg-zinc-700 text-zinc-900 dark:text-white placeholder-zinc-500 dark:placeholder-zinc-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none transition-colors"
 									/>
-									{errors.parkingSpaces && (
-										<p className="mt-1 text-sm text-red-500">
-											{errors.parkingSpaces.message}
-										</p>
-									)}
+									{errors.parkingSpaces && <ErrorMessage variant="inline">{errors.parkingSpaces.message}</ErrorMessage>}
 								</div>
 							</div>
 
