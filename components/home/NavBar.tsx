@@ -27,7 +27,7 @@ export default function NavBar({ mobile = false } : NavBarProps) {
                             href={item.href}
                             className={`
                                 text-sm font-medium transition-colors duration-200 
-                                hover:text-red-500 dark:text-zinc-300 text-zinc-700
+                                hover:text-blue-500 dark:text-zinc-300 text-zinc-700
                             `}
                         >
                             {item.label}
