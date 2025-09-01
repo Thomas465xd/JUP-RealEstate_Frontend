@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 
 interface Testimonial {
@@ -70,7 +70,6 @@ const TestimonialsCarousel: React.FC = () => {
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 	const [isAnimating, setIsAnimating] = useState(false);
-
 	const [visibleCards, setVisibleCards] = useState(3);
 
 	// Update visible cards based on screen size
@@ -89,19 +88,11 @@ const TestimonialsCarousel: React.FC = () => {
 		window.addEventListener("resize", updateVisibleCards);
 		return () => window.removeEventListener("resize", updateVisibleCards);
 	}, []);
+
 	const maxIndex = Math.max(0, testimonials.length - visibleCards);
 
-	useEffect(() => {
-		if (!isAutoPlaying) return;
-
-		const interval = setInterval(() => {
-			nextSlide();
-		}, 4000);
-
-		return () => clearInterval(interval);
-	}, [isAutoPlaying, currentIndex]);
-
-	const nextSlide = () => {
+	// Memoized next slide function to prevent recreation
+	const nextSlide = useCallback(() => {
 		if (isAnimating) return;
 		setIsAnimating(true);
 
@@ -111,11 +102,23 @@ const TestimonialsCarousel: React.FC = () => {
 		});
 
 		setTimeout(() => setIsAnimating(false), 500);
-	};
+	}, [isAnimating, maxIndex]);
+
+	// Auto-play effect - simplified and fixed
+	useEffect(() => {
+		if (!isAutoPlaying) return;
+
+		const interval = setInterval(nextSlide, 4000);
+		return () => clearInterval(interval);
+	}, [isAutoPlaying, nextSlide]);
 
 	const prevSlide = () => {
 		if (isAnimating) return;
 		setIsAnimating(true);
+
+		// Temporarily pause auto-play for 8 seconds after manual navigation
+		setIsAutoPlaying(false);
+		setTimeout(() => setIsAutoPlaying(true), 8000);
 
 		setCurrentIndex((prev) => {
 			const newIndex = prev <= 0 ? maxIndex : prev - 1;
@@ -123,7 +126,29 @@ const TestimonialsCarousel: React.FC = () => {
 		});
 
 		setTimeout(() => setIsAnimating(false), 500);
+	};
+
+	const handleNextSlide = () => {
+		if (isAnimating) return;
+		
+		// Temporarily pause auto-play for 8 seconds after manual navigation
 		setIsAutoPlaying(false);
+		setTimeout(() => setIsAutoPlaying(true), 8000);
+		
+		nextSlide();
+	};
+
+	const goToSlide = (index: number) => {
+		if (isAnimating || index === currentIndex) return;
+		
+		setIsAnimating(true);
+		
+		// Temporarily pause auto-play for 8 seconds after manual navigation
+		setIsAutoPlaying(false);
+		setTimeout(() => setIsAutoPlaying(true), 8000);
+		
+		setCurrentIndex(index);
+		setTimeout(() => setIsAnimating(false), 500);
 	};
 
 	const renderStars = (rating: number) => {

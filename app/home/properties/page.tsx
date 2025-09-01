@@ -21,7 +21,7 @@ export default function page() {
 
     if(data) return (
         <div className='p-12 lg:p-40 bg-zinc-100 dark:bg-zinc-900'>
-            <h1 className="font-extrabold uppercase text-3xl mb-4">Nuestras Propiedades:</h1>
+            <h1 className="title">Nuestras Propiedades:</h1>
             <p className="text-zinc-700 dark:text-zinc-400">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa nisi nobis vitae placeat cum molestias? Ut omnis quisquam, officia ducimus eaque aliquam laborum neque in 
             </p>

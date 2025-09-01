@@ -1,5 +1,26 @@
 @import "tailwindcss";
+
 @custom-variant dark (&:where(.dark, .dark *));
+
+@utility flex-center {
+    @apply flex justify-center items-center
+}
+
+@utility title {
+    @apply font-extrabold uppercase text-3xl mb-4 
+}
+
+@utility button-zinc-gradient {
+    @apply bg-gradient-to-r from-zinc-700 via-zinc-600 to-zinc-800 bg-[length:200%_200%] bg-[position:0%_50%] hover:bg-[position:100%_50%] transition-all duration-500 px-8 py-2 rounded-md flex items-center gap-2 text-white
+}
+
+@utility input {
+    @apply w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-zinc-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent transition-all duration-200
+}
+
+@utility card {
+    @apply relative bg-white dark:bg-zinc-900 rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 h-full
+} 
 
 :root {
     --color-background: var(--background);

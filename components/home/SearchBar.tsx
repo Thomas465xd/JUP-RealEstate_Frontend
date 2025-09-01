@@ -68,7 +68,7 @@ export default function SearchBar() {
                                     </label>
                                     <select
                                         {...register("operation")}
-                                        className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-zinc-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent transition-all duration-200"
+                                        className="input"
                                     >
                                         <option value="en-venta">
                                             En Venta
@@ -89,7 +89,7 @@ export default function SearchBar() {
                                     </label>
                                     <select
                                         {...register("propertyType")}
-                                        className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-zinc-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent transition-all duration-200"
+                                        className="input"
                                     >
                                         <option value="">
                                             Todos los tipos
@@ -117,7 +117,7 @@ export default function SearchBar() {
                                     </label>
                                     <select
                                         {...register("region")}
-                                        className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-zinc-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent transition-all duration-200"
+                                        className="input"
                                     >
                                         <option value="">
                                             Seleccionar región
@@ -140,7 +140,7 @@ export default function SearchBar() {
                                     </label>
                                     <select
                                         {...register("commune")}
-                                        className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-zinc-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent transition-all duration-200"
+                                        className="input"
                                     >
                                         <option value="">
                                             Seleccionar comuna
@@ -171,7 +171,7 @@ export default function SearchBar() {
                                     </label>
                                     <select
                                         {...register("currency")}
-                                        className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-zinc-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent transition-all duration-200"
+                                        className="input"
                                     >
                                         <option value="pesos">Pesos</option>
                                         <option value="uf">UF</option>
@@ -209,7 +209,7 @@ export default function SearchBar() {
                                     </label>
                                     <select
                                         {...register("condition")}
-                                        className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-zinc-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent transition-all duration-200"
+                                        className="input"
                                     >
                                         <option value="en-condomi">
                                             En Condominio
@@ -224,12 +224,10 @@ export default function SearchBar() {
                             </div>
 
                             {/* Search Button */}
-                            <div className="flex justify-center">
+                            <div className="flex-center">
                                 <button
                                     onClick={handleSubmit(onSubmit)}
-                                    className="group bg-gradient-to-r from-zinc-700 via-zinc-600 to-zinc-800 bg-[length:200%_200%] 
-                                            bg-[position:0%_50%] hover:bg-[position:100%_50%] transition-all duration-500 
-                                            px-8 py-2 rounded-md flex items-center gap-2 text-white"
+                                    className="group button-zinc-gradient"
                                 >
                                     <Search size={20} />
                                     BUSCAR
@@ -266,9 +264,7 @@ export default function SearchBar() {
                             </div>
                             <button
                                 onClick={onSearchByCode}
-                                className="group bg-gradient-to-r from-zinc-700 via-zinc-600 to-zinc-800 bg-[length:200%_200%] 
-                                        bg-[position:0%_50%] hover:bg-[position:100%_50%] transition-all duration-500 
-                                        px-8 py-2 rounded-md flex items-center gap-2 text-white"
+                                className="group button-zinc-gradient"
                             >
                                 POR CÓDIGO
                             </button>

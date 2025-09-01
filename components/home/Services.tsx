@@ -15,7 +15,7 @@ const ServiceCard: React.FC<ServiceProps> = ({
 	buttonText,
 }) => {
 	return (
-		<div className="group relative bg-white dark:bg-zinc-900 rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 h-full">
+		<div className="group group card">
 			<div className="flex flex-col items-center text-center h-full">
 				<div className="w-16 h-16 rounded-full bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center group-hover:bg-zinc-200 dark:group-hover:bg-zinc-700 transition-colors duration-300 mb-6">
 					<div className="text-zinc-700 dark:text-zinc-300 group-hover:text-zinc-900 dark:group-hover:text-zinc-100">
