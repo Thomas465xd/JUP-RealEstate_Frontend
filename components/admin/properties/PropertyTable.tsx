@@ -24,13 +24,13 @@ import {
 import { redirect, useRouter } from "next/navigation";
 import Swal, { SweetAlertTheme } from "sweetalert2";
 import { toast } from "react-toastify";
-import Loader from "../utility/Loader";
+import Loader from "../../utility/Loader";
 import { getProperties, deleteProperty } from "@/src/api/PropertyAPI";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { formatUF, formatUFtoCLP } from "@/src/utils/price";
 import { formatDate } from "@/src/utils/date";
 import { getUF } from "@/lib/uf";
-import Dialog from "../utility/Dialog";
+import Dialog from "../../utility/Dialog";
 
 // Property type icons mapping
 const getPropertyIcon = (type: Property["type"]) => {

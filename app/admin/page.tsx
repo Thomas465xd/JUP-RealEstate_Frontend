@@ -1,4 +1,4 @@
-import PropertyTable from "@/components/admin/PropertyTable";
+import PropertyTable from "@/components/admin/properties/PropertyTable";
 import Heading from "@/components/utility/Heading";
 import { getUF } from "@/lib/uf";
 import { House, PencilRuler } from "lucide-react";
@@ -24,9 +24,7 @@ export default async function page() {
 
                 <Link
                     href={"/admin/create"}
-                    className="group bg-gradient-to-r from-zinc-700 via-zinc-600 to-zinc-800 bg-[length:200%_200%] 
-                            bg-[position:0%_50%] hover:bg-[position:100%_50%] transition-all duration-500 
-                            px-8 py-2 rounded-md flex items-center gap-2 text-white"
+                    className="button-zinc-gradient"
                 >
                     <PencilRuler size={20} />
                     Crear Propiedad

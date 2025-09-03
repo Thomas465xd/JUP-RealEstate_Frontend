@@ -1,4 +1,4 @@
-import EditPropertyForm from "@/components/admin/EditPropertyForm";
+import EditPropertyForm from "@/components/admin/properties/EditPropertyForm";
 import React from "react";
 
 export default async function EditProperty({ params } : { params: Promise<{ propertyId: string }>}) {

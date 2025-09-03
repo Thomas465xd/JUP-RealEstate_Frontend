@@ -1,4 +1,4 @@
-import CreatePropertyForm from "@/components/admin/CreatePropertyForm";
+import CreatePropertyForm from "@/components/admin/properties/CreatePropertyForm";
 
 export default function page() {
     return (

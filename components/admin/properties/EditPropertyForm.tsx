@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 import {
 	Upload,
@@ -14,14 +14,17 @@ import {
     Car,
     BedDouble,
     Bath,
+    LucidePencilRuler,
 } from "lucide-react";
 import { PropertyForm } from "@/src/types";
-import ErrorMessage from "../utility/ErrorMessage";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { createProperty } from "@/src/api/PropertyAPI";
+import ErrorMessage from "../../utility/ErrorMessage";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { editProperty, getPropertyById } from "@/src/api/PropertyAPI";
 import { toast } from "react-toastify";
 import { CldUploadWidget } from 'next-cloudinary';
 import Link from "next/link";
+import Loader from "../../utility/Loader";
+import { useRouter } from "next/navigation";
 
 const propertyTypes = [
 	{ value: "casa", label: "Casa" },
@@ -37,6 +40,28 @@ const propertyStatus = [
 	{ value: "vendida", label: "Vendida" },
 	{ value: "pendiente", label: "Pendiente" },
 ];
+
+// Add mapping functions to handle API response values
+const mapApiTypeToFormType = (apiType: string): string => {
+	const typeMap: { [key: string]: string } = {
+		"house": "casa",
+		"apartment": "departamento",
+		"land": "parcela",
+		"lot": "sitio",
+		"office": "oficina",
+		"commercial": "comercial"
+	};
+	return typeMap[apiType] || apiType;
+};
+
+const mapApiStatusToFormStatus = (apiStatus: string): string => {
+	const statusMap: { [key: string]: string } = {
+		"available": "disponible",
+		"sold": "vendida",
+		"pending": "pendiente"
+	};
+	return statusMap[apiStatus] || apiStatus;
+};
 
 const regions = [
 	"Arica y Parinacota",
@@ -57,23 +82,61 @@ const regions = [
 	"Magallanes",
 ];
 
-export default function CreatePropertyForm() {
+type EditPropertyFormProps = {
+    propertyId: string; 
+}
+
+export default function EditPropertyForm({ propertyId } : EditPropertyFormProps) {
 	const [uploadedImages, setUploadedImages] = useState<string[]>([]);
 	const [isSubmitting, setIsSubmitting] = useState(false);
     const queryClient = useQueryClient();
 
+    // Set up redirects
+    const router = useRouter();
+
+    // Get property by Id
+    const { data, isLoading, isError } = useQuery({
+        queryKey: ["properties", propertyId], // Add propertyId to make the query more specific
+        queryFn: () => getPropertyById(propertyId),
+        retry: false
+    }); 
+
+    const property = useMemo(() => data?.property, [data]);
+
     // Delete property mutation
     const { mutate } = useMutation({
-        mutationFn: (formData: PropertyForm) => createProperty(formData),
+        mutationFn: (formData: PropertyForm) => editProperty({formData, propertyId}),
         onError: (error) => {
-            toast.error(error.message || "Error al eliminar la propiedad");
+            toast.error(error.message || "Error al Editar la Propiedad", {
+                theme: `${localStorage.getItem("theme")}`
+            });
         },
         onSuccess: (data) => {
             queryClient.invalidateQueries({ queryKey: ["properties"] });
-            toast.success(data.message ||"Propiedad Registrada Exitosamente");
+            toast.success(data.message ||"Propiedad Actualizada Exitosamente 🎉", {
+                theme: `${localStorage.getItem("theme")}`
+            });
             reset();
+            router.push("/admin") // Fixed: added proper redirect path
         }
     });
+
+    const initialValues : PropertyForm = {
+        title: "",
+        description: "",
+        type: "casa",
+        status: "disponible", // Fixed: use form value instead of API value
+        price: 0,
+        address: "",
+        area: 0,
+        cityArea: "",
+        region: "Metropolitana de Santiago",
+        condo: false,
+        dorms: 0,
+        bathrooms: 0,
+        parkingSpaces: 0,
+        imageUrls: [],
+    }
 
 	const {
 		register,
@@ -83,24 +146,40 @@ export default function CreatePropertyForm() {
 		watch,
 		reset,
 	} = useForm<PropertyForm>({
-		defaultValues: {
-            title: "", 
-            description: "", 
-            type: "casa", 
-			status: "disponible",
-            price: 0, 
-            address: "", 
-            area: 0, 
-            cityArea: "", 
-            region: "Metropolitana de Santiago",
-			condo: false,
-			dorms: 0,
-			bathrooms: 0,
-			parkingSpaces: 0,
-			imageUrls: [],
-		},
-        mode: "onChange"
+		defaultValues: initialValues,
+		mode: "onChange"
 	});
+
+    //! Refetch form data | For async communication - FIXED VERSION
+    useEffect(() => {
+        if (property) {
+			const formData = {
+				title: property.title ?? "",
+				description: property.description ?? "",
+				type: mapApiTypeToFormType(property.type ?? "casa") as PropertyForm["type"], // Cast to correct union type
+				status: mapApiStatusToFormStatus(property.status ?? "disponible") as PropertyForm["status"], // Cast to correct union type
+				price: property.price ?? 0,
+				address: property.address ?? "",
+				area: property.area ?? 0,
+				cityArea: property.cityArea ?? "",
+				region: property.region ?? "Metropolitana de Santiago",
+				condo: property.condo ?? false,
+				dorms: property.dorms ?? 0,
+				bathrooms: property.bathrooms ?? 0,
+				parkingSpaces: property.parkingSpaces ?? 0,
+				imageUrls: property.imageUrls ?? [],
+			};
+			
+			// Reset form with new data
+			reset(formData);
+            
+            // FIXED: Sync uploadedImages state with form imageUrls
+            setUploadedImages(property.imageUrls ?? []);
+            
+            // Ensure imageUrls field is properly set
+            setValue("imageUrls", property.imageUrls ?? []);
+        }
+    }, [property, reset, setValue]); // Added setValue to dependencies
 
     React.useEffect(() => {
         register('imageUrls', {
@@ -109,19 +188,17 @@ export default function CreatePropertyForm() {
                 if (!value || value.length < 4) {
                     return 'Se requieren al menos 4 imágenes';
                 }
-                
                 return true;
             }
         });
     }, [register]);
 
-    // Replace your handleImageUpload function with this:
+    // FIXED: Updated handleCloudinaryUpload function
     const handleCloudinaryUpload = (result: any) => {
         if (result.event === 'success') {
             const imageUrl = result.info.secure_url;
 
             setUploadedImages((prev) => {
-
                 const newImages = [...prev, imageUrl];
                 // Use setValue with validation trigger
                 setValue("imageUrls", newImages, { 
@@ -129,23 +206,21 @@ export default function CreatePropertyForm() {
                     shouldDirty: true,
                     shouldTouch: true 
                 });
-
                 return newImages;
             });
         }
     };
 
-    // Also update your removeImage function:
+    // FIXED: Updated removeImage function
     const removeImage = (index: number) => {
         setUploadedImages((prev) => {
             const newImages = prev.filter((_, i) => i !== index);
-                // Trigger validation when removing images too
-                setValue("imageUrls", newImages, { 
+            // Trigger validation when removing images too
+            setValue("imageUrls", newImages, { 
                 shouldValidate: true,
                 shouldDirty: true,
                 shouldTouch: true 
             });
-
             return newImages;
         });
     };
@@ -159,29 +234,43 @@ export default function CreatePropertyForm() {
                 return;
             }
 
-			
-            //! Call the create property mutation 
-			await mutate(formData)
-			setUploadedImages([]);
+			// FIXED: Ensure imageUrls are included in formData
+			const finalFormData = {
+				...formData,
+				imageUrls: uploadedImages
+			};
+            
+            //! Call the edit property mutation 
+			await mutate(finalFormData);
 		} catch (error) {
-			console.error("Error creating property:", error);
+			console.error("Error Editing property:", error);
 		} finally {
 			setIsSubmitting(false);
 		}
 	};
 
-	return (
+    // Handle error redirect with useEffect so it returns a valid jsx component if an error is triggered
+    React.useEffect(() => {
+        if (isError) {
+            router.push("/not-found");
+        }
+    }, [isError, router]);
+
+    if(isError) return null
+
+    if(isLoading) return <Loader />
+
+	if(data) return (
 		<div className="min-h-screen bg-zinc-50 dark:bg-zinc-900 text-zinc-900 dark:text-white transition-colors duration-300">
 			<div className="max-w-7xl mx-auto px-4 py-8">
 				{/* Header */}
                 <div className="flex justify-between items-center">
                     <div className="mb-8">
                         <h1 className="text-3xl font-bold flex items-center gap-3">
-                            Registrar Nueva Propiedad
+                            Editar Propiedad {/* Fixed: Changed title to reflect editing */}
                         </h1>
                         <p className="mt-2 text-zinc-600 dark:text-zinc-400">
-                            Complete todos los campos para registrar una nueva
-                            propiedad
+                            Modifica los campos necesarios para actualizar la propiedad {/* Fixed: Updated description */}
                         </p>
                     </div>
 
@@ -221,6 +310,7 @@ export default function CreatePropertyForm() {
 													"El título debe tener al menos 3 caracteres",
 											},
 										})}
+                                        id="title"
 										type="text"
 										placeholder="Casa moderna con vista al mar..."
 										className="w-full px-4 py-3 rounded-lg border border-zinc-300 dark:border-zinc-600 bg-white dark:bg-zinc-700 text-zinc-900 dark:text-white placeholder-zinc-500 dark:placeholder-zinc-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none transition-colors"
@@ -529,12 +619,12 @@ export default function CreatePropertyForm() {
 							{/* Upload Button */}
                             <div className="mb-4">
                                 <CldUploadWidget
-                                    uploadPreset="next_jup-propiedades" // Replace with your Cloudinary upload preset
+                                    uploadPreset="next_jup-propiedades"
                                     options={{
-                                    multiple: true,
+                                        multiple: true,
                                         maxFiles: 10,
                                         resourceType: "image",
-                                        folder: "properties", // Optional: organize images in folders
+                                        folder: "properties",
                                     }}
                                     onSuccess={handleCloudinaryUpload}
                                 >
@@ -554,7 +644,7 @@ export default function CreatePropertyForm() {
                                 </CldUploadWidget>
                             </div>
 
-							{/* Image Preview Grid */}
+							{/* FIXED: Image Preview Grid - Now properly displays existing images */}
 							<div className="grid grid-cols-2 gap-3">
 								{uploadedImages.map((imageUrl, index) => (
 									<div key={index} className="relative group">
@@ -645,12 +735,12 @@ export default function CreatePropertyForm() {
 							{isSubmitting ? (
 								<>
 									<div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
-									Creando Propiedad...
+									Editando Propiedad...
 								</>
 							) : (
 								<>
-									<Plus size={20} />
-									Registrar Propiedad
+									<LucidePencilRuler size={20} />
+									Editar Propiedad
 								</>
 							)}
 						</button>
