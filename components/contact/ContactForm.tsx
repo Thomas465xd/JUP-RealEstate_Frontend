@@ -177,7 +177,7 @@ const ContactForm: React.FC = () => {
 										Teléfono
 									</h3>
 									<p className="text-zinc-300">
-										+56 9 9863 3775
+										+56 9 8219 2688
 									</p>
 								</div>
 							</div>
@@ -191,7 +191,7 @@ const ContactForm: React.FC = () => {
 										Email
 									</h3>
 									<p className="text-zinc-300">
-										contacto@ovopropiedades.cl
+										contacto@jup.cl
 									</p>
 								</div>
 							</div>

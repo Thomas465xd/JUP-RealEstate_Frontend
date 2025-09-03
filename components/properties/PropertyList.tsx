@@ -1,7 +1,9 @@
+"use client";
 import { Property } from "@/src/types";
 import PropertyCard from "./PropertyCard";
-import { Search, Filter, SortAsc, Grid, List, MapPin } from "lucide-react";
+import { Search, SortAsc, Grid, List, MapPin } from "lucide-react";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 type PropertyListingProps = {
     properties: Property[];
@@ -20,6 +22,7 @@ export default function PropertyListing({
     showFilters = false,
     maxItems
 }: PropertyListingProps) {
+    const router = useRouter();
     const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
     const [sortBy, setSortBy] = useState<'price-low' | 'price-high' | 'newest' | 'popular'>('newest');
 
@@ -67,7 +70,10 @@ export default function PropertyListing({
                         <p className="text-zinc-600 dark:text-zinc-400 mb-6">
                             No hay propiedades disponibles en este momento. Prueba ajustando tus filtros o vuelve más tarde.
                         </p>
-                        <button className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200">
+                        <button 
+                            onClick={() => router.back()}
+                            className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200"
+                        >
                             <Search className="w-4 h-4" />
                             Explorar todas las propiedades
                         </button>

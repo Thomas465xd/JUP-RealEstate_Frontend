@@ -13,7 +13,7 @@ export default function WhatsappButton() {
             statusMessage="Tiempo de Respuesta de 1 hora normalmente"
             chatMessage="Bienvenido a JUP Propiedades 🤝"
             placeholder="Hola, quería preguntar si..."
-            allowClickAway={true}
+            allowClickAway={false}
             allowEsc={true}
             darkMode={theme === "dark"}
             avatar={LogoImage.src}

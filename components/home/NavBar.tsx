@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Loader from "../utility/Loader";
+import { useAuth } from "@/src/hooks/useAuth";
 
 type NavBarProps = {
     mobile?: boolean; 
@@ -6,6 +8,8 @@ type NavBarProps = {
 }
 
 export default function NavBar({ mobile = false } : NavBarProps) {
+    const { isAdmin, isLoading } = useAuth();
+    console.log(isAdmin)
 
 	const navigationItems = [
 		{ href: "/", label: "Inicio" },
@@ -15,7 +19,11 @@ export default function NavBar({ mobile = false } : NavBarProps) {
 		{ href: "/home/rent", label: "Arrendiendo" },
 		{ href: "/home/about", label: "Sobre Nosotros" },
 		{ href: "/home/contact", label: "Contacto" },
+
+        ...(isAdmin ? [{ href: "/admin", label: "Admin" }] : []),
 	];
+    
+    if (isLoading) return <Loader />
 
     return (
         <>
