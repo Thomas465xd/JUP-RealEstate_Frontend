@@ -1,54 +1,121 @@
 "use client"
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { useRouter, useSearchParams } from 'next/navigation';
 import {
 	Search,
 	MapPin,
 	Home,
 	DollarSign,
 	Grid,
-	Moon,
-	Sun,
 } from "lucide-react";
 
+interface SearchFormData {
+    operation: string;
+    propertyType: string;
+    region: string;
+    cityArea: string;
+    currency: string;
+    minPrice: string;
+    maxPrice: string;
+    condo: string;
+    searchCode: string;
+}
+
 export default function SearchBar() {
-	const { register, handleSubmit, watch, setValue } = useForm({
+    const router = useRouter();
+    const searchParams = useSearchParams();
+    
+	const { register, handleSubmit, watch, setValue, reset } = useForm<SearchFormData>({
 		defaultValues: {
-			operation: "en-venta",
+			operation: "En Venta",
 			propertyType: "",
 			region: "",
-			commune: "",
+			cityArea: "",
 			currency: "pesos",
 			minPrice: "",
 			maxPrice: "",
-			condition: "en-condomi",
+			condo: "true", // for condo parameter
 			searchCode: "",
 		},
 	});
 
-    // TODO: Not actual backend data structure
-    interface SearchFormData {
-        operation: string;
-        propertyType: string;
-        region: string;
-        commune: string;
-        currency: string;
-        minPrice: string;
-        maxPrice: string;
-        condition: string;
-        searchCode: string;
-    }
+    // Load existing search parameters from URL on component mount
+    useEffect(() => {
+        const currentParams = new URLSearchParams(searchParams);
+        
+        // Map URL parameters to form fields
+        if (currentParams.get('operation')) setValue('operation', currentParams.get('operation')!);
+        if (currentParams.get('type')) setValue('propertyType', currentParams.get('type')!);
+        if (currentParams.get('region')) setValue('region', currentParams.get('region')!);
+        if (currentParams.get('cityArea')) setValue('cityArea', currentParams.get('cityArea')!);
+        if (currentParams.get('minPrice')) setValue('minPrice', currentParams.get('minPrice')!);
+        if (currentParams.get('maxPrice')) setValue('maxPrice', currentParams.get('maxPrice')!);
+        if (currentParams.get('condo')) setValue('condo', currentParams.get('condo')!);
+    }, [searchParams, setValue]);
+
+    const buildSearchUrl = (data: SearchFormData, isCodeSearch: boolean = false) => {
+        const params = new URLSearchParams();
+        params.set('page', '1'); // Reset to first page on new search
+
+        if (isCodeSearch && data.searchCode.trim()) {
+            // For code search, we might want to handle this differently
+            // depending on your backend API structure
+            params.set('searchCode', data.searchCode.trim());
+        } else {
+            // Map form data to your API parameters
+            if (data.operation && data.operation !== "En Venta") {
+                params.set('operation', data.operation);
+            }
+            
+            if (data.propertyType) {
+                params.set('type', data.propertyType);
+            }
+            
+            if (data.region) {
+                params.set('region', data.region);
+            }
+            
+            if (data.cityArea) {
+                params.set('cityArea', data.cityArea);
+            }
+            
+            if (data.minPrice) {
+                params.set('minPrice', data.minPrice);
+            }
+            
+            if (data.maxPrice) {
+                params.set('maxPrice', data.maxPrice);
+            }
+            
+            if (data.condo) {
+                params.set('condo', data.condo);
+            }
+        }
+
+        return `/home/properties?${params.toString()}`;
+    };
 
     const onSubmit = (data: SearchFormData) => {
-        console.log("Search data:", data);
-        // Handle search logic here
+        const searchUrl = buildSearchUrl(data, false);
+        router.push(searchUrl);
     };
 
 	const onSearchByCode = () => {
 		const searchCode = watch("searchCode");
-		console.log("Search by code:", searchCode);
-		// Handle search by code logic here
+        if (!searchCode.trim()) {
+            return; // Don't search with empty code
+        }
+        
+        const data = { ...watch(), searchCode };
+        const searchUrl = buildSearchUrl(data, true);
+        router.push(searchUrl);
 	};
+
+    const clearSearch = () => {
+        reset();
+        router.push('/home/properties?page=1');
+    };
 
 	return (
 		<section
@@ -59,7 +126,7 @@ export default function SearchBar() {
                     <div className="bg-white/95 dark:bg-zinc-800/95 backdrop-blur-sm shadow-xl p-6 md:p-8">
                         {/* Main Search Section */}
                         <div className="space-y-6">
-                            {/* First Row - Operation, Property Type, Region, Commune */}
+                            {/* First Row - Operation, Property Type, Region, CityArea */}
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                                 <div className="space-y-2">
                                     <label className="text-sm font-medium text-gray-700 dark:text-gray-300 flex items-center gap-2">
@@ -70,14 +137,11 @@ export default function SearchBar() {
                                         {...register("operation")}
                                         className="input"
                                     >
-                                        <option value="en-venta">
+                                        <option value="En Venta">
                                             En Venta
                                         </option>
-                                        <option value="en-arriendo">
+                                        <option value="En Arriendo">
                                             En Arriendo
-                                        </option>
-                                        <option value="vendido">
-                                            Vendido
                                         </option>
                                     </select>
                                 </div>
@@ -139,30 +203,32 @@ export default function SearchBar() {
                                         Comuna
                                     </label>
                                     <select
-                                        {...register("commune")}
+                                        {...register("cityArea")}
                                         className="input"
                                     >
                                         <option value="">
                                             Seleccionar comuna
                                         </option>
-                                        <option value="santiago">
+                                        <option value="Santiago">
                                             Santiago
                                         </option>
-                                        <option value="providencia">
+                                        <option value="Providencia">
                                             Providencia
                                         </option>
-                                        <option value="las-condes">
+                                        <option value="Las Condes">
                                             Las Condes
                                         </option>
-                                        <option value="vitacura">
+                                        <option value="Vitacura">
                                             Vitacura
                                         </option>
-                                        <option value="nunoa">Ñuñoa</option>
+                                        <option value="Ñunoa">
+                                            Ñuñoa
+                                        </option>
                                     </select>
                                 </div>
                             </div>
 
-                            {/* Second Row - Currency, Price Range, Condition */}
+                            {/* Second Row - Currency, Price Range, Condo */}
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                                 <div className="space-y-2">
                                     <label className="text-sm font-medium text-gray-700 dark:text-gray-300 flex items-center gap-2">
@@ -205,19 +271,17 @@ export default function SearchBar() {
 
                                 <div className="space-y-2">
                                     <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                                        Condición
+                                        Condominio
                                     </label>
                                     <select
-                                        {...register("condition")}
+                                        {...register("condo")}
                                         className="input"
                                     >
-                                        <option value="en-condomi">
-                                            En Condominio
+                                        <option value="true">
+                                            Si
                                         </option>
-                                        <option value="nueva">Nueva</option>
-                                        <option value="usada">Usada</option>
-                                        <option value="en-construccion">
-                                            En Construcción
+                                        <option value="false">
+                                            No
                                         </option>
                                     </select>
                                 </div>

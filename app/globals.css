@@ -6,6 +6,10 @@
     @apply flex justify-center items-center
 }
 
+@utility flex-between {
+    @apply flex justify-between items-center
+}
+
 @utility title {
     @apply font-extrabold uppercase text-3xl mb-4 
 }
@@ -20,7 +24,7 @@
 
 @utility card {
     @apply relative bg-white dark:bg-zinc-900 rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 h-full
-} 
+}
 
 :root {
     --color-background: var(--background);
