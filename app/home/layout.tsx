@@ -9,7 +9,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<>
-			<Hero includeImageSection={false} shortHero />
+			<Hero includeImageSection={false} />
 			{children}
             <Footer />
 		</>

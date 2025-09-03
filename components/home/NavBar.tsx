@@ -41,7 +41,7 @@ export default function NavBar({ mobile = false } : NavBarProps) {
                         <Link
                             key={item.href}
                             href={item.href}
-                            className={`block py-2 px-3 rounded-md text-base font-medium transition-colors dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white text-gray-700 hover:bg-white hover:text-red-600`}
+                            className={`block py-2 px-3 rounded-md text-base font-medium transition-colors dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white text-gray-700 hover:bg-white hover:text-blue-600`}
                         >
                             {item.label}
                         </Link>

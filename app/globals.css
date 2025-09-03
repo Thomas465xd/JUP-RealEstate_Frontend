@@ -10,6 +10,10 @@
     @apply flex justify-between items-center
 }
 
+@utility flex-align {
+    @apply flex gap-2 items-center
+}
+
 @utility title {
     @apply font-extrabold uppercase text-3xl mb-4 
 }

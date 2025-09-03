@@ -1,6 +1,7 @@
 import React from 'react'
 import ThemeToggle from '../utility/DarkMode'
-import { Mail, MapPin, Phone } from 'lucide-react'
+import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from 'lucide-react'
+
 
 export default function ContactBar() {
     return (
@@ -23,6 +24,20 @@ export default function ContactBar() {
                         <div className="flex items-center space-x-2">
                             <MapPin className="h-4 w-4" />
                             <span>Santiago, Chile</span>
+                        </div>
+                    </div>
+
+                    <div className="flex items-center space-x-6">
+                        <div className="flex items-center space-x-2 p-2 bg-zinc-100 dark:bg-zinc-700 hover:bg-blue-100 dark:hover:bg-blue-900/30 rounded-lg transition-colors duration-300">
+                            <Instagram className="w-4 h-4 text-zinc-600 dark:text-zinc-400" />
+                        </div>
+
+                        <div className="flex items-center space-x-2 p-2 bg-zinc-100 dark:bg-zinc-700 hover:bg-blue-100 dark:hover:bg-blue-900/30 rounded-lg transition-colors duration-300">
+                            <Facebook className="w-4 h-4 text-zinc-600 dark:text-zinc-400" />
+                        </div>
+
+                        <div className="flex items-center space-x-2 p-2 bg-zinc-100 dark:bg-zinc-700 hover:bg-blue-100 dark:hover:bg-blue-900/30 rounded-lg transition-colors duration-300">
+
                         </div>
                     </div>
                     <div className="flex items-center space-x-4">
