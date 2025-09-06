@@ -59,8 +59,6 @@ export default function SearchBar() {
         params.set('page', '1'); // Reset to first page on new search
 
         if (isCodeSearch && data.searchCode.trim()) {
-            // For code search, we might want to handle this differently
-            // depending on your backend API structure
             params.set('searchCode', data.searchCode.trim());
         } else {
             // Map form data to your API parameters
@@ -101,22 +99,18 @@ export default function SearchBar() {
         router.push(searchUrl);
     };
 
+    // TODO: Set search By Code endpoint
 	const onSearchByCode = () => {
 		const searchCode = watch("searchCode");
         if (!searchCode.trim()) {
-            return; // Don't search with empty code
+            return;
         }
         
         const data = { ...watch(), searchCode };
         const searchUrl = buildSearchUrl(data, true);
         router.push(searchUrl);
 	};
-
-    const clearSearch = () => {
-        reset();
-        router.push('/home/properties?page=1');
-    };
-
+    
 	return (
 		<section
 			className={`transition-colors duration-300`}

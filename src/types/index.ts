@@ -188,3 +188,71 @@ export type AdvancedSearchParams = z.infer<typeof advancedSearchParamsSchema>;
 export type Advanced = z.infer<typeof advancedSearchResponseSchema>;
 
 /** Featured | Admin */
+export const categorySchema = z.object({
+    _id: z.string(), 
+    name: z.string(), 
+    slug: z.string(),
+	properties: z.array(propertySchema.pick({ _id: true })),
+    isActive: z.boolean(), 
+	createdAt: z
+		.string()
+		.datetime()
+		.transform((str) => new Date(str)),
+	updatedAt: z
+		.string()
+		.datetime()
+		.transform((str) => new Date(str)),
+})
+
+export const categoryPopulatedSchema = z.object({
+    _id: z.string(), 
+    name: z.string(), 
+    slug: z.string(),
+	properties: z.array(propertySchema),
+    isActive: z.boolean(), 
+	createdAt: z
+		.string()
+		.datetime()
+		.transform((str) => new Date(str)),
+	updatedAt: z
+		.string()
+		.datetime()
+		.transform((str) => new Date(str)),
+})
+
+export const categoriesResponseSchema = z.object({
+    totalCategories: z.number(), 
+    totalPages: z.number(), 
+    currentPage: z.number(), 
+    perPage: z.number(), 
+    categories: z.array(categorySchema)
+})
+
+export const categoriesPopulatedResponseSchema = z.object({
+    totalCategories: z.number(), 
+    totalPages: z.number(), 
+    currentPage: z.number(), 
+    perPage: z.number(), 
+    categories: z.array(categoryPopulatedSchema)
+})
+
+export const getCategoryByNameResponseSchema = z.object({
+    searchTerm: z.string(), 
+    count: z.number(), 
+    categories: z.array(categoryPopulatedSchema)
+})
+
+export const getCategoryByIdResponseSchema = z.object({
+    category: categorySchema, 
+})
+
+export const getCategoryPopulatedByIdResponseSchema = z.object({
+    category: categoryPopulatedSchema, 
+})
+
+//? Categories type exports
+export type Category = z.infer<typeof categorySchema>;
+export type CategoryPopulated = z.infer<typeof categoryPopulatedSchema>;
+export type CategoriesResponse = z.infer<typeof categoriesResponseSchema>;
+
+

@@ -2,6 +2,8 @@ import api from "@/lib/axios";
 import { isAxiosError } from "axios";
 import { PropertyForm, propertiesResponseSchema, propertyResponseSchema, propertySchema } from "../types";
 
+
+//* Get Properties
 export async function getProperties({page, perPage} : { page: number, perPage: number}) {
     try {
         const url = `/properties?page=${page}&perPage=${perPage}`;
@@ -34,6 +36,7 @@ export async function getProperties({page, perPage} : { page: number, perPage: n
     }
 }
 
+//* Get Property by Id
 export async function getPropertyById(propertyId: string) {
     try {
         const url = `/properties/${propertyId}`;
@@ -99,6 +102,7 @@ export async function createProperty(formData: PropertyForm) {
     }
 }
 
+//? Edit registered Property
 export async function editProperty({formData, propertyId} : { formData: PropertyForm, propertyId: string } ) {
     try {
         const url = `/properties/edit/${propertyId}`;
@@ -125,6 +129,7 @@ export async function editProperty({formData, propertyId} : { formData: Property
     }
 }
 
+//! Delete Property
 export async function deleteProperty(propertyId: string) {
     try {
         const url = `/properties/delete/${propertyId}`;
