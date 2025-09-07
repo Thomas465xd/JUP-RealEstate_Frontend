@@ -252,6 +252,8 @@ export const getCategoryPopulatedByIdResponseSchema = z.object({
 
 //? Categories type exports
 export type Category = z.infer<typeof categorySchema>;
+export type CategoryForm = Omit<Category, "_id" | "createdAt" | "updatedAt" | "slug" | "isActive" | "properties">;
+export type EditCategoryForm = Omit<Category, "_id" | "createdAt" | "updatedAt">;
 export type CategoryPopulated = z.infer<typeof categoryPopulatedSchema>;
 export type CategoriesResponse = z.infer<typeof categoriesResponseSchema>;
 

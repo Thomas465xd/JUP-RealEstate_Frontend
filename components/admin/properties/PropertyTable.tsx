@@ -444,6 +444,15 @@ export default function PropertyTable({ ufValue } : PropertyTableProps) {
 														<div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-2">
 															<div>
 																<span className="text-xs text-zinc-500 dark:text-zinc-400">
+																	Operación:
+																</span>
+																<p className="font-medium text-zinc-800 dark:text-zinc-200">
+																	{property.operation}
+																</p>
+															</div>
+
+															<div>
+																<span className="text-xs text-zinc-500 dark:text-zinc-400">
 																	Condominio:
 																</span>
 																<p className="font-medium text-zinc-800 dark:text-zinc-200">

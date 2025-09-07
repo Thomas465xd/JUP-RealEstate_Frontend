@@ -41,6 +41,11 @@ const propertyStatus = [
 	{ value: "pendiente", label: "Pendiente" },
 ];
 
+const propertyOperation = [
+	{ value: "En Venta", label: "En Venta" },
+	{ value: "En Arriendo", label: "En Arriendo" },
+];
+
 // Add mapping functions to handle API response values
 const mapApiTypeToFormType = (apiType: string): string => {
 	const typeMap: { [key: string]: string } = {
@@ -126,6 +131,7 @@ export default function EditPropertyForm({ propertyId } : EditPropertyFormProps)
         description: "",
         type: "casa",
         status: "disponible", // Fixed: use form value instead of API value
+        operation: "En Venta",
         price: 0,
         address: "",
         area: 0,
@@ -349,7 +355,9 @@ export default function EditPropertyForm({ propertyId } : EditPropertyFormProps)
 										Estado *
 									</label>
 									<select
-										{...register("status")}
+										{...register("status", {
+                                            required: "El Estado de la Propiedad no puede ir vacío"
+                                        })}
 										className="w-full px-4 py-3 rounded-lg border border-zinc-300 dark:border-zinc-600 bg-white dark:bg-zinc-700 text-zinc-900 dark:text-white focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none transition-colors"
 									>
 										{propertyStatus.map((status) => (
@@ -361,7 +369,33 @@ export default function EditPropertyForm({ propertyId } : EditPropertyFormProps)
 											</option>
 										))}
 									</select>
+                                    {errors.status && <ErrorMessage variant="inline">{errors.status.message}</ErrorMessage>}
 								</div>
+
+                                <div className="col-span-full">
+                                    <label className="block text-sm font-medium mb-2">
+                                        Operación *
+                                    </label>
+                                    <select
+                                        {...register("operation", {
+                                            required: "Debe seleccionar la Operación de la propiedad",
+                                        })}
+                                        className="w-full px-4 py-3 rounded-lg border border-zinc-300 dark:border-zinc-600 bg-white dark:bg-zinc-700 text-zinc-900 dark:text-white focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none transition-colors"
+                                    >
+                                        <option value="">
+                                            Seleccionar tipo
+                                        </option>
+                                        {propertyOperation.map((status) => (
+                                            <option
+                                                key={status.value}
+                                                value={status.value}
+                                            >
+                                                {status.label}
+                                            </option>
+                                        ))}
+                                    </select>
+                                    {errors.operation && <ErrorMessage variant="inline">{errors.operation.message}</ErrorMessage>}
+                                </div>
 
 								<div className="md:col-span-2">
 									<label className="block text-sm font-medium mb-2">
