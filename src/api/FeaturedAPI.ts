@@ -136,7 +136,7 @@ export async function getPopulatedCategory(categoryId : string) {
 }
 
 //* Get Categories by name (slug) | Allows fuzzy search (slug has to be transformed before sending)
-export async function getCateogryByName(slug : string) {
+export async function getCateogoriesByName(slug : string) {
     try {
         const url = `/featured/search/${slug}`;
         const { data } = await api.get(url);

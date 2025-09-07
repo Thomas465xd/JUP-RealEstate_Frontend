@@ -2,24 +2,25 @@
 import React from 'react'
 import { useQuery } from "@tanstack/react-query";
 import { getProperties } from '@/src/api/PropertyAPI';
-import Loader from '../utility/Loader';
-import { redirect } from 'next/navigation';
 import PropertyListing from '../properties/PropertyList';
 import Link from 'next/link';
 import { House } from 'lucide-react';
+import PropertiesSkeleton from '../utility/PropertiesSkeleton';
+import { redirect } from 'next/navigation';
+import { getCateogoriesByName } from '@/src/api/FeaturedAPI';
 
 export default function Featured() {
     const { data, isLoading, isError } = useQuery({
         queryKey: ["properties"], 
-        queryFn: () => getProperties({ page: 1, perPage: 6 }),
+        queryFn: () => getCateogoriesByName("propiedades-destacadas"),
         retry: false
     }); 
     
-    const properties = data?.properties || [];
+    const properties = data?.categories?.[0]?.properties || [];
 
-    //if(isError) return redirect("/404")
+    if(isError) return redirect("/404")
 
-    if(isLoading) return <Loader />
+    if(isLoading) return <PropertiesSkeleton />
 
     if(data) return (
         <section className='p-12 lg:px-40 bg-zinc-100 dark:bg-zinc-900 space-y-8'>

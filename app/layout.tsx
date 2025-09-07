@@ -10,6 +10,7 @@ import ReactQueryProvider from "@/components/providers/QueryClientProvider";
 import { TokenProvider } from "@/components/providers/TokenProvider";
 import { FloatingWhatsApp } from 'react-floating-whatsapp'
 import WhatsappButton from "@/components/utility/WhatsappButton";
+import BackToTopButton from "@/components/utility/BackToTop";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -46,7 +47,8 @@ export default function RootLayout({
                             <Theme>
                                 <ToastProvider />
                                 {children}
-                                <WhatsappButton/>
+                                <BackToTopButton />
+                                <WhatsappButton />
                             </Theme>
                         </ReactQueryProvider>
                     </TokenProvider>

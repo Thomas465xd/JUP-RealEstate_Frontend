@@ -9,13 +9,14 @@ import SearchBar from "@/components/home/SearchBar";
 import Pagination from "@/components/utility/Pagination";
 import { Advanced, AdvancedSearchParams } from "@/src/types";
 import { advancedPropertySearch } from "@/src/api/SearchAPI";
+import PropertiesSkeleton from "@/components/utility/PropertiesSkeleton";
 
 export default function PropertiesPage() {
 	const searchParams = useSearchParams();
 	const router = useRouter();
 	const page = parseInt(searchParams.get("page") || "1", 10);
 
-	const perPage = 3;
+	const perPage = 6;
 
 	const { data, isLoading, isError } = useQuery<Advanced>({
 		queryKey: [
@@ -100,7 +101,6 @@ export default function PropertiesPage() {
 	});
 
 	const properties = data?.properties || [];
-	const totalProperties = data?.totalFilteredProperties || 0;
 	const totalPages = data?.totalPages || 0;
 
 	// Handle error state
@@ -110,7 +110,12 @@ export default function PropertiesPage() {
 
 	// Handle loading state
 	if (isLoading) {
-		return <Loader />;
+		return (
+            <>
+                <SearchBar />
+                <PropertiesSkeleton />
+            </>
+        );
 	}
 
 	// Handle invalid page number

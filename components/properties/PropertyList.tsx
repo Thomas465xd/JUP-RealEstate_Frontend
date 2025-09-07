@@ -167,7 +167,7 @@ export default function PropertyListing({
                 {maxItems && properties.length > maxItems && (
                     <div className="text-center mt-12">
                         <button className="inline-flex items-center gap-2 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-900 dark:text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
-                            Ver todas las propiedades
+                            Ver todas las destacadas
                             <span className="bg-blue-600 text-white text-xs px-2 py-1 rounded-full">
                                 +{properties.length - maxItems}
                             </span>
