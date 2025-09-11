@@ -3,7 +3,6 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { redirect, useRouter, useSearchParams } from "next/navigation";
-import Loader from "@/components/utility/Loader";
 import PropertyListing from "@/components/properties/PropertyList";
 import SearchBar from "@/components/home/SearchBar";
 import Pagination from "@/components/utility/Pagination";

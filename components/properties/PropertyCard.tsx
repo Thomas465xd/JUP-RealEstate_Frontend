@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import { Property } from "@/src/types";
 import { formatUF } from "@/src/utils/price";
+import { redirect } from "next/navigation";
 
 // Props
 type PropertyCardProps = {
@@ -124,6 +125,7 @@ export default function PropertyCard({ property, isFeatured = false  } : Propert
 				    dark:border-gray-700 dark:hover:border-gray-600
 				    border-gray-100 hover:border-gray-200
                     cursor-pointer transform hover:-translate-y-1"
+            onClick={() => redirect(`/home/properties/${property._id}`)}
 		>
 			{/* Image Carousel */}
 			<div className="relative h-48 overflow-hidden">
@@ -264,14 +266,15 @@ export default function PropertyCard({ property, isFeatured = false  } : Propert
 					</div>
 				</div>
 
-				{/* Condo indicator */}
-				{property.condo && (
-					<div className="mt-2 pt-2 border-t border-gray-100 dark:border-gray-700">
-						<span className="text-xs text-blue-600 dark:text-blue-400 font-medium">
-							Condominio
-						</span>
-					</div>
-				)}
+				{/* Condo & OP indicator */}
+                <div className="mt-2 pt-2 border-t border-gray-100 dark:border-gray-700 flex-between">
+                    <span className="text-xs text-blue-600 dark:text-blue-400 font-medium">
+                        {property.operation && property.operation}
+                    </span>
+                    <span className="text-xs text-blue-600 dark:text-blue-400 font-medium">
+                        {property.condo && "Condominio ✅"}
+                    </span>
+                </div>
 			</div>
 		</div>
 	);

@@ -2,7 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import LogoImage from "@/public/logo-color.png"; // now it's a static import
 
-export default function Logo() {
+type LogoProps = {
+    mini?: boolean;
+}
+
+export default function Logo({ mini } : LogoProps) {
     return (
         <div className="flex-shrink-0 flex items-center">
             <Link
