@@ -4,7 +4,7 @@ import Hero from "@/components/home/Hero";
 import Featured from "@/components/home/Featured";
 import AboutSection from "@/components/home/AboutSection";
 import CallToAction from "@/components/home/CallToAction";
-import Services from "@/components/home/Services";
+import Services from "@/components/services/ServiceList";
 
 export default function page() {
     return (

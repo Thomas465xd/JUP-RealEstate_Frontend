@@ -9,6 +9,9 @@ import Pagination from "@/components/utility/Pagination";
 import { Advanced, AdvancedSearchParams } from "@/src/types";
 import { advancedPropertySearch } from "@/src/api/SearchAPI";
 import PropertiesSkeleton from "@/components/utility/PropertiesSkeleton";
+import FeaturedList from "@/components/featured/FeaturedListing";
+import { Building, Home, TreePine } from "lucide-react";
+import FeaturedListings from "@/components/featured/FeaturedListings";
 
 export default function PropertiesPage() {
 	const searchParams = useSearchParams();
@@ -124,37 +127,37 @@ export default function PropertiesPage() {
 
 	// Main content
 	if(data) return (
-		<div className="min-h-screen bg-white dark:bg-zinc-900">
-			{/* Search Bar Section */}
-			<div className="bg-white dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800">
-				<SearchBar />
-			</div>
+        <div className="min-h-screen bg-white dark:bg-zinc-900">
+            {/* Search Bar Section */}
+            <div className="bg-white dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800">
+                <SearchBar />
+            </div>
 
-			{/* Main Content */}
-			<div className="bg-zinc-50 dark:bg-zinc-900">
-				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
-					{/* Property Listings */}
-					<div className="mb-12">
-						<PropertyListing 
+            {/* Main Content */}
+            <div className="bg-zinc-50 dark:bg-zinc-900">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+                    {/* Property Listings */}
+                    <div className="mb-12">
+                        <PropertyListing 
                             properties={properties} 
-                            title="Descubre Nuestras Propiedades"
+                            title="Descubre Todas Nuestras Propiedades"
                             subtitle="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo a quidem odio commodi excepturi ipsam, consectetur quo quaerat, eligendi magni ad minima iusto pariatur animi consequuntur iure odit reprehenderit rem."
                         />
-					</div>
+                    </div>
 
-					{/* Pagination */}
-					{totalPages > 1 && (
-						<div className="flex justify-center">
-							<Pagination
-								route="/home/properties"
-								page={page}
-								totalPages={totalPages}
-								searchParams={searchParams}
-							/>
-						</div>
-					)}
-				</div>
-			</div>
-		</div>
+                    {/* Pagination */}
+                    {totalPages > 1 && (
+                        <div className="flex justify-center">
+                            <Pagination
+                                route="/home/properties"
+                                page={page}
+                                totalPages={totalPages}
+                                searchParams={searchParams}
+                            />
+                        </div>
+                    )}
+                </div>
+            </div>
+        </div>
 	);
 }
