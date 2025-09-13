@@ -15,9 +15,8 @@ export default function NavBar({ mobile = false }: NavBarProps) {
 	const navigationItems = [
 		{ href: "/", label: "Inicio" },
 		{ href: "/home/properties", label: "Propiedades" },
-		{ href: "/home/buy", label: "Comprar" },
-		{ href: "/home/sell", label: "Vender" },
-		{ href: "/home/rent", label: "Arrendando" },
+		{ href: "/home/sell", label: "Venta" },
+		{ href: "/home/rent", label: "Arriendo" },
 		{ href: "/home/about", label: "Sobre Nosotros" },
 		{ href: "/home/contact", label: "Contacto" },
 	];

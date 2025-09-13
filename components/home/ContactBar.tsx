@@ -2,8 +2,73 @@ import React from 'react'
 import ThemeToggle from '../utility/DarkMode'
 import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from 'lucide-react'
 
-//TODO: Set actual link routes
-export default function ContactBar() {
+type ContactBarProps = {
+    mobile?: boolean;
+}
+
+export default function ContactBar({ mobile = false } : ContactBarProps) {
+    if(mobile) return (
+        <div
+            className={`pt-4 mt-4 border-t space-y-2 dark:border-zinc-700 border-zinc-200`}
+        >
+            <div
+                className={`flex items-center space-x-2 text-sm dark:text-zinc-400 text-zinc-600`}
+            >
+                <Phone className="h-4 w-4" />
+                <span>+56 9 9863 3775</span>
+            </div>
+            <div
+                className={`flex items-center space-x-2 text-sm dark:text-zinc-400 text-zinc-600`}
+            >
+                <Mail className="h-4 w-4" />
+                <span>contacto@ovopropiedades.cl</span>
+            </div>
+            <div 
+                className={`flex items-center space-x-2 text-sm dark:text-zinc-400 text-zinc-600`}
+            >
+                <MapPin className="h-4 w-4" />
+                <span>Santiago, Chile</span>
+            </div>
+
+            <div className="flex pace-x-4">
+                <a
+                    href="https://www.facebook.com/jup.propiedades"
+                    className="text-gray-400 hover:text-blue-400 transition duration-200 p-2 rounded-full hover:bg-zinc-200 dark:hover:bg-white/10"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Facebook de JUP Propiedades"
+                >
+                    <Facebook size={18} />
+                </a>
+                <a
+                    href="https://www.instagram.com/jup.cl"
+                    className="text-gray-400 hover:text-pink-400 transition duration-200 p-2 rounded-full hover:bg-zinc-200 dark:hover:bg-white/10"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram de JUP Propiedades"
+                >
+                    <Instagram size={18} />
+                </a>
+                <a
+                    href="#"
+                    className="text-gray-400 hover:text-blue-500 transition duration-200 p-2 rounded-full hover:bg-zinc-200 dark:hover:bg-white/10"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn de JUP Propiedades"
+                >
+                    <Linkedin size={18} />
+                </a>
+                <a
+                    href="mailto:contacto@jup.cl"
+                    className="text-gray-400 hover:text-green-400 transition-all duration-200 p-2 rounded-full hover:bg-zinc-200 dark:hover:bg-white/10"
+                    aria-label="Enviar correo a soporte"
+                >
+                    <Mail size={18} />
+                </a>
+            </div>
+        </div>
+    )
+        
     return (
         <div
             className={`
@@ -36,35 +101,40 @@ export default function ContactBar() {
                         </a>
                     </div>
 
-                    <div className="flex items-center space-x-6">
+                    <div className="flex justify-center lg:justify-start space-x-4">
                         <a
-                            href='https://www.instagram.com/jup.cl'
+                            href="https://www.facebook.com/jup.propiedades"
+                            className="text-gray-400 hover:text-blue-400 transition duration-200 p-2 rounded-full hover:bg-zinc-200 dark:hover:bg-white/10"
                             target="_blank"
                             rel="noopener noreferrer"
-                            aria-label="Facebook de Spare Parts Trade"
-                            className="flex items-center space-x-2 p-2 bg-zinc-100 dark:bg-zinc-700 hover:bg-blue-100 dark:hover:bg-blue-900/30 rounded-lg transition-colors duration-300"
+                            aria-label="Facebook de JUP Propiedades"
                         >
-                            <Instagram className="w-4 h-4 text-zinc-600 dark:text-zinc-400" />
+                            <Facebook size={18} />
                         </a>
-
                         <a
-                            href='https://www.facebook.com/jup.propiedades' 
+                            href="https://www.instagram.com/jup.cl"
+                            className="text-gray-400 hover:text-pink-400 transition duration-200 p-2 rounded-full hover:bg-zinc-200 dark:hover:bg-white/10"
                             target="_blank"
-							rel="noopener noreferrer"
-							aria-label="Facebook de Spare Parts Trade"
-                            className="flex items-center space-x-2 p-2 bg-zinc-100 dark:bg-zinc-700 hover:bg-blue-100 dark:hover:bg-blue-900/30 rounded-lg transition-colors duration-300"
+                            rel="noopener noreferrer"
+                            aria-label="Instagram de JUP Propiedades"
                         >
-                            <Facebook className="w-4 h-4 text-zinc-600 dark:text-zinc-400" />
+                            <Instagram size={18} />
                         </a>
-
                         <a
-                            href='' 
+                            href="#"
+                            className="text-gray-400 hover:text-blue-500 transition duration-200 p-2 rounded-full hover:bg-zinc-200 dark:hover:bg-white/10"
                             target="_blank"
-							rel="noopener noreferrer"
-							aria-label="Facebook de Spare Parts Trade"
-                            className="flex items-center space-x-2 p-2 bg-zinc-100 dark:bg-zinc-700 hover:bg-blue-100 dark:hover:bg-blue-900/30 rounded-lg transition-colors duration-300"
+                            rel="noopener noreferrer"
+                            aria-label="LinkedIn de JUP Propiedades"
                         >
-                            <Linkedin className="w-4 h-4 text-zinc-600 dark:text-zinc-400" />
+                            <Linkedin size={18} />
+                        </a>
+                        <a
+                            href="mailto:contacto@jup.cl"
+                            className="text-gray-400 hover:text-green-400 transition-all duration-200 p-2 rounded-full hover:bg-zinc-200 dark:hover:bg-white/10"
+                            aria-label="Enviar correo a soporte"
+                        >
+                            <Mail size={18} />
                         </a>
                     </div>
                     <div className="flex items-center space-x-4">

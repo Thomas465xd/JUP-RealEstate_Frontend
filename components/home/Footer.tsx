@@ -43,7 +43,7 @@ export default function Footer() {
 							</li>
 							<li>
 								<Link
-									href="/about"
+									href="/home/about"
 									className="text-gray-300 dark:text-gray-400 hover:text-white dark:hover:text-white transition duration-200 text-sm"
 								>
 									Nosotros
@@ -51,7 +51,7 @@ export default function Footer() {
 							</li>
 							<li>
 								<Link
-									href="/contact"
+									href="/home/contact"
 									className="text-gray-300 dark:text-gray-400 hover:text-white dark:hover:text-white transition duration-200 text-sm"
 								>
 									Contacto
@@ -77,26 +77,18 @@ export default function Footer() {
 							</li>
 							<li>
 								<Link
-									href="/buy"
-									className="text-gray-300 dark:text-gray-400 hover:text-white dark:hover:text-white transition duration-200 text-sm"
-								>
-									Comprar
-								</Link>
-							</li>
-							<li>
-								<Link
 									href="/rent"
 									className="text-gray-300 dark:text-gray-400 hover:text-white dark:hover:text-white transition duration-200 text-sm"
 								>
-									Arrendar
+									Arriendo
 								</Link>
 							</li>
 							<li>
 								<Link
-									href="/sell"
+									href="/home/sell"
 									className="text-gray-300 dark:text-gray-400 hover:text-white dark:hover:text-white transition duration-200 text-sm"
 								>
-									Vender
+									Venta
 								</Link>
 							</li>
 						</ul>

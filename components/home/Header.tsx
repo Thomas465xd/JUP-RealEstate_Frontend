@@ -75,7 +75,7 @@ export default function Header() {
 					<div
 						className={`border-t dark:bg-zinc-800 drak:border-zinc-700 bg-zinc-50 border-gray-200`}
 					>
-						<div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 space-y-3">
+						<div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 space-y-3 border-b-2 border-zinc-300 dark:border-zinc-700">
 
                             <NavBar 
                                 mobile 
@@ -83,28 +83,9 @@ export default function Header() {
                             />
 
 							{/* Mobile Contact Info */}
-							<div
-								className={`pt-4 mt-4 border-t space-y-2 dark:border-zinc-700 border-zinc-200`}
-							>
-								<div
-									className={`flex items-center space-x-2 text-sm dark:text-zinc-400 text-zinc-600`}
-								>
-									<Phone className="h-4 w-4" />
-									<span>+56 9 9863 3775</span>
-								</div>
-								<div
-									className={`flex items-center space-x-2 text-sm dark:text-zinc-400 text-zinc-600`}
-								>
-									<Mail className="h-4 w-4" />
-									<span>contacto@ovopropiedades.cl</span>
-								</div>
-                                <div 
-                                    className={`flex items-center space-x-2 text-sm dark:text-zinc-400 text-zinc-600`}
-                                >
-                                    <MapPin className="h-4 w-4" />
-                                    <span>Santiago, Chile</span>
-                                </div>
-							</div>
+                            <ContactBar
+                                mobile 
+                            />
 						</div>
 					</div>
 				</div>

@@ -8,6 +8,10 @@ import {
 	Home,
 	DollarSign,
 	Grid,
+    ArrowUpDown,
+    ArrowDown,
+    ArrowUp,
+    X,
 } from "lucide-react";
 
 interface SearchFormData {
@@ -19,6 +23,8 @@ interface SearchFormData {
     minPrice: string;
     maxPrice: string;
     condo: string;
+    sortBy: string;
+    sortOrder: string;
     searchCode: string;
 }
 
@@ -37,6 +43,8 @@ export default function SearchBar() {
 			maxPrice: "",
 			condo: "true", // for condo parameter
 			searchCode: "",
+            sortBy: "",
+            sortOrder: ""
 		},
 	});
 
@@ -52,6 +60,8 @@ export default function SearchBar() {
         if (currentParams.get('minPrice')) setValue('minPrice', currentParams.get('minPrice')!);
         if (currentParams.get('maxPrice')) setValue('maxPrice', currentParams.get('maxPrice')!);
         if (currentParams.get('condo')) setValue('condo', currentParams.get('condo')!);
+        if (currentParams.get('sortBy')) setValue('sortBy', currentParams.get('sortBy')!);
+        if (currentParams.get('sortOrder')) setValue('sortOrder', currentParams.get('sortOrder')!);
     }, [searchParams, setValue]);
 
     const buildSearchUrl = (data: SearchFormData, isCodeSearch: boolean = false) => {
@@ -89,6 +99,14 @@ export default function SearchBar() {
             if (data.condo) {
                 params.set('condo', data.condo);
             }
+
+            if (data.sortBy) {
+                params.set('sortBy', data.sortBy);
+            }
+            
+            if (data.sortOrder) {
+                params.set('sortOrder', data.sortOrder);
+            }
         }
 
         return `/home/properties?${params.toString()}`;
@@ -110,6 +128,17 @@ export default function SearchBar() {
         const searchUrl = buildSearchUrl(data, true);
         router.push(searchUrl);
 	};
+
+    // Handle sorting option change
+    const handleSortChange = (sortBy: string, sortOrder: string) => {
+        setValue('sortBy', sortBy);
+        setValue('sortOrder', sortOrder);
+    };
+
+    const clearSorting = () => {
+        setValue('sortBy', '');
+        setValue('sortOrder', '');
+    };
     
 	return (
 		<section
@@ -281,16 +310,65 @@ export default function SearchBar() {
                                 </div>
                             </div>
 
-                            {/* Search Button */}
-                            <div className="flex-center">
-                                <button
-                                    onClick={handleSubmit(onSubmit)}
-                                    className="group button-zinc-gradient"
-                                >
-                                    <Search size={20} />
-                                    BUSCAR
-                                </button>
+                            {/* Third Row - Price Sorting */}
+                            <div className="flex-between border-t border-gray-200 dark:border-gray-600 pt-6">
+                                <div className="space-y-3">
+                                    <label className="text-sm font-medium text-gray-700 dark:text-gray-300 flex items-center gap-2">
+                                        <ArrowUpDown size={16} />
+                                        Ordenar por Precio
+                                    </label>
+                                    <div className="flex flex-wrap gap-4">
+                                        <label className="flex items-center space-x-2 cursor-pointer">
+                                            <input
+                                                type="radio"
+                                                name="priceSort"
+                                                value="asc"
+                                                checked={watch('sortBy') === 'price' && watch('sortOrder') === 'asc'}
+                                                onChange={() => handleSortChange('price', 'asc')}
+                                                className="w-4 h-4 text-blue-600 dark:text-blue-400 bg-gray-100 dark:bg-zinc-700 border-gray-300 dark:border-gray-600 focus:ring-blue-500 dark:focus:ring-blue-400 focus:ring-2"
+                                            />
+                                            <span className="text-sm text-gray-700 dark:text-gray-300 flex items-center gap-1">
+                                                <ArrowUp size={14} />
+                                                Precio Menor a Mayor
+                                            </span>
+                                        </label>
+                                        <label className="flex items-center space-x-2 cursor-pointer">
+                                            <input
+                                                type="radio"
+                                                name="priceSort"
+                                                value="desc"
+                                                checked={watch('sortBy') === 'price' && watch('sortOrder') === 'desc'}
+                                                onChange={() => handleSortChange('price', 'desc')}
+                                                className="w-4 h-4 text-blue-600 dark:text-blue-400 bg-gray-100 dark:bg-zinc-700 border-gray-300 dark:border-gray-600 focus:ring-blue-500 dark:focus:ring-blue-400 focus:ring-2"
+                                            />
+                                            <span className="text-sm text-gray-700 dark:text-gray-300 flex items-center gap-1">
+                                                <ArrowDown size={14} />
+                                                Precio Mayor a Menor
+                                            </span>
+                                        </label>
+                                        <button
+                                            type="button"
+                                            onClick={clearSorting}
+                                            className="flex items-center space-x-1 text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
+                                        >
+                                            <X size={14} />
+                                            <span>Limpiar</span>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                {/* Search Button */}
+                                <div className="flex-center">
+                                    <button
+                                        onClick={handleSubmit(onSubmit)}
+                                        className="group button-zinc-gradient px-12"
+                                    >
+                                        <Search size={20} />
+                                        BUSCAR
+                                    </button>
+                                </div>
                             </div>
+
                         </div>
 
                         {/* Divider */}

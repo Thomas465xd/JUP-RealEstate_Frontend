@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { Mail, Phone, MapPin, Send, ChevronDown } from "lucide-react";
+import { Mail, Phone, MapPin, Send, ChevronDown, Instagram, Facebook, Linkedin } from "lucide-react";
 
 interface FormData {
 	firstName: string;
@@ -141,7 +141,7 @@ const ContactForm: React.FC = () => {
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
 					{/* Left Side - Contact Information */}
-					<div className="bg-gradient-to-br from-zinc-800 to-zinc-900 dark:from-zinc-900 dark:to-zinc-950 rounded-3xl p-8 lg:p-12 text-white">
+					<div className="bg-gradient-to-br from-zinc-900 to-zinc-800 dark:from-zinc-900 dark:to-zinc-950/30 rounded-3xl p-8 lg:p-12 text-white border-b border-r border-blue-500 dark:border-blue-950">
 						<div className="mb-8">
 							<h2 className="text-3xl lg:text-4xl font-bold mb-4">
 								Ponte en contacto
@@ -197,7 +197,7 @@ const ContactForm: React.FC = () => {
 							</div>
 						</div>
 
-						<div className="mt-12 p-6 bg-zinc-800/50 rounded-2xl border border-zinc-700">
+						<div className="my-12 p-6 bg-zinc-800/50 rounded-2xl border border-zinc-700">
 							<h4 className="font-semibold mb-2">
 								Horarios de Atención
 							</h4>
@@ -207,6 +207,38 @@ const ContactForm: React.FC = () => {
 								<p>Domingos: Cerrado</p>
 							</div>
 						</div>
+
+                        <div className="flex-center gap-8">
+                            <a
+                                href='https://www.instagram.com/jup.cl'
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Facebook de Spare Parts Trade"
+                                className="flex items-center space-x-2 p-2 bg-zinc-700 hover:bg-zinc-600/30 rounded-lg transition-colors duration-300"
+                            >
+                                <Instagram className="w-5 h-5 text-zinc-400" />
+                            </a>
+
+                            <a
+                                href='https://www.facebook.com/jup.propiedades' 
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Facebook de Spare Parts Trade"
+                                className="flex items-center space-x-2 p-2 bg-zinc-700 hover:bg-zinc-600/30 rounded-lg transition-colors duration-300"
+                            >
+                                <Facebook className="w-5 h-5 text-zinc-400" />
+                            </a>
+
+                            <a
+                                href='' 
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Facebook de Spare Parts Trade"
+                                className="flex items-center space-x-2 p-2 bg-zinc-700 hover:bg-zinc-600/30 rounded-lg transition-colors duration-300"
+                            >
+                                <Linkedin className="w-5 h-5 text-zinc-400" />
+                            </a>
+                        </div>
 					</div>
 
 					{/* Right Side - Contact Form */}

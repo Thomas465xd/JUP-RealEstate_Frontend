@@ -23,7 +23,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-	title: "JUP Propiedades",
+	title: {
+        template: "%s | JUP",
+        default: "Bienvenido a JUP Propiedades"
+    },
 	description: "Broker de propiedades parte the JUP Propiedades",
 };
 

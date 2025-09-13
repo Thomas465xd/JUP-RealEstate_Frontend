@@ -4,37 +4,14 @@ import { Home, Search, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import BgImage from "@/public/hero-image.jpg"; // now it's a static import
+import { useRouter } from "next/navigation";
 
-interface NotFoundProps {
-	onGoHome?: () => void;
-	onGoBack?: () => void;
-	className?: string;
-}
-
-export default function NotFound({
-	onGoHome,
-	onGoBack,
-	className = "",
-}: NotFoundProps) {
-	const handleGoHome = () => {
-		if (onGoHome) {
-			onGoHome();
-		} else {
-			window.location.href = "/";
-		}
-	};
-
-	const handleGoBack = () => {
-		if (onGoBack) {
-			onGoBack();
-		} else {
-			window.history.back();
-		}
-	};
+export default function NotFound() {
+    const router = useRouter();
 
 	return (
 		<div
-			className={`bg-white dark:bg-zinc-900 transition-colors duration-300 ${className}`}
+			className={`bg-white dark:bg-zinc-900 transition-colors duration-300`}
 		>
 			{/* Background Pattern */}
 			<div className="relative overflow-hidden">
@@ -89,7 +66,7 @@ export default function NotFound({
 						{/* Action Buttons */}
 						<div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
 							<button
-								onClick={handleGoHome}
+								onClick={() => router.push("/")}
 								className="group relative inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-white bg-gradient-to-r from-zinc-700 to-zinc-800 dark:from-zinc-600 dark:to-zinc-700 rounded-lg hover:from-zinc-800 hover:to-zinc-900 dark:hover:from-zinc-700 dark:hover:to-zinc-800 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl"
 							>
 								<Home className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform duration-200" />
@@ -97,7 +74,7 @@ export default function NotFound({
 							</button>
 
 							<button
-								onClick={handleGoBack}
+								onClick={() => router.back()}
 								className="group inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-zinc-700 dark:text-zinc-200 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 rounded-lg transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl"
 							>
 								<ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform duration-200" />
