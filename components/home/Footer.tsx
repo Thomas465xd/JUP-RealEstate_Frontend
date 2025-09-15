@@ -69,26 +69,26 @@ export default function Footer() {
 						<ul className="space-y-2">
 							<li>
 								<Link
-									href="/properties"
+									href="/home/properties"
 									className="text-gray-300 dark:text-gray-400 hover:text-white dark:hover:text-white transition duration-200 text-sm"
 								>
 									Todas las Propiedades
 								</Link>
 							</li>
-							<li>
+                            <li>
 								<Link
-									href="/rent"
+									href="/home/services"
 									className="text-gray-300 dark:text-gray-400 hover:text-white dark:hover:text-white transition duration-200 text-sm"
 								>
-									Arriendo
+									Nuestros Servicios
 								</Link>
 							</li>
-							<li>
+                            <li>
 								<Link
-									href="/home/sell"
+									href="/home/questions"
 									className="text-gray-300 dark:text-gray-400 hover:text-white dark:hover:text-white transition duration-200 text-sm"
 								>
-									Venta
+									Preguntas Frecuentes
 								</Link>
 							</li>
 						</ul>

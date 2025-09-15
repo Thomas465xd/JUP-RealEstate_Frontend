@@ -4,9 +4,10 @@ import ServiceCard from "./ServiceCard";
 
 type ServicesProps = {
     title?: string; 
+    darker?: boolean;
 }
 
-export default function Services({ title = "Nuestros Servicios" } : ServicesProps) {
+export default function Services({ title = "Nuestros Servicios", darker = true } : ServicesProps) {
 	const services = [
 		{
 			icon: <Lightbulb size={28} />,
@@ -39,7 +40,7 @@ export default function Services({ title = "Nuestros Servicios" } : ServicesProp
 	];
 
 	return (
-		<section className="py-16 px-4 bg-zinc-50 dark:bg-zinc-950">
+		<section className={`py-16 px-4 bg-zinc-50 ${darker ? "dark:bg-zinc-950" : "dark:bg-zinc-900/50"}`}>
 			<div className="max-w-7xl mx-auto">
 				<div className="text-center mb-16">
 					<h2 className="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-zinc-100 mb-4">

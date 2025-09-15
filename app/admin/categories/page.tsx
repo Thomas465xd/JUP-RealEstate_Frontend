@@ -1,5 +1,6 @@
+import CategoriesTable from "@/components/admin/categories/CategoriesTable";
 import Heading from "@/components/utility/Heading";
-import { PencilRuler } from "lucide-react";
+import { PencilRuler, Tag } from "lucide-react";
 import Link from "next/link";
 
 export default function page() {
@@ -21,13 +22,15 @@ export default function page() {
                     href={"/admin/categories/create"}
                     className="group button-zinc-gradient"
                 >
-                    <PencilRuler size={20} />
+                    <Tag size={20} />
                     Crear Categoría
                 </Link>
 
             </div>
 
             <div className="border-2 border-zinc-800 dark:border-zinc-300 my-4 rounded max-w-2xl"></div>
+
+            <CategoriesTable />
         </section>
     )
 }

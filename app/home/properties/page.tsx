@@ -9,9 +9,6 @@ import Pagination from "@/components/utility/Pagination";
 import { Advanced, AdvancedSearchParams } from "@/src/types";
 import { advancedPropertySearch } from "@/src/api/SearchAPI";
 import PropertiesSkeleton from "@/components/utility/PropertiesSkeleton";
-import FeaturedList from "@/components/featured/FeaturedListing";
-import { Building, Home, TreePine } from "lucide-react";
-import FeaturedListings from "@/components/featured/FeaturedListings";
 
 export default function PropertiesPage() {
 	const searchParams = useSearchParams();

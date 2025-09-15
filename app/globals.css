@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 @utility flex-center {
@@ -46,7 +47,6 @@
     --font-sans: 'Poppins', sans-serif;
     --font-mono: var(--font-geist-mono);
 }
-
 .dark {
 	--background: #0a0a0a;
 	--foreground: #ededed;

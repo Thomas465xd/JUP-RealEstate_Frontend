@@ -114,8 +114,8 @@ export default function PropertyTable({ ufValue } : PropertyTableProps) {
 			queryClient.invalidateQueries({ queryKey: ["properties"] });
 			toast.success("Propiedad eliminada exitosamente");
 		},
-		onError: (error: any) => {
-			toast.error(error?.message || "Error al eliminar la propiedad");
+		onError: (error) => {
+			toast.error(error.message || "Error al eliminar la propiedad");
 		}
 	});
 
@@ -307,7 +307,7 @@ export default function PropertyTable({ ufValue } : PropertyTableProps) {
 											<div className="flex items-center gap-3">
 												<button 
 													className="text-blue-500 hover:text-blue-700 transition-colors duration-300 flex items-center gap-1"
-													onClick={() => router.push(`/properties/${property._id}`)}
+													onClick={() => router.push(`/home/properties/${property._id}`)}
 													title="Ver propiedad"
 												>
 													<Eye size={14} />

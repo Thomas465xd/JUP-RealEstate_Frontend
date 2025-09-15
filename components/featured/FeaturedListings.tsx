@@ -135,7 +135,7 @@ export default function FeaturedListings({
 			</div>
 
 			{/* Categories Carousels */}
-			<div className="space-y-12 pb-16">
+			<div className="max-w-7xl mx-auto space-y-12 pb-16">
 				{categories.map((category, index) => (
 					<FeaturedList
 						key={category._id}

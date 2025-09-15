@@ -8,10 +8,10 @@ export default function WhatsappButton() {
 
     return (
         <FloatingWhatsApp
-            phoneNumber="+56 9 9212 8901" 
+            phoneNumber="+56 9 8219 2688" 
             accountName="JUP Propiedades"
             statusMessage="Tiempo de Respuesta de 1 hora normalmente"
-            chatMessage="Bienvenido a JUP Propiedades 🤝"
+            chatMessage="Bienvenido a JUP Propiedades ¿En que Podemos ayudarte Hoy? 🫡🏠"
             placeholder="Hola, quería preguntar si..."
             allowClickAway={false}
             allowEsc={true}

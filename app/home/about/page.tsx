@@ -2,7 +2,7 @@ import AboutUs from "@/components/about/AboutUs";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Conoce nuestra Historia"
+    title: "Sobre Nosotros"
 }
 
 export default function page() {

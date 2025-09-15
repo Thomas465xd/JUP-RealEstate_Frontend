@@ -3,10 +3,14 @@ import Heading from "@/components/utility/Heading";
 import { getUF } from "@/lib/uf";
 import { House, PencilRuler } from "lucide-react";
 import Link from "next/link";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Panel de Administración"
+}
 
 export default async function page() {
     const ufValue = await getUF(); // Fetch once per request
-    console.log(ufValue)
 
     return (
         <section className="bg-zinc-100 dark:bg-zinc-900 p-20">

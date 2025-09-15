@@ -5,6 +5,7 @@ import Featured from "@/components/home/Featured";
 import AboutSection from "@/components/home/AboutSection";
 import CallToAction from "@/components/home/CallToAction";
 import Services from "@/components/services/ServiceList";
+import Questions from "@/components/questions/QuestionsSection";
 
 export default function page() {
     return (
@@ -14,7 +15,8 @@ export default function page() {
             <AboutSection />
             <Testimonials />
             <CallToAction />
-            <Services />
+            <Services darker/>
+            <Questions />
             <Footer />
         </main>
     )
