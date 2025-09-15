@@ -16,6 +16,7 @@ export default function AuthButtons() {
                             transition-all duration-200 hover:scale-101
                             dark:bg-zinc-700 dark:text-white dark:hover:bg-zinc-600
                             bg-zinc-900 text-white hover:bg-zinc-800
+                            text-nowrap
                         `}
                     >
                         Iniciar Sesión

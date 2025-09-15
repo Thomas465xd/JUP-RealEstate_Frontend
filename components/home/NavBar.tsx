@@ -27,12 +27,12 @@ export default function NavBar({ mobile = false }: NavBarProps) {
 	return (
 		<>
 			{!mobile ? (
-				<nav className="hidden lg:flex items-center space-x-8">
+				<nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
 					{navigationItems.map((item) => (
 						<Link
 							key={item.href}
 							href={item.href}
-							className="text-sm font-medium transition-colors duration-200 hover:text-blue-500 dark:text-zinc-300 text-zinc-700"
+							className="text-sm font-medium transition-colors duration-200 hover:text-blue-500 dark:text-zinc-300 text-zinc-700 text-nowrap"
 						>
 							{item.label}
 						</Link>

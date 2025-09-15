@@ -38,7 +38,7 @@ export default function Header() {
 				className={`relative dark:bg-zinc-900 bg-zinc-50`}
 			>
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-					<div className="flex justify-between items-center mx-0 md:mx-8 h-20 lg:h-24">
+					<div className="flex-between h-20 lg:h-24">
 						{/* Logo */}
                         <Logo />
 

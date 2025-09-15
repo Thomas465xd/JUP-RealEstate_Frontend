@@ -8,8 +8,11 @@ import { House } from 'lucide-react';
 import PropertiesSkeleton from '../utility/PropertiesSkeleton';
 import { redirect } from 'next/navigation';
 import { getCateogoriesByName } from '@/src/api/FeaturedAPI';
+import { useMobile } from '@/src/hooks/useMobile';
 
 export default function Featured() {
+    const isMobile = useMobile()
+
     const { data, isLoading, isError } = useQuery({
         queryKey: ["properties"], 
         queryFn: () => getCateogoriesByName("propiedades-destacadas"),
@@ -26,7 +29,7 @@ export default function Featured() {
         <section className='p-12 lg:px-40 bg-zinc-100 dark:bg-zinc-900 space-y-8'>
             <PropertyListing 
                 properties={properties}
-                maxItems={6}
+                maxItems={isMobile ? 3 : 6}
                 title='Propiedades Destacadas'
             />
 
