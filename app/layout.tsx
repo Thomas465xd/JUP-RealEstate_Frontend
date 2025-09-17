@@ -8,7 +8,6 @@ import { Theme } from "@/components/providers/ThemeProvider";
 import ToastProvider from "@/components/providers/ToastProviders";
 import ReactQueryProvider from "@/components/providers/QueryClientProvider";
 import { TokenProvider } from "@/components/providers/TokenProvider";
-import { FloatingWhatsApp } from 'react-floating-whatsapp'
 import WhatsappButton from "@/components/utility/WhatsappButton";
 import BackToTopButton from "@/components/utility/BackToTop";
 

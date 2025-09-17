@@ -2,7 +2,7 @@
 import { clearAuthTokenGetter, setAuthTokenGetter } from "@/lib/axios";
 import { useAuth } from "@clerk/nextjs";
 import { useEffect, ReactNode } from "react";
-import Skeleton from "../utility/Skeleton";
+import Skeleton from "../skeletons/Skeleton";
 
 interface TokenProviderProps {
     children: ReactNode;

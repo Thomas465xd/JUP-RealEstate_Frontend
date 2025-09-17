@@ -10,6 +10,7 @@ import Image from "next/image";
 import { useState } from "react";
 import LogoImage from "@/public/logo-blanco.png"; // now it's a static import
 import { formatUF } from "@/src/utils/price";
+import PropertyDetailsSkeleton from "../skeletons/PropertyDetailsSkeleton";
 
 type PropertyDetailsProps = {
 	propertyId: string;
@@ -82,7 +83,9 @@ export default function PropertyDetails({ propertyId }: PropertyDetailsProps) {
 	const property: Property | undefined = data?.property;
 
 	if (isError) return redirect("/404");
-	if (isLoading) return <Loader />;
+
+	if (isLoading) return <PropertyDetailsSkeleton />;
+    
 	if (!property) return redirect("/404");
 
     const nextImage = () => {

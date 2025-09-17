@@ -96,6 +96,10 @@ export const propertiesResponseSchema = paginationSchema.extend({
 	properties: z.array(propertySchema),
 });
 
+export const propertiesByNameResponseSchema = z.object({
+    properties: z.array(propertySchema)
+})
+
 //? Type exports
 export type Property = z.infer<typeof propertySchema>;
 export type PropertyForm = Omit<Property, "_id" | "createdAt" | "updatedAt">;

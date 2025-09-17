@@ -1,4 +1,4 @@
-import { BarChart3, ChevronDown, Home, Tags } from 'lucide-react';
+import { BarChart3, ChevronDown, Home, List, Tags } from 'lucide-react';
 import Link from 'next/link';
 import React, { useEffect, useRef, useState } from 'react'
 
@@ -34,8 +34,14 @@ export default function AdminDropdown({ mobile } : AdminDropdownProps) {
         {
             href: "/admin/categories",
             label: "Categorías",
-            icon: Tags,
+            icon: List,
             description: "Gestionar Categorías",
+        },
+        {
+            href: "/admin/categories/create",
+            label: "Crear Categoría",
+            icon: Tags,
+            description: "Registrar nueva categoría",
         },
     ];
 
