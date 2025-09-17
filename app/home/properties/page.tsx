@@ -8,7 +8,7 @@ import SearchBar from "@/components/home/SearchBar";
 import Pagination from "@/components/utility/Pagination";
 import { Advanced, AdvancedSearchParams } from "@/src/types";
 import { advancedPropertySearch } from "@/src/api/SearchAPI";
-import PropertiesSkeleton from "@/components/utility/PropertiesSkeleton";
+import PropertiesSkeleton from "@/components/skeletons/PropertiesSkeleton";
 
 export default function PropertiesPage() {
 	const searchParams = useSearchParams();

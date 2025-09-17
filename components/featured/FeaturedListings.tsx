@@ -4,7 +4,7 @@ import { Loader2, AlertCircle, RefreshCw } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { getPopulatedCategories } from "@/src/api/FeaturedAPI";
 import FeaturedList from "./FeaturedListing";
-import PropertiesSkeleton from "../utility/PropertiesSkeleton";
+import PropertiesSkeleton from "../skeletons/PropertiesSkeleton";
 import { useRouter } from "next/navigation";
 
 type FeaturedListingsProps = {

@@ -5,7 +5,7 @@ import { getProperties } from '@/src/api/PropertyAPI';
 import PropertyListing from '../properties/PropertyList';
 import Link from 'next/link';
 import { House } from 'lucide-react';
-import PropertiesSkeleton from '../utility/PropertiesSkeleton';
+import PropertiesSkeleton from '../skeletons/PropertiesSkeleton';
 import { redirect } from 'next/navigation';
 import { getCateogoriesByName } from '@/src/api/FeaturedAPI';
 import { useMobile } from '@/src/hooks/useMobile';
