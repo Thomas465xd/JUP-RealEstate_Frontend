@@ -198,12 +198,12 @@ export default function Footer() {
 						<div className="text-center md:text-right">
 							<p className="text-sm text-gray-400 dark:text-gray-500 flex items-center justify-center md:justify-end">
 								<MapPin className="w-4 h-4 mr-1" />
-								Exequiel Fernández 3461, 7821207 Macul, Región Metropolitana
+								San Carlos de Apoquindo #2991 Las Condes, Región Metropolitana
 							</p>
 							<p className="text-xs text-gray-400 dark:text-gray-500 mt-1">
 								Developed by:{" "}
 								<a
-									href="https://github.com/Thomas465xd"
+									href="https://thomas-dev-portfolio.vercel.app/?lang=es"
 									target="_blank"
 									rel="noopener noreferrer"
 									className="text-gray-300 dark:text-gray-400 hover:text-white dark:hover:text-white transition duration-200 font-medium"

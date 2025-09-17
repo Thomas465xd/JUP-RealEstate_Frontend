@@ -41,7 +41,7 @@ const CallToAction: React.FC = () => {
 									<Home className="w-6 h-6 text-white" />
 								</div>
 								<div className="text-2xl font-bold text-white">
-									500+
+									30+
 								</div>
 								<div className="text-sm text-zinc-400">
 									Propiedades
@@ -53,7 +53,7 @@ const CallToAction: React.FC = () => {
 									<Users className="w-6 h-6 text-white" />
 								</div>
 								<div className="text-2xl font-bold text-white">
-									1200+
+									100+
 								</div>
 								<div className="text-sm text-zinc-400">
 									Clientes Felices
@@ -65,7 +65,7 @@ const CallToAction: React.FC = () => {
 									<TrendingUp className="w-6 h-6 text-white" />
 								</div>
 								<div className="text-2xl font-bold text-white">
-									98%
+									90%
 								</div>
 								<div className="text-sm text-zinc-400">
 									Satisfacción
@@ -153,7 +153,7 @@ const CallToAction: React.FC = () => {
 				<div className="mt-16 text-center">
 					<div className="inline-flex items-center gap-2 text-zinc-500 text-sm">
 						<div className="w-8 h-px bg-zinc-600"></div>
-						<span>Trusted by hundreds of families</span>
+						<span>Elegidos por decenas de familias</span>
 						<div className="w-8 h-px bg-zinc-600"></div>
 					</div>
 				</div>

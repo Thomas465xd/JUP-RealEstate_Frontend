@@ -82,7 +82,7 @@ export default function FeaturedList({
     };
 
     const handleViewAll = () => {
-        router.push(`/properties`);
+        router.push(`/home/categories/${category._id}`);
     };
 
     // Scroll to position when currentIndex changes

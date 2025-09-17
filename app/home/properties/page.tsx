@@ -9,18 +9,22 @@ import Pagination from "@/components/utility/Pagination";
 import { Advanced, AdvancedSearchParams } from "@/src/types";
 import { advancedPropertySearch } from "@/src/api/SearchAPI";
 import PropertiesSkeleton from "@/components/skeletons/PropertiesSkeleton";
+import { useMobile } from "@/src/hooks/useMobile";
 
 export default function PropertiesPage() {
 	const searchParams = useSearchParams();
 	const router = useRouter();
 	const page = parseInt(searchParams.get("page") || "1", 10);
+    const isMobile = useMobile()
 
-	const perPage = 6;
+	const perPage = isMobile ? 6 : 15;
 
 	const { data, isLoading, isError } = useQuery<Advanced>({
 		queryKey: [
 			"properties",
 			page,
+            perPage,
+            searchParams.get("searchCode"),
 			searchParams.get("status"),
 			searchParams.get("type"),
 			searchParams.get("operation"),
@@ -42,6 +46,9 @@ export default function PropertiesPage() {
 			};
 
             // Extract and type-safe assign params
+            const searchCode = searchParams.get("searchCode");
+            if (searchCode) apiParams.searchCode = searchCode as AdvancedSearchParams["searchCode"];
+
             const status = searchParams.get("status");
             if (status) apiParams.status = status as AdvancedSearchParams["status"];
 
@@ -138,7 +145,7 @@ export default function PropertiesPage() {
                         <PropertyListing 
                             properties={properties} 
                             title="Descubre Todas Nuestras Propiedades"
-                            subtitle="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo a quidem odio commodi excepturi ipsam, consectetur quo quaerat, eligendi magni ad minima iusto pariatur animi consequuntur iure odit reprehenderit rem."
+                            subtitle="Cada propiedad en nuestra selección ha sido pensada para ofrecer comodidad, estilo y funcionalidad. Explora un catálogo diverso que se adapta a diferentes estilos de vida y encuentra ese lugar único donde tus sueños pueden comenzar a hacerse realidad."
                         />
                     </div>
 

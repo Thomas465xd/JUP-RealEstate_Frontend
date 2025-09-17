@@ -8,7 +8,6 @@ export const metadata: Metadata = {
 
 export default async function EditProperty({ params } : { params: Promise<{ propertyId: string }>}) {
     const { propertyId } = await params; 
-    console.log(propertyId)
 
 	return (
         <section className="">

@@ -9,6 +9,7 @@ export async function advancedPropertySearch(params: AdvancedSearchParams) {
         const { 
             perPage, 
             page, 
+            searchCode,
             status, 
             type, 
             operation,
@@ -26,6 +27,11 @@ export async function advancedPropertySearch(params: AdvancedSearchParams) {
 
         // Base URL
         let url = `/search?perPage=${perPage}&page=${page}`;
+
+        //* Conditionally add searchCode if it exists
+        if (searchCode) {
+            url += `&searchCode=${encodeURIComponent(searchCode)}`;
+        }
 
         //* Conditionally add status if it exists
         if (status) {

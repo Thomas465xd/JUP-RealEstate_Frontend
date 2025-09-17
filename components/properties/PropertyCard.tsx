@@ -19,6 +19,7 @@ import {
 import { Property } from "@/src/types";
 import { formatUF } from "@/src/utils/price";
 import { redirect } from "next/navigation";
+import { copyToClipboard } from "@/src/utils/copy";
 
 // Props
 type PropertyCardProps = {
@@ -115,8 +116,10 @@ export default function PropertyCard({ property, isFeatured = false  } : Propert
 
 	const shareProperty = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
 		e.stopPropagation();
+
+        //! Change in production 
 		// Implement share functionality
-		console.log("Sharing property:", property.title);
+        copyToClipboard(`${window.location.hostname}:${window.location.port}/home/properties/${property._id}`, "URL copiada al Portapapeles")
 	};
 
 	return (

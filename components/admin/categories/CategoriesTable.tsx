@@ -273,7 +273,7 @@ export default function CategoriesTable() {
 											<div className="flex items-center gap-3">
 												<button 
 													className="text-blue-500 hover:text-blue-700 transition-colors duration-300 flex items-center gap-1"
-													onClick={() => router.push(`/home/categories/${category.slug}`)}
+													onClick={() => router.push(`/home/categories/${category._id}`)}
 													title="Ver categoría"
 												>
 													<Eye size={14} />

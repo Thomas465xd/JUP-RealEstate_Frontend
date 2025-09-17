@@ -110,6 +110,8 @@ export const advancedSearchParamsSchema = z.object({
 	perPage: z.coerce.number().min(1, "perPage debe ser al menos 1").optional(),
 	page: z.coerce.number().min(1, "page debe ser al menos 1").optional(),
 
+	searchCode: z.string().optional(),
+
 	status: z
 		.enum(["available", "sold", "pending", "disponible", "vendida", "pendiente"], {
 			errorMap: () => ({ message: "Estado de propiedad inválido" }),
