@@ -33,7 +33,6 @@ export default async function page() {
                     <PencilRuler size={20} />
                     Crear Propiedad
                 </Link>
-
             </div>
 
             <div className="border-2 border-zinc-800 dark:border-zinc-300 my-4 rounded max-w-2xl"></div>

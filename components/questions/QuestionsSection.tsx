@@ -6,27 +6,31 @@ export default function QuestionsSection() {
 
     const faqs = [
         {
-            question: "How to use this component?",
-            answer: "To use this component, you need to import it in your project and use it in your JSX code. Here's an example of how to use it:",
+            question: "¿Qué servicios ofrece un corredor de propiedades y qué beneficios tengo al contratar uno?",
+            answer: "El corredor de propiedades te ayuda a encontrar la propiedad adecuada, realiza una correcta asesoría legal y financiera, gestiona la negociación, verifica cargas y antecedentes, coordina visitas y te acompaña en todo el proceso de compra. Además, se encarga de asegurar que toda la operación se realice conforme a la ley, protegiendo tus intereses y ahorrándote tiempo y posibles complicaciones.",
         },
         {
-            question: "Are there any other components available?",
-            answer: "Yes, there are many other components available in this library. You can find them in the 'Components' section of the website.",
+            question: "¿Qué es la Carta Oferta en un proceso de Compra y cuál es su utilidad?",
+            answer: "La carta oferta o propuesta de compra en el corretaje inmobiliario es un documento formal que un comprador potencial presenta al vendedor de un inmueble, expresando su intención de comprar la propiedad bajo ciertos términos y condiciones. Esta carta sirve como un paso preliminar en el proceso de compra, estableciendo las bases para la negociación y detallando los términos que el comprador está dispuesto a aceptar.",
         },
         {
-            question: "Are components responsive?",
-            answer: "Yes, all components are responsive and can be used on different screen sizes.",
+            question: "¿Qué es la Promesa de Compraventa y cuál es su importancia?",
+            answer: "Es un contrato de promesa de compraventa de un bien inmueble es un acuerdo preliminar entre el comprador y el vendedor en el que ambas partes se comprometen a celebrar un contrato de compraventa definitivo en el futuro, cumpliendo ciertas condiciones establecidas en el contrato de promesa. Este documento es fundamental en el ámbito inmobiliario, ya que garantiza que las partes se comprometen a la transacción y establecen las condiciones y plazos para su ejecución.",
         },
         {
-            question: "Can I customize the components?",
-            answer: "Yes, you can customize the components by passing props to them. You can find more information about customizing components in the 'Customization' section of the website.",
+            question: "¿Qué es el Estudio de Títulos y cuál es su importancia? ",
+            answer: "Un estudio de títulos es un análisis exhaustivo de los antecedentes legales de una propiedad inmobiliaria para verificar que el vendedor es el legítimo propietario y que la propiedad está libre de cargas o gravámenes que puedan afectar su transferencia. Este proceso es esencial para garantizar la seguridad jurídica en la compra de bienes raíces, evitando futuros problemas legales para el comprador.",
+        },
+        {
+            question: "¿En qué fijarse antes de firmar un contrato de arriendo?",
+            answer: "Se debe revisar que estén claramente especificados: monto del arriendo, duración del contrato, condiciones de devolución de la garantía, obligaciones del arrendatario y arrendador, normas de convivencia y posibles penalizaciones.",
         },
     ];
     return (
         <div className="max-w-4xl mx-auto my-12 flex flex-col md:flex-row items-start justify-center gap-8 px-4 md:px-0">
             <img
                 className="max-w-md w-full rounded-xl h-auto"
-                src="https://images.unsplash.com/photo-1655043748464-e6545ac9ddfc?q=80&w=418&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?q=80&w=830&h=844&auto=format&fit=crop"
+                src="https://images.unsplash.com/photo-1598791294421-3fb022bd0447?q=80&w=464&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?q=80&w=464&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?q=80&w=830&h=900&auto=format&fit=crop"
                 alt=""
             />
             <div>

@@ -16,11 +16,11 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
 	{
 		id: 1,
-		name: "María González",
-		role: "CEO",
-		company: "Inmobiliaria Moderna",
+		name: "Rodrigo Fuchs",
+		role: "Business & Technology Delivery Associate Manager",
+		company: "Accenture",
 		content:
-			"It was a pleasure working with JUP Propiedades. They understood the brief correctly and delivered great designs exceeding the expectations.",
+			"Muchas gracias a JUP por toda la atención y por la manera en que llevaron la transacción.  Otra categoría, siempre gentiles y dispuestos a ayudar.",
 		rating: 5,
 		avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
 	},
@@ -184,7 +184,7 @@ const TestimonialsCarousel: React.FC = () => {
 							</span>
 						</h2>
 						<p className="text-zinc-600 dark:text-zinc-400 text-lg">
-							Risus viverra justo sagittis vestibulum metus.
+							Conoce algunas de las opiniones de nuestros clientes al trabajar con nosotros.
 						</p>
 					</div>
 

@@ -9,9 +9,12 @@ export default function ContactInformation() {
                     Ponte en contacto
                 </h2>
                 <p className="text-zinc-300 text-lg leading-relaxed">
-                    ¿Tienes alguna consulta sobre propiedades o
-                    necesitas asesoría inmobiliaria? Estamos aquí
-                    para ayudarte a encontrar la solución perfecta.
+                    ¿Tienes dudas o buscas la propiedad ideal? 
+                    contáctanos y juntos encontraremos la <strong>mejor solución</strong> {" "}
+                    para tus necesidades inmobiliarias. 
+                    <br />
+                    Tu confianza es <strong>nuestra prioridad</strong>, 
+                    y nos encantaría acompañarte en cada paso de tu proyecto.
                 </p>
             </div>
 
@@ -25,7 +28,7 @@ export default function ContactInformation() {
                             Dirección
                         </h3>
                         <p className="text-zinc-300">
-                            Santiago, Chile
+                            San Carlos de Apoquindo #2991, Las Condes
                         </p>
                     </div>
                 </div>
@@ -64,9 +67,8 @@ export default function ContactInformation() {
                     Horarios de Atención
                 </h4>
                 <div className="space-y-1 text-sm text-zinc-300">
-                    <p>Lunes - Viernes: 9:00 AM - 6:00 PM</p>
-                    <p>Sábados: 10:00 AM - 2:00 PM</p>
-                    <p>Domingos: Cerrado</p>
+                    <p>Lunes a viernes 09.00 AM – 07:00 PM </p>
+                    <p>Sábados y Domingos 10:00 AM - 1:00  PM</p>
                 </div>
             </div>
 

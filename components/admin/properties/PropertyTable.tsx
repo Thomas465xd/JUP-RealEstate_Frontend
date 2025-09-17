@@ -171,7 +171,7 @@ export default function PropertyTable({ ufValue } : PropertyTableProps) {
 	};
 
 	return (
-		<div className="overflow-hidden rounded-xl shadow-lg border border-zinc-200 dark:border-zinc-700">
+		<div className="overflow-hidden rounded-xl shadow-lg border border-zinc-200 dark:border-zinc-700 mt-12">
 			{/* Search bar */}
 			<div className="bg-white dark:bg-zinc-800 p-4 border-b border-zinc-200 dark:border-zinc-700">
 				<div className="relative">

@@ -5,28 +5,24 @@ export default function QuestionsPage() {
     const [openIndex, setOpenIndex] = useState<number | null>(null);
     const faqsData = [
         {
-            question: "Lightning-Fast Performance",
-            answer: "Built with speed — minimal load times and optimized rendering.",
+            question: "¿Qué servicios ofrece un corredor de propiedades y qué beneficios tengo al contratar uno?",
+            answer: "El corredor de propiedades te ayuda a encontrar la propiedad adecuada, realiza una correcta asesoría legal y financiera, gestiona la negociación, verifica cargas y antecedentes, coordina visitas y te acompaña en todo el proceso de compra. Además, se encarga de asegurar que toda la operación se realice conforme a la ley, protegiendo tus intereses y ahorrándote tiempo y posibles complicaciones.",
         },
         {
-            question: "Fully Customizable Components",
-            answer: "Easily adjust styles, structure, and behavior to match your project needs.",
+            question: "¿Qué es la Carta Oferta en un proceso de Compra y cuál es su utilidad?",
+            answer: "La carta oferta o propuesta de compra en el corretaje inmobiliario es un documento formal que un comprador potencial presenta al vendedor de un inmueble, expresando su intención de comprar la propiedad bajo ciertos términos y condiciones. Esta carta sirve como un paso preliminar en el proceso de compra, estableciendo las bases para la negociación y detallando los términos que el comprador está dispuesto a aceptar.",
         },
         {
-            question: "Responsive by Default",
-            answer: "Every component are responsive by default — no extra CSS required.",
+            question: "¿Qué es la Promesa de Compraventa y cuál es su importancia?",
+            answer: "Es un contrato de promesa de compraventa de un bien inmueble es un acuerdo preliminar entre el comprador y el vendedor en el que ambas partes se comprometen a celebrar un contrato de compraventa definitivo en el futuro, cumpliendo ciertas condiciones establecidas en el contrato de promesa. Este documento es fundamental en el ámbito inmobiliario, ya que garantiza que las partes se comprometen a la transacción y establecen las condiciones y plazos para su ejecución.",
         },
         {
-            question: "Tailwind CSS Powered",
-            answer: "Built using Tailwind utility classes — no extra CSS or frameworks required.",
+            question: "¿Qué es el Estudio de Títulos y cuál es su importancia? ",
+            answer: "Un estudio de títulos es un análisis exhaustivo de los antecedentes legales de una propiedad inmobiliaria para verificar que el vendedor es el legítimo propietario y que la propiedad está libre de cargas o gravámenes que puedan afectar su transferencia. Este proceso es esencial para garantizar la seguridad jurídica en la compra de bienes raíces, evitando futuros problemas legales para el comprador.",
         },
         {
-            question: "Dark Mode Support",
-            answer: "All components come ready with light and dark theme support out of the box.",
-        },
-        {
-            question: "Dark Mode Support",
-            answer: "All components come ready with light and dark theme support out of the box.",
+            question: "¿En qué fijarse antes de firmar un contrato de arriendo?",
+            answer: "Se debe revisar que estén claramente especificados: monto del arriendo, duración del contrato, condiciones de devolución de la garantía, obligaciones del arrendatario y arrendador, normas de convivencia y posibles penalizaciones.",
         },
     ];
     return (

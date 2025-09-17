@@ -15,6 +15,7 @@ import {
 	House,
 } from "lucide-react";
 import FounderCard from "./FounderCard";
+import Link from "next/link";
 
 // TODO: Use actual info
 const founders = [
@@ -23,20 +24,20 @@ const founders = [
 		role: "Fundadora & CEO",
 		image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face",
 		description:
-			"Líder visionaria con una pasión inquebrantable por transformar el mercado inmobiliario chileno. Su enfoque innovador y compromiso con la excelencia han establecido nuevos estándares en la industria.",
-		experience: "15+ años de experiencia",
+			"Socia Cofundadora de Javiera Urbina & Asociados, con más de 20 años en hospitalidad, aplico mi experiencia en atención personalizada y gestión para facilitar adquisiciones inmobiliarias con cercanía y confianza.",
+		experience: "20+ años de experiencia",
 		specialties: [
 			"Desarrollo Comercial",
-			"Estrategia de Mercado",
-			"Liderazgo",
+			"Fotografía Inmobiliaria",
+			"Branding",
 		],
 	},
 	{
-		name: "Carlos Mendoza",
+		name: "Francisco Fernández",
 		role: "Director de Ventas",
 		image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
 		description:
-			"Experto en negociación con un historial impresionante en ventas de propiedades de lujo. Su dedicación y conocimiento del mercado local son incomparables.",
+			"Socio Cofundador de Javiera Urbina & Asociados, con amplia experiencia en gestión comercial y liderazgo en isapres. Aporto habilidades en negociación y visión estratégica para ofrecer asesoría inmobiliaria cercana, profesional y de largo plazo.",
 		experience: "12+ años de experiencia",
 		specialties: [
 			"Propiedades Premium",
@@ -45,16 +46,16 @@ const founders = [
 		],
 	},
 	{
-		name: "María González",
-		role: "Directora de Marketing",
+		name: "Iñigo Del Campo",
+		role: "Desarrollador",
 		image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face",
 		description:
-			"Estratega creativa que ha revolucionado la forma en que presentamos las propiedades. Su visión digital ha llevado nuestra marca al siguiente nivel.",
-		experience: "10+ años de experiencia",
+			"Apasionado Desarrollador Web Full Stack, especializado en crear aplicaciones robustas y escalables bajo las mejores prácticas de desarrollo. Combino experiencia en front-end y back-end para ofrecer soluciones de calidad que satisfacen tanto las necesidades de los usuarios como los objetivos del negocio.",
+		experience: "3+ años de experiencia",
 		specialties: [
-			"Marketing Digital",
-			"Branding",
-			"Fotografía Inmobiliaria",
+			"Desarrollo Full Stack",
+			"Infraestructuras Resilientes",
+			"Administración de sitios",
 		],
 	},
 ];
@@ -62,25 +63,25 @@ const founders = [
 const stats = [
 	{
 		icon: Award,
-		value: "15+",
+		value: "12+",
 		label: "Años de Experiencia",
 		color: "text-blue-600 dark:text-blue-400",
 	},
 	{
 		icon: Users,
-		value: "1200+",
+		value: "100+",
 		label: "Clientes Satisfechos",
 		color: "text-pink-600 dark:text-pink-400",
 	},
 	{
 		icon: MapPin,
-		value: "500+",
+		value: "30+",
 		label: "Propiedades Vendidas",
 		color: "text-purple-600 dark:text-purple-400",
 	},
 	{
 		icon: TrendingUp,
-		value: "98%",
+		value: "90%",
 		label: "Tasa de Éxito",
 		color: "text-orange-600 dark:text-orange-400",
 	},
@@ -169,7 +170,7 @@ export default function AboutUs() {
 						</p>
 					</div>
 
-					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
 						{founders.map((founder, index) => (
 							<FounderCard key={index} {...founder} />
 						))}
@@ -194,47 +195,57 @@ export default function AboutUs() {
 										Nuestra Misión
 									</h3>
 									<p className="text-lg text-zinc-600 dark:text-zinc-300 leading-relaxed">
-										Transformar la búsqueda de propiedades
-										en una experiencia extraordinaria,
-										conectando a las personas con los
-										espacios que definirán sus futuros y
-										construirán sus recuerdos más preciados.
+										Acompañamos cada paso de compra, venta o arriendo, 
+                                        brindando confianza y alternativas informadas. 
+                                        Con servicio boutique y cuidado dedicado, transformamos 
+                                        cada propiedad en un espacio que inspira recuerdos y futuros significativos.
 									</p>
 								</div>
 
 								<div className="space-y-4">
-									<div className="flex items-start gap-3">
-										<div className="w-2 h-2 bg-blue-500 rounded-full mt-3"></div>
-										<p className="text-zinc-600 dark:text-zinc-300">
-											<strong className="text-zinc-900 dark:text-white">
-												Innovación constante:
-											</strong>
-											Utilizamos la tecnología más
-											avanzada para simplificar procesos
-											complejos.
-										</p>
-									</div>
-									<div className="flex items-start gap-3">
-										<div className="w-2 h-2 bg-blue-500 rounded-full mt-3"></div>
-										<p className="text-zinc-600 dark:text-zinc-300">
-											<strong className="text-zinc-900 dark:text-white">
-												Servicio personalizado:
-											</strong>
-											Cada cliente recibe atención única
-											adaptada a sus necesidades
-											específicas.
-										</p>
-									</div>
-									<div className="flex items-start gap-3">
-										<div className="w-2 h-2 bg-blue-500 rounded-full mt-3"></div>
-										<p className="text-zinc-600 dark:text-zinc-300">
-											<strong className="text-zinc-900 dark:text-white">
-												Transparencia total:
-											</strong>
-											Comunicación clara y honesta en cada
-											etapa del proceso.
-										</p>
-									</div>
+                                    <div className="flex items-start gap-3">
+                                        <div className="w-6 h-6 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                            <div className="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full"></div>
+                                        </div>
+                                        <div>
+                                            <h4 className="font-semibold text-zinc-900 dark:text-white mb-1">
+                                                Análisis de mercado especializado
+                                            </h4>
+                                            <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                                                Utilizamos la tecnología más
+											    avanzada para descubrir tendencias del momento.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div className="flex items-start gap-3">
+                                        <div className="w-6 h-6 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                            <div className="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full"></div>
+                                        </div>
+                                        <div>
+                                            <h4 className="font-semibold text-zinc-900 dark:text-white mb-1">
+                                                Servicio personalizado
+                                            </h4>
+                                            <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                                                Cada cliente recibe atención única
+                                                adaptada a sus necesidades
+                                                específicas.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div className="flex items-start gap-3">
+                                        <div className="w-6 h-6 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                            <div className="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full"></div>
+                                        </div>
+                                        <div>
+                                            <h4 className="font-semibold text-zinc-900 dark:text-white mb-1">
+                                                Transparencia total
+                                            </h4>
+                                            <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                                                Comunicación clara y honesta en cada
+											    etapa del proceso.
+                                            </p>
+                                        </div>
+                                    </div>
 								</div>
 							</div>
 						</div>
@@ -255,9 +266,8 @@ export default function AboutUs() {
 							</h2>
 
 							<p className="text-lg text-zinc-600 dark:text-zinc-300 mb-8 leading-relaxed">
-								Nuestros valores no son solo palabras en la
-								pared, son los principios que guían cada
-								decisión y cada interacción que tenemos contigo.
+								Nuestros valores son los principios que guían cada decisión 
+                                y cada interacción que tenemos contigo.
 							</p>
 
 							<div className="space-y-6">
@@ -361,14 +371,20 @@ export default function AboutUs() {
 					</div>
 
 					<div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-						<button className="group bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-blue-50 hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center gap-3">
+						<Link
+                            href="/home/contact" 
+                            className="group bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-blue-50 hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center gap-3"
+                        >
 							Contactar Ahora
 							<ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-						</button>
+						</Link>
 
-						<button className="group bg-transparent border-2 border-white/50 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white hover:text-blue-600 hover:border-white transition-all duration-300 transform hover:scale-105">
+						<Link
+                            href="/home/properties"
+                            className="group bg-transparent border-2 border-white/50 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white hover:text-blue-600 hover:border-white transition-all duration-300 transform hover:scale-105"
+                        >
 							Ver Propiedades
-						</button>
+						</Link>
 					</div>
 				</div>
 			</section>
