@@ -83,7 +83,7 @@ export default function Hero({ includeImageSection = false, shortHero = false, s
                                     src={image.src}
                                     alt={image.alt}
                                     fill
-                                    sizes="(max-width: 1315px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                    sizes="100vw"
                                     priority={index === 0}
                                     fetchPriority={index === 0 ? "high" : "auto"}
                                     className="object-cover"
