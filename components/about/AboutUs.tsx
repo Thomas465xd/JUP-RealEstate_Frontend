@@ -21,10 +21,10 @@ import Link from "next/link";
 const founders = [
 	{
 		name: "Javiera Urbina",
-		role: "Fundadora & CEO",
+		role: "Fundadora & Broker",
 		image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face",
 		description:
-			"Socia Cofundadora de Javiera Urbina & Asociados, con más de 20 años en hospitalidad, aplico mi experiencia en atención personalizada y gestión para facilitar adquisiciones inmobiliarias con cercanía y confianza.",
+			"Con más de 20 años en la industria de la hospitalidad, he desarrollado un profundo conocimiento de la gestión de experiencias memorables y atención a la calidad. Como broker, combino mi trayectoria en atención personalizada y gestión de relaciones, con una estrategia enfocada en facilitar la adquisición de propiedades, manteniendo una relación cercana y confiable, y aportando valor a largo plazo a nuestros clientes.",
 		experience: "20+ años de experiencia",
 		specialties: [
 			"Desarrollo Comercial",
@@ -34,11 +34,11 @@ const founders = [
 	},
 	{
 		name: "Francisco Fernández",
-		role: "Director de Ventas",
+		role: "Fundador & Director de Ventas",
 		image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
 		description:
-			"Socio Cofundador de Javiera Urbina & Asociados, con amplia experiencia en gestión comercial y liderazgo en isapres. Aporto habilidades en negociación y visión estratégica para ofrecer asesoría inmobiliaria cercana, profesional y de largo plazo.",
-		experience: "12+ años de experiencia",
+			"Con una sólida trayectoria de más de 30 años como gerente de ventas en dos de las principales isapres chilenas, he liderado equipos, diseñado estrategias de crecimiento y fortalecimiento de la relación con clientes y aliados. Combino mi expertise en ventas y relaciones con un enfoque cercano y profesional, comprometido en brindar asesoría de calidad y generar valor a largo plazo para nuestros clientes.",
+		experience: "30+ años de experiencia",
 		specialties: [
 			"Propiedades Premium",
 			"Negociación",
@@ -47,10 +47,10 @@ const founders = [
 	},
 	{
 		name: "Iñigo Del Campo",
-		role: "Desarrollador",
+		role: "Desarrollador & Asesor Tecnológico",
 		image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face",
 		description:
-			"Apasionado Desarrollador Web Full Stack, especializado en crear aplicaciones robustas y escalables bajo las mejores prácticas de desarrollo. Combino experiencia en front-end y back-end para ofrecer soluciones de calidad que satisfacen tanto las necesidades de los usuarios como los objetivos del negocio.",
+			"Apasionado Desarrollador Web Full Stack, especializado en crear aplicaciones robustas y escalables bajo las mejores prácticas de desarrollo. Combino experiencia en front-end y back-end para ofrecer soluciones de calidad que satisfacen tanto las necesidades de los usuarios como los objetivos del negocio sin importar el rubro.",
 		experience: "3+ años de experiencia",
 		specialties: [
 			"Desarrollo Full Stack",
@@ -63,7 +63,7 @@ const founders = [
 const stats = [
 	{
 		icon: Award,
-		value: "12+",
+		value: "20+",
 		label: "Años de Experiencia",
 		color: "text-blue-600 dark:text-blue-400",
 	},
@@ -105,15 +105,14 @@ export default function AboutUs() {
 						</div>
 
 						<h1 className="text-5xl md:text-6xl font-bold text-zinc-900 dark:text-white mb-6 leading-tight">
-							Conoce el equipo detrás de{" "}
+							Conoce al equipo detrás de{" "}
 							<span className="text-blue-600 dark:text-blue-400">
 								tu nuevo hogar
 							</span>
 						</h1>
 
 						<p className="text-xl text-zinc-600 dark:text-zinc-300 max-w-3xl mx-auto leading-relaxed">
-							Somos más que una inmobiliaria. Somos arquitectos de
-							sueños, constructores de futuros y compañeros de
+							Somos constructores de futuros y compañeros de
 							viaje en una de las decisiones más importantes de tu
 							vida.
 						</p>
@@ -195,10 +194,7 @@ export default function AboutUs() {
 										Nuestra Misión
 									</h3>
 									<p className="text-lg text-zinc-600 dark:text-zinc-300 leading-relaxed">
-										Acompañamos cada paso de compra, venta o arriendo, 
-                                        brindando confianza y alternativas informadas. 
-                                        Con servicio boutique y cuidado dedicado, transformamos 
-                                        cada propiedad en un espacio que inspira recuerdos y futuros significativos.
+                                        Asesorarte en cada paso de la compra, venta o arriendo de tu propiedad, resolviendo dudas y generando confianza para ofrecer alternativas que permitan decisiones informadas. Entregamos un servicio prime y dedicado a cada cliente y propiedad.
 									</p>
 								</div>
 
@@ -296,7 +292,7 @@ export default function AboutUs() {
 
 								<div className="bg-white dark:bg-zinc-800 rounded-2xl p-6 shadow-lg border border-zinc-200 dark:border-zinc-700">
 									<h4 className="text-xl font-bold text-zinc-900 dark:text-white mb-3 flex-align">
-										<Star /> Excelencia Sin Compromiso
+										<Star /> Prolijidad a cada paso
 									</h4>
 									<p className="text-zinc-600 dark:text-zinc-300">
 										No nos conformamos con lo suficiente.

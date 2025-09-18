@@ -11,6 +11,7 @@ import { useState } from "react";
 import LogoImage from "@/public/logo-blanco.png"; // now it's a static import
 import { formatUF } from "@/src/utils/price";
 import PropertyDetailsSkeleton from "../skeletons/PropertyDetailsSkeleton";
+import { copyToClipboard } from "@/src/utils/copy";
 
 type PropertyDetailsProps = {
 	propertyId: string;
@@ -232,11 +233,20 @@ export default function PropertyDetails({ propertyId }: PropertyDetailsProps) {
 					{/* Property info - Right side */}
 					<div className="lg:w-1/3 bg-zinc-800 dark:bg-zinc-800/30 text-white p-6 rounded-lg shadow-lg">
 						{/* Property type and title */}
-						<div className="flex items-center text-blue-400 dark:text-blue-300 mb-2">
-							{getPropertyIcon(property.type)}
-							<span className="ml-2 text-sm">
-								{getPropertyTypeLabel(property.type)}
-							</span>
+						<div className="flex-between text-blue-400 dark:text-blue-300 mb-2">
+                            <div className="flex items-center">
+                                {getPropertyIcon(property.type)}
+                                <span className="ml-2 text-sm">
+                                    {getPropertyTypeLabel(property.type)}
+                                </span>
+                            </div>
+
+                            <span 
+                                onClick={() => copyToClipboard(property._id)}
+                                className="text-sm cursor-pointer text-zinc-600"
+                            >
+                                ID: {property._id}
+                            </span>
 						</div>
 
 						<h1 className="text-2xl font-bold mb-2">

@@ -15,20 +15,20 @@ export const TokenProvider: React.FC<TokenProviderProps> = ({ children }) => {
         //! Don't do anything until Clerk is fully loaded
         if (!isLoaded) {
             //? Debug log
-            console.log("⏳ Clerk not loaded yet, waiting...");
+            //console.log("⏳ Clerk not loaded yet, waiting...");
             return;
         }
 
         //? Debug log
-        console.log("🔍 Clerk loaded. Auth state:", { isSignedIn, hasGetToken: !!getToken });
+        //console.log("🔍 Clerk loaded. Auth state:", { isSignedIn, hasGetToken: !!getToken });
 
         if (isSignedIn && getToken) {
             //? Debug log
-            console.log("✅ Setting token getter");
+            //console.log("✅ Setting token getter");
             setAuthTokenGetter(getToken);
         } else {
             //? Debug log
-            console.log("❌ Clearing token getter");
+            //console.log("❌ Clearing token getter");
             clearAuthTokenGetter();
         }
 

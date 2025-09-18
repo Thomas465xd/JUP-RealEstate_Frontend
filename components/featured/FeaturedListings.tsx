@@ -15,6 +15,7 @@ type FeaturedListingsProps = {
 	autoPlay?: boolean;
 	autoPlayInterval?: number;
 	max?: number; // Maximum number of categories to display
+    header?: boolean; // If true, display the header, if false, do not
 };
 
 export default function FeaturedListings({
@@ -24,6 +25,7 @@ export default function FeaturedListings({
 	autoPlay = false,
 	autoPlayInterval = 5000,
 	max, // No default value - shows all categories when not specified
+    header = true,
 }: FeaturedListingsProps) {
     const router = useRouter();
 
@@ -101,63 +103,65 @@ export default function FeaturedListings({
 	return (
 		<div className="bg-white dark:bg-zinc-900 transition-colors duration-300">
 			{/* Section Header */}
-			<div className="py-12 bg-gradient-to-b from-zinc-50 to-white dark:from-zinc-800 dark:to-zinc-900">
-				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
-					<div className="text-center">
-						<h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-zinc-900 dark:text-white mb-4">
-							{categoryId 
-								? categories[0]?.name || "Propiedades de la Categoría"
-								: "Propiedades Destacadas"
-							}
-						</h1>
-						<p className="text-lg text-zinc-600 dark:text-zinc-300 max-w-3xl mx-auto">
-							{categoryId 
-								? "Explora las propiedades de esta categoría especial"
-								: "Descubre nuestras categorías especiales con las mejores propiedades seleccionadas cuidadosamente para ofrecerte las opciones más destacadas del mercado"
-							}
-						</p>
+            {header && (
+                <div className="py-12 bg-gradient-to-b from-zinc-50 to-white dark:from-zinc-800 dark:to-zinc-900">
+                    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="text-center">
+                            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-zinc-900 dark:text-white mb-4">
+                                {categoryId 
+                                    ? categories[0]?.name || "Propiedades de la Categoría"
+                                    : "Propiedades Destacadas"
+                                }
+                            </h1>
+                            <p className="text-lg text-zinc-600 dark:text-zinc-300 max-w-3xl mx-auto">
+                                {categoryId 
+                                    ? "Explora las propiedades de esta categoría especial"
+                                    : "Descubre nuestras categorías especiales con las mejores propiedades seleccionadas cuidadosamente para ofrecerte las opciones más destacadas del mercado"
+                                }
+                            </p>
 
-						{/* Stats */}
-						<div className="flex flex-wrap justify-center gap-8 mt-8">
-							{!categoryId && (
-								<div className="text-center">
-									<div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
-										{categories.length}
-										{hasMoreCategories && (
-											<span className="text-sm text-zinc-500 dark:text-zinc-400 ml-1">
-												/ {totalCategories}
-											</span>
-										)}
-									</div>
-									<div className="text-sm text-zinc-500 dark:text-zinc-400">
-										Categorías{hasMoreCategories ? ' mostradas' : ''}
-									</div>
-								</div>
-							)}
-							<div className="text-center">
-								<div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
-									{categories.reduce(
-										(total, category) =>
-											total + category.properties.length,
-										0
-									)}
-								</div>
-								<div className="text-sm text-zinc-500 dark:text-zinc-400">
-									Propiedades
-								</div>
-							</div>
-						</div>
+                            {/* Stats */}
+                            <div className="flex flex-wrap justify-center gap-8 mt-8">
+                                {!categoryId && (
+                                    <div className="text-center">
+                                        <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+                                            {categories.length}
+                                            {hasMoreCategories && (
+                                                <span className="text-sm text-zinc-500 dark:text-zinc-400 ml-1">
+                                                    / {totalCategories}
+                                                </span>
+                                            )}
+                                        </div>
+                                        <div className="text-sm text-zinc-500 dark:text-zinc-400">
+                                            Categorías{hasMoreCategories ? ' mostradas' : ''}
+                                        </div>
+                                    </div>
+                                )}
+                                <div className="text-center">
+                                    <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+                                        {categories.reduce(
+                                            (total, category) =>
+                                                total + category.properties.length,
+                                            0
+                                        )}
+                                    </div>
+                                    <div className="text-sm text-zinc-500 dark:text-zinc-400">
+                                        Propiedades
+                                    </div>
+                                </div>
+                            </div>
 
-						{/* Show indicator when limiting results (only for multi-category view) */}
-						{hasMoreCategories && (
-							<div className="mt-4 inline-flex items-center gap-2 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 px-4 py-2 rounded-full text-sm">
-								<AlertCircle className="w-4 h-4" />
-								Mostrando {max} de {totalCategories} categorías
-							</div>
-						)}
-					</div>
-				</div>
-			</div>
+                            {/* Show indicator when limiting results (only for multi-category view) */}
+                            {hasMoreCategories && (
+                                <div className="mt-4 inline-flex items-center gap-2 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 px-4 py-2 rounded-full text-sm">
+                                    <AlertCircle className="w-4 h-4" />
+                                    Mostrando {max} de {totalCategories} categorías
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            )}
 
 			{/* Categories Carousels */}
 			<div className="max-w-7xl mx-auto space-y-12 pb-16">

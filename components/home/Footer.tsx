@@ -22,7 +22,7 @@ export default function Footer() {
 							/>
 						</div>
 						<p className="text-sm text-gray-300 dark:text-gray-400 mt-2 text-center lg:text-left">
-							Tu aliado confiable en bienes raíces. Encontramos la propiedad perfecta para ti desde 2020.
+							Tu aliado confiable en bienes raíces. Encontramos la propiedad perfecta para ti desde 2022.
 						</p>
 					</div>
 

@@ -1,6 +1,6 @@
 import { SignUp } from "@clerk/nextjs";
 import Image from "next/image";
-import heroImage from "@/public/hero-image.jpg"; // now it's a static import
+import heroImage from "@/public/hero-image-1.jpg"; // now it's a static import
 
 export default function SignInWindow() {
 	return (

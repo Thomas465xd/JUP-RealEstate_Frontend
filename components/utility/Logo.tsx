@@ -19,6 +19,8 @@ export default function Logo({ mini } : LogoProps) {
                     width={160}       // base size for large screens
                     height={160}      // keep aspect ratio
                     priority
+                    fetchPriority="high"
+                    loading="eager"
                     className="object-contain h-auto w-auto"
                     placeholder="empty"
                     sizes="(max-width: 640px) 100px, (max-width: 1024px) 120px, 160px"

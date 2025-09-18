@@ -66,7 +66,7 @@ const testimonials: Testimonial[] = [
 	},
 ];
 
-const TestimonialsCarousel: React.FC = () => {
+export default function TestimonialsCarousel() {
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 	const [isAnimating, setIsAnimating] = useState(false);
@@ -136,19 +136,6 @@ const TestimonialsCarousel: React.FC = () => {
 		setTimeout(() => setIsAutoPlaying(true), 8000);
 		
 		nextSlide();
-	};
-
-	const goToSlide = (index: number) => {
-		if (isAnimating || index === currentIndex) return;
-		
-		setIsAnimating(true);
-		
-		// Temporarily pause auto-play for 8 seconds after manual navigation
-		setIsAutoPlaying(false);
-		setTimeout(() => setIsAutoPlaying(true), 8000);
-		
-		setCurrentIndex(index);
-		setTimeout(() => setIsAnimating(false), 500);
 	};
 
 	const renderStars = (rating: number) => {
@@ -331,5 +318,3 @@ const TestimonialsCarousel: React.FC = () => {
 		</section>
 	);
 };
-
-export default TestimonialsCarousel;

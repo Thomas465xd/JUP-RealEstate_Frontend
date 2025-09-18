@@ -3,7 +3,7 @@ import React from "react";
 import { Home, Search, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import BgImage from "@/public/hero-image.jpg"; // now it's a static import
+import BgImage from "@/public/hero-image-1.jpg"; // now it's a static import
 import { useRouter } from "next/navigation";
 
 export default function NotFound() {

@@ -1,6 +1,6 @@
 import { SignIn } from "@clerk/nextjs";
 import Image from "next/image";
-import heroImage from "@/public/hero-image.jpg"; // static import
+import heroImage from "@/public/hero-image-1.jpg"; // static import
 
 export default function SignInWindow() {
 	return (

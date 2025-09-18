@@ -2,8 +2,10 @@
 import React from "react";
 import { ArrowRight, Award, Users, MapPin, TrendingUp } from "lucide-react";
 import Link from "next/link";
+import aboutImage from "@/public/about-image-1.jpeg"; // now it's a static import
+import Image from "next/image";
 
-const AboutSection: React.FC = () => {
+export default function AboutSection() {
 	const stats = [
 		{
 			icon: Award,
@@ -154,8 +156,8 @@ const AboutSection: React.FC = () => {
 
 						{/* Main Image */}
 						<div className="relative overflow-hidden rounded-3xl shadow-2xl">
-							<img
-								src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&h=700&fit=crop&crop=center"
+							<Image
+								src={aboutImage}
 								alt="Equipo profesional de Javiera Urbina & Asociados"
 								className="w-full h-96 lg:h-[500px] object-cover transition-transform duration-700 hover:scale-105"
 							/>
@@ -199,7 +201,7 @@ const AboutSection: React.FC = () => {
 							<div className="flex items-center gap-2">
 								<Award className="w-4 h-4" />
 								<span className="text-sm font-semibold">
-									Líderes del Mercado
+									Pasión por los Hogares
 								</span>
 							</div>
 						</div>
@@ -214,5 +216,3 @@ const AboutSection: React.FC = () => {
 		</section>
 	);
 };
-
-export default AboutSection;

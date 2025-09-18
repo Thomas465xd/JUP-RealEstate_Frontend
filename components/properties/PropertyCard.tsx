@@ -20,6 +20,7 @@ import { Property } from "@/src/types";
 import { formatUF } from "@/src/utils/price";
 import { redirect } from "next/navigation";
 import { copyToClipboard } from "@/src/utils/copy";
+import Image from "next/image";
 
 // Props
 type PropertyCardProps = {
@@ -132,10 +133,12 @@ export default function PropertyCard({ property, isFeatured = false  } : Propert
 		>
 			{/* Image Carousel */}
 			<div className="relative h-48 overflow-hidden">
-				<img
+				<Image
 					src={property.imageUrls[currentImageIndex]}
 					alt={property.title}
-					className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    fill
+					className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
 				/>
 
 				{/* Image Navigation */}

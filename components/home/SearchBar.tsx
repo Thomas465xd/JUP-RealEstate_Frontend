@@ -262,9 +262,9 @@ export default function SearchBar() {
                                         {...register("currency")}
                                         className="input"
                                     >
-                                        <option value="pesos">Pesos</option>
+                                        {/*<option value="pesos">Pesos</option>*/}
                                         <option value="uf">UF</option>
-                                        <option value="usd">USD</option>
+                                        {/*<option value="usd">USD</option>*/}
                                     </select>
                                 </div>
 

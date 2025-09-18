@@ -29,10 +29,10 @@ export default function QuestionsPage() {
         <div className="flex flex-col items-center min-h-screen bg-zinc-100 dark:bg-zinc-900/40 py-8 text-center text-zinc-800 dark:text-zinc-200 px-3">
             <p className="text-base font-medium text-blue-600 dark:text-blue-500">FAQ</p>
             <h1 className="text-3xl md:text-4xl font-semibold mt-2">
-                Preguntas Frecuentes JUP
+                Preguntas Frecuentes📋
             </h1>
             <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-4 max-w-sm">
-                Proactively answering FAQs boosts user confidence and cuts down on support tickets.
+                Resolvemos las dudas más comunes para darte confianza y ayudarte a encontrar la propiedad ideal de forma más simple y segura.
             </p>
 
             <div className="max-w-xl w-full mt-6 flex flex-col gap-4 items-start text-left">

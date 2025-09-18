@@ -1,12 +1,15 @@
 "use client";
 import React from "react";
 import { ArrowRight, Home, Users, TrendingUp } from "lucide-react";
+import { useRouter } from "next/navigation";
+import Image from "next/image";
+import callToActionImage1 from "@/public/call-to-action-image-1.jpeg"; // static import
+import callToActionImage2 from "@/public/call-to-action-image-2.jpeg"; // static import
+import callToActionImage3 from "@/public/call-to-action-image-3.jpeg"; // static import
+import callToActionImage4 from "@/public/call-to-action-image-4.jpeg"; // static import
 
-const CallToAction: React.FC = () => {
-	const handleContactClick = () => {
-		// This would navigate to your contact form
-		console.log("Navigate to contact form");
-	};
+export default function CallToAction() {
+    const router = useRouter(); 
 
 	return (
 		<section className="py-20 bg-zinc-900 dark:bg-zinc-900 transition-colors duration-300">
@@ -75,7 +78,7 @@ const CallToAction: React.FC = () => {
 
 						{/* CTA Button */}
 						<button
-							onClick={handleContactClick}
+							onClick={() => router.push("/home/contact")}
 							className="group bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-zinc-900 flex items-center gap-3"
 						>
 							Contáctanos ahora
@@ -88,10 +91,12 @@ const CallToAction: React.FC = () => {
 						{/* Main large image */}
 						<div className="relative">
 							<div className="rounded-2xl overflow-hidden shadow-2xl transform rotate-2 hover:rotate-0 transition-transform duration-500">
-								<img
-									src="https://images.unsplash.com/photo-1605146769289-440113cc3d00?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+								<Image
+									src={callToActionImage1}
 									alt="Modern living room"
 									className="w-full h-80 md:h-96 object-cover"
+                                    width={900}
+                                    height={600}
 								/>
 							</div>
 
@@ -103,10 +108,10 @@ const CallToAction: React.FC = () => {
 									</div>
 									<div>
 										<div className="font-semibold text-zinc-900 dark:text-white">
-											Premium Properties
+											Propiedades Premium 
 										</div>
 										<div className="text-sm text-zinc-600 dark:text-zinc-400">
-											Available Now
+											Disponibles Ahora
 										</div>
 									</div>
 								</div>
@@ -117,19 +122,24 @@ const CallToAction: React.FC = () => {
 						<div className="grid grid-cols-2 gap-4 mt-8">
 							{/* Kitchen image */}
 							<div className="rounded-xl overflow-hidden shadow-lg transform -rotate-1 hover:rotate-0 transition-transform duration-500">
-								<img
-									src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=300&h=200&fit=crop&crop=center"
-									alt="Modern kitchen"
-									className="w-full h-40 object-cover"
-								/>
+                                <Image
+                                    src={callToActionImage2}
+                                    alt="Modern kitchen"
+                                    width={300}
+                                    height={200}
+                                    className="w-full h-40 object-cover"
+                                    sizes="(max-width: 640px) 300px, (max-width: 1024px) 400px, 600px"
+                                />
 							</div>
 
 							{/* Bedroom image */}
 							<div className="rounded-xl overflow-hidden shadow-lg transform rotate-1 hover:rotate-0 transition-transform duration-500">
-								<img
-									src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?q=80&w=871&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+								<Image
+									src={callToActionImage4}
 									alt="Elegant bedroom"
 									className="w-full h-40 object-cover"
+                                    width={300}
+                                    height={200}
 								/>
 							</div>
 						</div>
@@ -140,10 +150,11 @@ const CallToAction: React.FC = () => {
 
 						{/* Bathroom image - positioned absolutely for overlap effect */}
 						<div className="absolute -bottom-8 right-0 w-32 h-24 rounded-lg overflow-hidden shadow-xl transform rotate-3 hover:rotate-0 transition-transform duration-500">
-							<img
-								src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=200&h=150&fit=crop&crop=center"
+							<Image
+								src={callToActionImage3}
 								alt="Luxury bathroom"
 								className="w-full h-full object-cover"
+                                loading="lazy"
 							/>
 						</div>
 					</div>
@@ -160,6 +171,4 @@ const CallToAction: React.FC = () => {
 			</div>
 		</section>
 	);
-};
-
-export default CallToAction;
+}
