@@ -4,6 +4,7 @@ import {
 } from "@clerk/nextjs";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next"
 import { Theme } from "@/components/providers/ThemeProvider";
 import ToastProvider from "@/components/providers/ToastProviders";
 import ReactQueryProvider from "@/components/providers/QueryClientProvider";
@@ -221,7 +222,7 @@ export default function RootLayout({
 					<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 					<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
 					<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-					<link rel="manifest" href="/site.webmanifest" />
+                    <link rel="manifest" href="/manifest.json" />
 					<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
 					<meta name="msapplication-TileColor" content="#ffffff" />
 					
@@ -257,6 +258,7 @@ export default function RootLayout({
 						<ReactQueryProvider>
 							<Theme>
 								<ToastProvider />
+                                <Analytics />
 								{children}
 								<BackToTopButton />
 								<WhatsappButton />
