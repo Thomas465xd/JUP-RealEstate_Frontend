@@ -26,7 +26,7 @@ export default function SignInWindow() {
 								"bg-purple-600 hover:bg-purple-700 text-white",
 						},
 					}}
-					redirectUrl="/dashboard"
+					redirectUrl="/"
 					signUpUrl="/sign-up"
 				/>
 			</div>
