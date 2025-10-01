@@ -29,7 +29,7 @@ const siteConfig = {
 	name: "JUP Propiedades",
 	title: "JUP Propiedades ",
 	description: "Encuentra la propiedad de tus sueños con JUP Propiedades. Especialistas en compra, venta y arriendo de propiedades en Chile. Más de X años de experiencia en el mercado inmobiliario.",
-	url: "https://www.juppropiedades.cl", // Replace with your actual domain
+	url: "https://www.jup.cl", // Replace with your actual domain
 	siteName: "JUP Propiedades",
 	locale: "es_CL",
 	type: "website",
@@ -90,20 +90,20 @@ export const metadata: Metadata = {
 		title: siteConfig.title,
 		description: siteConfig.description,
 		siteName: siteConfig.siteName,
-		images: [
-			{
-				url: "/og-image.png", // Create a 1200x630 image for sharing
-				width: 1200,
-				height: 630,
-				alt: `${siteConfig.name} - Tu Broker de Confianza`,
-			},
-			{
-				url: "/og-image-square.png", // Create a 1080x1080 image for Instagram
-				width: 1080,
-				height: 1080,
-				alt: `${siteConfig.name} - Tu Broker de Confianza`,
-			}
-		],
+        images: [
+            {
+                url: `${siteConfig.url}/og-image.png`,
+                width: 1200,
+                height: 630,
+                alt: `${siteConfig.name} - Tu Broker de Confianza`,
+            },
+            {
+                url: `${siteConfig.url}/og-image-square.png`,
+                width: 1080,
+                height: 1080,
+                alt: `${siteConfig.name} - Tu Broker de Confianza`,
+            },
+        ],
 	},
 
 	// Additional Meta Tags
