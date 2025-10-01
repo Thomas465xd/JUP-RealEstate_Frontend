@@ -101,14 +101,14 @@ export default function NotFound() {
 								</Link>
 
 								<Link
-									href="/home/buy"
+									href="/home/questions"
 									className="group p-3 bg-white dark:bg-zinc-700/50 rounded-lg hover:bg-zinc-50 dark:hover:bg-zinc-600/50 transition-colors duration-200 shadow-sm hover:shadow-md"
 								>
 									<div className="text-zinc-700 dark:text-zinc-300 font-medium group-hover:text-zinc-800 dark:group-hover:text-zinc-200 text-sm">
-										Comprar
+										Preguntas Frecuentes
 									</div>
 									<div className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
-										Encuentra tu hogar
+                                        Resuelve tus dudas
 									</div>
 								</Link>
 

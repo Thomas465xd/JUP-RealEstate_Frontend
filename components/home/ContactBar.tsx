@@ -15,13 +15,23 @@ export default function ContactBar({ mobile = false } : ContactBarProps) {
                 className={`flex items-center space-x-2 text-sm dark:text-zinc-400 text-zinc-600`}
             >
                 <Phone className="h-4 w-4" />
-                <span>+56 9 9863 3775</span>
+                <a
+                    href="tel:+56982192688"
+                    className=""
+                >
+                    +56 9 8219 2688
+                </a>
             </div>
             <div
                 className={`flex items-center space-x-2 text-sm dark:text-zinc-400 text-zinc-600`}
             >
                 <Mail className="h-4 w-4" />
-                <span>contacto@ovopropiedades.cl</span>
+                <a
+                    href="mailto:contact@jup.cl"
+                    className=""
+                >
+                    contact@jup.cl
+                </a>
             </div>
             <div 
                 className={`flex items-center space-x-2 text-sm dark:text-zinc-400 text-zinc-600`}
@@ -83,14 +93,14 @@ export default function ContactBar({ mobile = false } : ContactBarProps) {
                             className="flex items-center space-x-2"
                         >
                             <Phone className="h-4 w-4" />
-                            <span>+569 8219 2688</span>
+                            <span>+56 9 8219 2688</span>
                         </a>
                         <a 
                             href="mailto:contacto@jup.cl"
                             className="flex items-center space-x-2"
                         >
                             <Mail className="h-4 w-4" />
-                            <span>contacto@jup.cl</span>
+                            <span>contact@jup.cl</span>
                         </a>
                         <a 
                             href=''

@@ -16,13 +16,15 @@ import {
 } from "lucide-react";
 import FounderCard from "./FounderCard";
 import Link from "next/link";
+import FounderOne from "@/public/founder-2.jpg";
+import BlankUser from "@/public/blank-user.jpg";
 
 // TODO: Use actual info
 const founders = [
 	{
 		name: "Javiera Urbina",
-		role: "Fundadora & Broker",
-		image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face",
+		role: "Fundadora y Broker",
+		image: BlankUser,
 		description:
 			"Con más de 20 años en la industria de la hospitalidad, he desarrollado un profundo conocimiento de la gestión de experiencias memorables y atención a la calidad. Como broker, combino mi trayectoria en atención personalizada y gestión de relaciones, con una estrategia enfocada en facilitar la adquisición de propiedades, manteniendo una relación cercana y confiable, y aportando valor a largo plazo a nuestros clientes.",
 		experience: "20+ años de experiencia",
@@ -34,8 +36,8 @@ const founders = [
 	},
 	{
 		name: "Francisco Fernández",
-		role: "Fundador & Director de Ventas",
-		image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
+		role: "Fundador y Director de Ventas",
+		image: FounderOne,
 		description:
 			"Con una sólida trayectoria de más de 30 años como gerente de ventas en dos de las principales isapres chilenas, he liderado equipos, diseñado estrategias de crecimiento y fortalecimiento de la relación con clientes y aliados. Combino mi expertise en ventas y relaciones con un enfoque cercano y profesional, comprometido en brindar asesoría de calidad y generar valor a largo plazo para nuestros clientes.",
 		experience: "30+ años de experiencia",
@@ -47,8 +49,8 @@ const founders = [
 	},
 	{
 		name: "Iñigo Del Campo",
-		role: "Desarrollador & Asesor Tecnológico",
-		image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face",
+		role: "Desarrollador y Asesor Tecnológico",
+		image: BlankUser,
 		description:
 			"Apasionado Desarrollador Web Full Stack, especializado en crear aplicaciones robustas y escalables bajo las mejores prácticas de desarrollo. Combino experiencia en front-end y back-end para ofrecer soluciones de calidad que satisfacen tanto las necesidades de los usuarios como los objetivos del negocio sin importar el rubro.",
 		experience: "3+ años de experiencia",
