@@ -92,16 +92,16 @@ export const metadata: Metadata = {
 		siteName: siteConfig.siteName,
 		images: [
 			{
-				url: "/og-image.jpg", // Create a 1200x630 image for sharing
+				url: "/og-image.png", // Create a 1200x630 image for sharing
 				width: 1200,
 				height: 630,
 				alt: `${siteConfig.name} - Tu Broker de Confianza`,
 			},
 			{
-				url: "/og-image-square.jpg", // Create a 1080x1080 image for Instagram
+				url: "/og-image-square.png", // Create a 1080x1080 image for Instagram
 				width: 1080,
 				height: 1080,
-				alt: `${siteConfig.name} - Propiedades de Calidad`,
+				alt: `${siteConfig.name} - Tu Broker de Confianza`,
 			}
 		],
 	},
