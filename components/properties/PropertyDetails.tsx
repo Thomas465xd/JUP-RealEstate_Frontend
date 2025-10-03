@@ -8,13 +8,15 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import LogoImage from "@/public/logo-blanco.png";
-import { formatUF } from "@/src/utils/price";
+import { formatUF, formatUFtoCLP } from "@/src/utils/price";
 import PropertyDetailsSkeleton from "../skeletons/PropertyDetailsSkeleton";
 import { copyToClipboard } from "@/src/utils/copy";
 import { sanitizeQuillHtml } from "@/src/utils/sanitize";
+import { capitalizeFirstLetter } from "@/src/utils/text";
 
 type PropertyDetailsProps = {
 	propertyId: string;
+    ufValue: number;
 };
 
 // Property type icons mapping
@@ -69,20 +71,7 @@ const getStatusLabel = (status: Property["status"]): string => {
 	return status;
 };
 
-// Convert plain text to markdown-friendly format
-const formatDescription = (text: string): string => {
-	return text
-		// Convert lines that end with : to headers
-		.replace(/^(.+):$/gm, '### $1')
-		// Convert lines that start with capital letters followed by details
-		.replace(/^([A-Z][A-ZÁÉÍÓÚÑ\s]+):\s*(.+)$/gm, '**$1:** $2')
-		// Convert multiple line breaks to proper spacing
-		.replace(/\n{3,}/g, '\n\n')
-		// Preserve single line breaks
-		.replace(/\n/g, '  \n');
-};
-
-export default function PropertyDetails({ propertyId }: PropertyDetailsProps) {
+export default function PropertyDetails({ propertyId, ufValue }: PropertyDetailsProps) {
     const router = useRouter();
 
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -112,11 +101,7 @@ export default function PropertyDetails({ propertyId }: PropertyDetailsProps) {
         );
     };
 
-    console.log(property.description)
-    const cleanHtml = sanitizeQuillHtml(property.description);
-console.log('HTML sanitizado:', cleanHtml);
-
-	const contactMessage = `Hola, me interesa la propiedad "${property.title}" ubicada en ${property.address}, ${property.cityArea}. ¿Podrían darme más información?`;
+	const contactMessage = `Hola, me interesa la propiedad "${property.title}" ubicada en ${property.address}, ${property.region}. ¿Podrían darme más información?`;
 
 	return (
 		<div className="min-h-screen bg-zinc-50 dark:bg-zinc-900 py-8">
@@ -267,7 +252,7 @@ console.log('HTML sanitizado:', cleanHtml);
 						</div>
 
 						<h1 className="text-2xl font-bold mb-2">
-							{property.title}
+							{capitalizeFirstLetter(property.title)}
 						</h1>
 
 						{/* Location */}
@@ -284,7 +269,8 @@ console.log('HTML sanitizado:', cleanHtml);
 								Precio
 							</p>
 							<p className="text-3xl font-bold text-blue-400 dark:text-blue-300">
-								{formatUF(property.price)} UF
+								{formatUF(property.price)} UF <br />
+                                <span className="text-lg">{formatUFtoCLP(property.price, ufValue)}</span>
 							</p>
 						</div>
 
@@ -359,7 +345,7 @@ console.log('HTML sanitizado:', cleanHtml);
 							</a>
 
 							<a
-								href="mailto:contact@jup.cl"
+								href="mailto:contacto@jup.cl"
 								className="w-full button-zinc-gradient flex-center"
 							>
 								<Mail className="w-5 h-5 mr-2" />

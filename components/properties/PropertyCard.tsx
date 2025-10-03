@@ -21,6 +21,7 @@ import { formatUF } from "@/src/utils/price";
 import { redirect } from "next/navigation";
 import { copyToClipboard } from "@/src/utils/copy";
 import Image from "next/image";
+import { capitalizeFirstLetter } from "@/src/utils/text";
 
 // Props
 type PropertyCardProps = {
@@ -235,7 +236,7 @@ export default function PropertyCard({ property, isFeatured = false  } : Propert
 
 				{/* Title */}
 				<h3 className="font-semibold text-gray-900 dark:text-white mb-2 line-clamp-2 text-sm leading-tight">
-					{property.title}
+					{capitalizeFirstLetter(property.title)}
 				</h3>
 
 				{/* Location */}

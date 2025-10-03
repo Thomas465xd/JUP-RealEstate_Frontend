@@ -13,6 +13,7 @@ interface Testimonial {
 }
 
 //? Could be done in a separate model in the backend
+//? Could be done in a separate model in the backend
 const testimonials: Testimonial[] = [
 	{
 		id: 1,
@@ -20,7 +21,7 @@ const testimonials: Testimonial[] = [
 		role: "Business & Technology Delivery Associate Manager",
 		company: "Accenture",
 		content:
-			"Muchas gracias a JUP por toda la atención y por la manera en que llevaron la transacción.  Otra categoría, siempre gentiles y dispuestos a ayudar.",
+			"Muchas gracias a JUP por toda la atención y por la manera en que llevaron la transacción. Otra categoría, siempre gentiles y dispuestos a ayudar.",
 		rating: 5,
 		avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
 	},
@@ -30,7 +31,7 @@ const testimonials: Testimonial[] = [
 		role: "Founder",
 		company: "Property Investments",
 		content:
-			"With JUP Propiedades the results are very satisfying. Wrapped with high quality and innovative approach that makes a surge of visitors.",
+			"Con JUP Propiedades los resultados son muy satisfactorios. Todo envuelto en alta calidad y un enfoque innovador que atrae una gran cantidad de visitantes.",
 		rating: 5,
 		avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
 	},
@@ -40,7 +41,7 @@ const testimonials: Testimonial[] = [
 		role: "CEO",
 		company: "Modern Homes",
 		content:
-			"They are able to help a startup like mine scale and are very responsive to all our unique needs. Outstanding professionalism throughout!",
+			"Son capaces de ayudar a una startup como la mía a escalar y responden muy rápido a todas nuestras necesidades. ¡Profesionalismo excepcional de principio a fin!",
 		rating: 5,
 		avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
 	},
@@ -50,7 +51,7 @@ const testimonials: Testimonial[] = [
 		role: "Director",
 		company: "Elite Properties",
 		content:
-			"Exceptional service from start to finish. They helped me find the perfect investment property and guided me through every step.",
+			"Servicio excepcional de principio a fin. Me ayudaron a encontrar la propiedad ideal de inversión y me guiaron en cada paso del proceso.",
 		rating: 5,
 		avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
 	},
@@ -60,7 +61,7 @@ const testimonials: Testimonial[] = [
 		role: "Founder",
 		company: "Urban Living",
 		content:
-			"Professional team that delivers results. Their expertise in the real estate market is unmatched and they truly care about client success.",
+			"Un equipo profesional que entrega resultados. Su experiencia en el mercado inmobiliario no tiene comparación y realmente se preocupan por el éxito del cliente.",
 		rating: 5,
 		avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face",
 	},
@@ -217,24 +218,24 @@ export default function TestimonialsCarousel() {
 										: "w-1/3"
 								}`}
 							>
-								<div className="bg-white dark:bg-zinc-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 h-full">
-									{/* Stars */}
-									<div className="flex gap-1 mb-4">
-										{renderStars(testimonial.rating)}
-									</div>
+                                <div className="bg-white dark:bg-zinc-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
+                                    {/* Stars */}
+                                    <div className="flex gap-1 mb-4">
+                                        {renderStars(testimonial.rating)}
+                                    </div>
 
-									{/* Content */}
-									<p className="text-zinc-700 dark:text-zinc-300 mb-6 leading-relaxed text-sm">
-										{testimonial.content}
-									</p>
+                                    {/* Content */}
+                                    <p className="text-zinc-700 dark:text-zinc-300 mb-6 leading-relaxed text-sm flex-1">
+                                        {testimonial.content}
+                                    </p>
 
-									{/* Author Info with Blue Gradient Background */}
-									<div className="bg-gradient-to-r from-zinc-700 to-zinc-800 dark:from-zinc-700 dark:to-zinc-600 rounded-xl p-4 flex items-center gap-3">
-										<div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-white/20">
-											<img
-												src={testimonial.avatar}
-												alt={testimonial.name}
-												className="w-full h-full object-cover"
+                                    {/* Author Info */}
+                                    <div className="bg-gradient-to-r from-zinc-700 to-zinc-800 dark:from-zinc-700 dark:to-zinc-600 rounded-xl p-4 flex items-center gap-3 mt-auto">
+                                        <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-white/20">
+                                            <img
+                                                src={testimonial.avatar}
+                                                alt={testimonial.name}
+                                                className="w-full h-full object-cover"
                                                 onError={(e) => {
                                                     const target = e.target as HTMLImageElement;
                                                     target.style.display = "none";
@@ -244,26 +245,25 @@ export default function TestimonialsCarousel() {
                                                         sibling.style.display = "flex";
                                                     }
                                                 }}
-											/>
-											<div className="w-full h-full bg-white/20 rounded-full hidden items-center justify-center text-white font-semibold text-sm">
-												{testimonial.name
-													.split(" ")
-													.map((n) => n[0])
-													.join("")}
-											</div>
-										</div>
+                                            />
+                                            <div className="w-full h-full bg-white/20 rounded-full hidden items-center justify-center text-white font-semibold text-sm">
+                                                {testimonial.name
+                                                    .split(" ")
+                                                    .map((n) => n[0])
+                                                    .join("")}
+                                            </div>
+                                        </div>
 
-										<div className="min-w-0 flex-1">
-											<h4 className="text-white font-semibold text-sm truncate">
-												{testimonial.name}
-											</h4>
-											<p className="text-white/90 text-xs truncate">
-												{testimonial.role} of{" "}
-												{testimonial.company}
-											</p>
-										</div>
-									</div>
-								</div>
+                                        <div className="min-w-0 flex-1">
+                                            <h4 className="text-white font-semibold text-sm truncate">
+                                                {testimonial.name}
+                                            </h4>
+                                            <p className="text-white/90 text-xs truncate">
+                                                {testimonial.role} of {testimonial.company}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
 							</div>
 						))}
 					</div>

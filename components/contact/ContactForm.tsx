@@ -1,10 +1,12 @@
 "use client";
 import React, { useState } from "react";
-import { Mail, Phone, MapPin, Send, ChevronDown, Instagram, Facebook, Linkedin } from "lucide-react";
+import { Send } from "lucide-react";
 import { useForm } from "react-hook-form";
 import ErrorMessage from "../utility/ErrorMessage";
 import { toast } from "react-toastify";
 import emailjs from "@emailjs/browser"
+import { useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 
 type ContactForm = {
 	firstName: string;
@@ -15,7 +17,9 @@ type ContactForm = {
 	message: string;
 }
 
-export default function() {
+export default function ContactFormComponent() {
+    const searchParams = useSearchParams();
+    
     const initialValues : ContactForm = {
         firstName: "", 
         lastName: "", 
@@ -46,6 +50,28 @@ export default function() {
 		"Consulta General",
 	];
 
+    // Auto-fill form from query parameters
+    useEffect(() => {
+        const propertyParam = searchParams.get('property');
+        const messageParam = searchParams.get('message');
+
+        if (propertyParam) {
+            // Set subject to property title
+            setValue('subject', decodeURIComponent(propertyParam), {
+                shouldValidate: true,
+                shouldDirty: true
+            });
+        }
+
+        if (messageParam) {
+            // Set message from query param
+            setValue('message', decodeURIComponent(messageParam), {
+                shouldValidate: true,
+                shouldDirty: true
+            });
+        }
+    }, [searchParams, setValue]);
+
 	const onSubmit = async (formData: ContactForm) => {
         try {
             setIsSubmitting(true)
@@ -65,13 +91,13 @@ export default function() {
 
             setIsSubmitting(false)
             reset()
-            toast.success("Mensaje enviado correctamente 🍾", {
-                theme: `${localStorage.getItem("theme")}`
+            toast.success("Mensaje enviado correctamente", {
+                theme: localStorage.getItem("theme") as "light" | "dark" | "auto"
             });
         } catch (error) {
             console.error(error)
             toast.error("Error al Enviar el Formulario", {
-                theme: `${localStorage.getItem("theme")}`
+                theme: localStorage.getItem("theme") as "light" | "dark" | "auto"
             });
             setIsSubmitting(false)
             return
@@ -184,14 +210,14 @@ export default function() {
                             required: "El Teléfono es obligatorio",
                             pattern: {
                                 value: /^(\+56\s?9\d{8}|9\d{8})$/,
-                                message: "Formato de teléfono inválido. Ejemplo: +56912345678 o 912345678"
+                                message: "Formato de teléfono inválido. Ejemplo: +56912345678 o 912345678"
                             }
                         })}
                     />
                     {errors.phone && <ErrorMessage variant="inline">{errors.phone.message}</ErrorMessage>}
                 </div>
 
-                {/* Subject Dropdown */}
+                {/* Subject Field - Changed to input instead of select */}
                 <div>
                     <label
                         htmlFor="subject"
@@ -200,35 +226,23 @@ export default function() {
                         Asunto{" "}
                         <span className="text-red-500">*</span>
                     </label>
-                    <div className="relative">
-                        <select
-                            id="subject"
-                            className={`w-full px-4 py-3 rounded-xl border transition-all duration-200 bg-zinc-50 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 appearance-none cursor-pointer ${
-                                errors.subject
-                                    ? "border-red-500 focus:ring-red-500"
-                                    : "border-zinc-300 dark:border-zinc-700"
-                            }`}
-                            {...register("subject", {
-                                required:
-                                    "El título es obligatorio",
-                                minLength: {
-                                    value: 3,
-                                    message:
-                                        "El Asunto debe tener al menos 3 caracteres",
-                                },
-                            })}
-                        >
-                            <option value="">
-                                Selecciona un asunto
-                            </option>
-                            {subjectOptions.map((option) => (
-                                <option key={option} value={option}>
-                                    {option}
-                                </option>
-                            ))}
-                        </select>
-                        <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-zinc-500 pointer-events-none" />
-                    </div>
+                    <input
+                        type="text"
+                        id="subject"
+                        className={`w-full px-4 py-3 rounded-xl border transition-all duration-200 bg-zinc-50 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 ${
+                            errors.subject
+                                ? "border-red-500 focus:ring-red-500"
+                                : "border-zinc-300 dark:border-zinc-700"
+                        }`}
+                        placeholder="Asunto de tu consulta"
+                        {...register("subject", {
+                            required: "El asunto es obligatorio",
+                            minLength: {
+                                value: 3,
+                                message: "El Asunto debe tener al menos 3 caracteres",
+                            },
+                        })}
+                    />
                     {errors.subject && <ErrorMessage variant="inline">{errors.subject.message}</ErrorMessage>}
                 </div>
 
@@ -251,12 +265,10 @@ export default function() {
                         }`}
                         placeholder="Cuéntanos en qué podemos ayudarte..."
                         {...register("message", {
-                            required:
-                                "El Mensaje no puede ir vacío",
+                            required: "El Mensaje no puede ir vacío",
                             minLength: {
-                                value: 3,
-                                message:
-                                    "El Mensaje debe tener al menos 10 caracteres",
+                                value: 10,
+                                message: "El Mensaje debe tener al menos 10 caracteres",
                             },
                         })}
                     />
@@ -284,4 +296,4 @@ export default function() {
             </div>
         </form>
 	);
-};
+}
