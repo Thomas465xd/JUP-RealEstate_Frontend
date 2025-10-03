@@ -2,16 +2,16 @@
 import { getPropertyById } from "@/src/api/PropertyAPI";
 import { useQuery } from "@tanstack/react-query";
 import { redirect, useRouter } from "next/navigation";
-import Loader from "../utility/Loader";
 import { Property } from "@/src/types";
 import { Bath, Bed, Building2, Car, ChevronLeft, ChevronRight, Heart, Home, Mail, MapPin, MessageSquare, Phone, Ruler } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import LogoImage from "@/public/logo-blanco.png"; // now it's a static import
+import LogoImage from "@/public/logo-blanco.png";
 import { formatUF } from "@/src/utils/price";
 import PropertyDetailsSkeleton from "../skeletons/PropertyDetailsSkeleton";
 import { copyToClipboard } from "@/src/utils/copy";
+import { sanitizeQuillHtml } from "@/src/utils/sanitize";
 
 type PropertyDetailsProps = {
 	propertyId: string;
@@ -69,6 +69,19 @@ const getStatusLabel = (status: Property["status"]): string => {
 	return status;
 };
 
+// Convert plain text to markdown-friendly format
+const formatDescription = (text: string): string => {
+	return text
+		// Convert lines that end with : to headers
+		.replace(/^(.+):$/gm, '### $1')
+		// Convert lines that start with capital letters followed by details
+		.replace(/^([A-Z][A-ZÁÉÍÓÚÑ\s]+):\s*(.+)$/gm, '**$1:** $2')
+		// Convert multiple line breaks to proper spacing
+		.replace(/\n{3,}/g, '\n\n')
+		// Preserve single line breaks
+		.replace(/\n/g, '  \n');
+};
+
 export default function PropertyDetails({ propertyId }: PropertyDetailsProps) {
     const router = useRouter();
 
@@ -98,6 +111,10 @@ export default function PropertyDetails({ propertyId }: PropertyDetailsProps) {
             prev === 0 ? property.imageUrls.length - 1 : prev - 1
         );
     };
+
+    console.log(property.description)
+    const cleanHtml = sanitizeQuillHtml(property.description);
+console.log('HTML sanitizado:', cleanHtml);
 
 	const contactMessage = `Hola, me interesa la propiedad "${property.title}" ubicada en ${property.address}, ${property.cityArea}. ¿Podrían darme más información?`;
 
@@ -218,16 +235,16 @@ export default function PropertyDetails({ propertyId }: PropertyDetailsProps) {
 								))}
 						</div>
 
-						{/* Description */}
-						<div className="p-6">
-							<h3 className="text-xl font-bold text-gray-900 dark:text-white">
-								Descripción
-							</h3>
-                            <div className="border border-zinc-600 dark:border-zinc-600 mb-4 rounded max-w-42"></div>
-							<p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-								{property.description}
-							</p>
-						</div>
+						{/* Description with Markdown support */}
+                        <div className="p-6">
+                            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
+                                Descripción
+                            </h3>
+                            <div 
+                                className="description-content text-gray-700 dark:text-gray-300 leading-relaxed"
+                                dangerouslySetInnerHTML={{ __html: sanitizeQuillHtml(property.description) }}
+                            />
+                        </div>
 					</div>
 
 					{/* Property info - Right side */}
@@ -356,8 +373,8 @@ export default function PropertyDetails({ propertyId }: PropertyDetailsProps) {
                                 <Image
                                     src={LogoImage}
                                     alt="Company Logo"
-                                    width={160}       // base size for large screens
-                                    height={160}      // keep aspect ratio
+                                    width={160}
+                                    height={160}
                                     priority
                                     className="object-contain h-auto w-auto"
                                     placeholder="empty"

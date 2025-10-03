@@ -31,6 +31,7 @@ import { formatUF, formatUFtoCLP } from "@/src/utils/price";
 import { formatDate } from "@/src/utils/date";
 import { getUF } from "@/lib/uf";
 import Dialog from "../../utility/Dialog";
+import { sanitizeQuillHtml } from "@/src/utils/sanitize";
 
 // Property type icons mapping
 const getPropertyIcon = (type: Property["type"]) => {
@@ -364,14 +365,17 @@ export default function PropertyTable({ ufValue } : PropertyTableProps) {
 															</div>
 														</div>
 
-														<div>
-															<span className="text-xs text-zinc-500 dark:text-zinc-400">
-																Descripción:
-															</span>
-															<p className="text-zinc-800 dark:text-zinc-200 whitespace-normal">
-																{property.description || "Sin descripción disponible"}
-															</p>
-														</div>
+                                                        <div>
+                                                            <span className="text-xs text-zinc-500 dark:text-zinc-400">
+                                                                Descripción:
+                                                            </span>
+                                                            <div 
+                                                                className="description-content-preview text-zinc-800 dark:text-zinc-200 line-clamp-4"
+                                                                dangerouslySetInnerHTML={{ 
+                                                                    __html: sanitizeQuillHtml(property.description || "Sin descripción disponible") 
+                                                                }}
+                                                            />
+                                                        </div>
 
 														<div>
 															<span className="text-xs text-zinc-500 dark:text-zinc-400">

@@ -25,6 +25,7 @@ import { CldUploadWidget } from 'next-cloudinary';
 import Link from "next/link";
 import Loader from "../../utility/Loader";
 import { useRouter } from "next/navigation";
+import RichTextEditor from "./RichTextEditor";
 
 const propertyTypes = [
 	{ value: "casa", label: "Casa" },
@@ -193,6 +194,20 @@ export default function EditPropertyForm({ propertyId } : EditPropertyFormProps)
             validate: (value) => {
                 if (!value || value.length < 4) {
                     return 'Se requieren al menos 4 imágenes';
+                }
+                return true;
+            }
+        });
+    }, [register]);
+
+    // Después del useEffect de imageUrls
+    React.useEffect(() => {
+        register('description', {
+            required: 'La descripción es obligatoria',
+            validate: (value) => {
+                const textContent = value.replace(/<[^>]*>/g, '').trim();
+                if (textContent.length < 10) {
+                    return 'La descripción debe tener al menos 10 caracteres';
                 }
                 return true;
             }
@@ -397,26 +412,23 @@ export default function EditPropertyForm({ propertyId } : EditPropertyFormProps)
                                     {errors.operation && <ErrorMessage variant="inline">{errors.operation.message}</ErrorMessage>}
                                 </div>
 
-								<div className="md:col-span-2">
-									<label className="block text-sm font-medium mb-2">
-										Descripción *
-									</label>
-									<textarea
-										{...register("description", {
-											required:
-												"La descripción es obligatoria",
-											minLength: {
-												value: 10,
-												message:
-													"La descripción debe tener al menos 10 caracteres",
-											},
-										})}
-										rows={4}
-										placeholder="Describe las características principales de la propiedad..."
-										className="w-full px-4 py-3 rounded-lg border border-zinc-300 dark:border-zinc-600 bg-white dark:bg-zinc-700 text-zinc-900 dark:text-white placeholder-zinc-500 dark:placeholder-zinc-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none resize-none transition-colors"
-									/>
+                                <div className="md:col-span-2">
+                                    <label className="block text-sm font-medium mb-2">
+                                        Descripción *
+                                    </label>
+                                    <RichTextEditor
+                                        value={watch("description")}
+                                        onChange={(value) => {
+                                            // Validar que tenga contenido real (no solo HTML vacío)
+                                            const textContent = value.replace(/<[^>]*>/g, '').trim();
+                                            setValue("description", value, { 
+                                                shouldValidate: true,
+                                                shouldDirty: true 
+                                            });
+                                        }}
+                                    />
                                     {errors.description && <ErrorMessage variant="inline">{errors.description.message}</ErrorMessage>}
-								</div>
+                                </div>
 							</div>
 						</div>
 
