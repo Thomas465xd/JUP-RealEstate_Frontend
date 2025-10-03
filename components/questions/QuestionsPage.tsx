@@ -31,9 +31,9 @@ export default function QuestionsPage() {
             <h1 className="text-3xl md:text-4xl font-semibold mt-2">
                 Preguntas Frecuentes📋
             </h1>
-            <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-4 max-w-sm">
+            {/* <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-4 max-w-sm">
                 Resolvemos las dudas más comunes para darte confianza y ayudarte a encontrar la propiedad ideal de forma más simple y segura.
-            </p>
+            </p> */}
 
             <div className="max-w-xl w-full mt-6 flex flex-col gap-4 items-start text-left">
                 {faqsData.map((faq, index) => (

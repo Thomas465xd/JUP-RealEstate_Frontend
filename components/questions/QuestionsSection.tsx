@@ -36,9 +36,9 @@ export default function QuestionsSection() {
             <div>
                 <p className="text-blue-600 dark:text-blue-500 text-sm font-medium">FAQ's</p>
                 <h1 className="text-3xl font-semibold">¿Aún tienes Preguntas?</h1>
-                <p className="text-sm text-slate-500 mt-2 pb-4">
+                {/* <p className="text-sm text-slate-500 mt-2 pb-4">
                     Resolvemos las dudas más comunes para darte confianza y ayudarte a encontrar la propiedad ideal de forma más simple y segura.
-                </p>
+                </p> */}
                 {faqs.map((faq, index) => (
                     <div className="border-b border-slate-200 py-4 cursor-pointer" key={index} onClick={() => setOpenIndex(openIndex === index ? null : index)}>
                         <div className="flex items-center justify-between">

@@ -2,18 +2,12 @@
 import React from "react";
 import {
 	ArrowRight,
-	Award,
 	Users,
-	MapPin,
-	TrendingUp,
-	Heart,
 	Target,
-	Phone,
 	Quote,
 	HeartHandshake,
 	Star,
 	House,
-    Handshake,
 } from "lucide-react";
 import FounderCard from "./FounderCard";
 import Link from "next/link";
@@ -27,7 +21,7 @@ const founders = [
 		role: "Fundadora y Broker",
 		image: BlankUser,
 		description:
-			"Con más de 20 años en la industria de la hospitalidad, he desarrollado un profundo conocimiento de la gestión de experiencias memorables y atención a la calidad. Como broker, combino mi trayectoria en atención personalizada y gestión de relaciones, con una estrategia enfocada en facilitar la adquisición de propiedades, manteniendo una relación cercana y confiable, y aportando valor a largo plazo a nuestros clientes.",
+			"Cuenta con 20 años de trayectoria en el sector de servicios con un enfoque basado en la atención de calidad y cercanía con sus clientes, atributos que la convierten en una destacada corredora de propiedades. Su conocimiento profundo del mercado y su capacidad para entender las necesidades y objetivos de cada cliente facilitan procesos de compra y venta con seguridad y transparencia.  Siempre enfocada en ofrecer soluciones creativas, logra cerrar negocios de forma efectiva. Su compromiso y atención cercana la posicionan como una profesional confiable.",
 		experience: "20+ años de experiencia",
 		specialties: [
 			"Desarrollo Comercial",
@@ -42,7 +36,7 @@ const founders = [
 		role: "Fundador y Director de Ventas",
 		image: FounderOne,
 		description:
-			"Con una sólida trayectoria de más de 30 años como gerente de ventas en dos de las principales isapres chilenas, he liderado equipos, diseñado estrategias de crecimiento y fortalecimiento de la relación con clientes y aliados. Combino mi expertise en ventas y relaciones con un enfoque cercano y profesional, comprometido en brindar asesoría de calidad y generar valor a largo plazo para nuestros clientes.",
+			"Con una sólida trayectoria de más de 30 años como ejecutivo de las áreas comerciales de dos de las principales empresas de salud en Chile, ha liderado equipos, diseñado estrategias de crecimiento y fortalecimiento de la relación con clientes y aliados.  Combina su expertise comercial, con un enfoque cercano y profesional comprometido en brindar asesoría de calidad generando valor a largo plazo para los clientes.",
 		experience: "30+ años de experiencia",
 		specialties: [
 			"Propiedades Premium",
@@ -106,12 +100,12 @@ export default function AboutUs() {
 
 				<div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="text-center mb-16">
-						<div className="inline-flex items-center gap-2 bg-zinc-100 dark:bg-zinc-800 rounded-full px-4 py-2 mb-6">
+						{/* <div className="inline-flex items-center gap-2 bg-zinc-100 dark:bg-zinc-800 rounded-full px-4 py-2 mb-6">
 							<Users className="w-4 h-4 text-blue-500" />
 							<span className="text-sm font-bold text-zinc-600 dark:text-zinc-400 uppercase tracking-wide">
 								Nuestra Historia
 							</span>
-						</div>
+						</div> */}
 
 						{/* <h1 className="text-5xl md:text-6xl font-bold text-zinc-900 dark:text-white mb-6 leading-tight">
 							Conoce al equipo detrás de{" "}
@@ -121,7 +115,7 @@ export default function AboutUs() {
 						</h1> */}
 
                         <h1 className="text-5xl md:text-6xl font-bold text-zinc-900 dark:text-white mb-6 leading-tight">
-							Sobre Nosotros{" "}
+							Nuestra Historia{" "}
 							<span className="text-blue-600 dark:text-blue-400">
 								
 							</span>
@@ -178,11 +172,11 @@ export default function AboutUs() {
 							</span>
 						</h2>
 
-						<p className="text-lg text-zinc-600 dark:text-zinc-300 max-w-2xl mx-auto">
+						{/* <p className="text-lg text-zinc-600 dark:text-zinc-300 max-w-2xl mx-auto">
 							Conoce a los profesionales apasionados que han
 							dedicado sus carreras a revolucionar la experiencia
 							inmobiliaria en Chile.
-						</p>
+						</p> */}
 					</div>
 
 					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
@@ -263,12 +257,12 @@ export default function AboutUs() {
 						</div>
 
 						<div>
-							<div className="inline-flex items-center gap-2 bg-pink-100 dark:bg-pink-900/30 rounded-full px-4 py-2 mb-6">
+							{/* <div className="inline-flex items-center gap-2 bg-pink-100 dark:bg-pink-900/30 rounded-full px-4 py-2 mb-6">
 								<Handshake className="w-4 h-4 text-pink-500 dark:text-pink-400" />
 								<span className="text-sm font-bold text-pink-600 dark:text-pink-400 uppercase tracking-wide">
 									Nuestros Valores
 								</span>
-							</div>
+							</div> */}
 
 							<h2 className="text-4xl md:text-5xl font-bold text-zinc-900 dark:text-white mb-6">
 								Lo que nos{" "}
@@ -303,12 +297,10 @@ export default function AboutUs() {
 
 								<div className="bg-white dark:bg-zinc-800 rounded-2xl p-6 shadow-lg border border-zinc-200 dark:border-zinc-700">
 									<h4 className="text-xl font-bold text-zinc-900 dark:text-white mb-3 flex-align">
-										<Star /> Prolijidad a cada paso
+										<Star /> Claridad
 									</h4>
 									<p className="text-zinc-600 dark:text-zinc-300">
-										No nos conformamos con lo suficiente.
-										Buscamos la excelencia en cada detalle,
-										por pequeño que parezca.
+										Comunicación sencilla y transparente para decisiones seguras y sin dudas.
 									</p>
 								</div>
 							</div>
@@ -384,7 +376,7 @@ export default function AboutUs() {
                             href="/home/contact" 
                             className="group bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-blue-50 hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center gap-3"
                         >
-							Contactar Ahora
+							Contáctanos
 							<ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
 						</Link>
 
