@@ -252,7 +252,8 @@ export default function PropertyDetails({ propertyId, ufValue }: PropertyDetails
 						</div>
 
 						<h1 className="text-2xl font-bold mb-2">
-							{capitalizeFirstLetter(property.title)}
+							{/*capitalizeFirstLetter(property.title)*/}
+                            {property.title}
 						</h1>
 
 						{/* Location */}
