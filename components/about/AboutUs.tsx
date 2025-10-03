@@ -13,6 +13,7 @@ import {
 	HeartHandshake,
 	Star,
 	House,
+    Handshake,
 } from "lucide-react";
 import FounderCard from "./FounderCard";
 import Link from "next/link";
@@ -33,6 +34,8 @@ const founders = [
 			"Fotografía Inmobiliaria",
 			"Branding",
 		],
+        phone: "+56 9 8219 2688",
+        email: "contacto@jup.cl"
 	},
 	{
 		name: "Francisco Fernández",
@@ -46,6 +49,8 @@ const founders = [
 			"Negociación",
 			"Análisis de Mercado",
 		],
+        phone: "+56 9 8219 2688", 
+        email: "contacto@jup.cl"
 	},
 	{
 		name: "Iñigo Del Campo",
@@ -59,34 +64,36 @@ const founders = [
 			"Infraestructuras Resilientes",
 			"Administración de sitios",
 		],
+        email: "tomas.computer.guy@gmail.com", 
+        phone: "+56 9 9212 8901"
 	},
 ];
 
 const stats = [
-	{
-		icon: Award,
-		value: "20+",
-		label: "Años de Experiencia",
-		color: "text-blue-600 dark:text-blue-400",
-	},
-	{
-		icon: Users,
-		value: "100+",
-		label: "Clientes Satisfechos",
-		color: "text-pink-600 dark:text-pink-400",
-	},
-	{
-		icon: MapPin,
-		value: "30+",
-		label: "Propiedades Vendidas",
-		color: "text-purple-600 dark:text-purple-400",
-	},
-	{
-		icon: TrendingUp,
-		value: "90%",
-		label: "Tasa de Éxito",
-		color: "text-orange-600 dark:text-orange-400",
-	},
+	// {
+	// 	icon: Award,
+	// 	value: "3+",
+	// 	label: "Años de Experiencia",
+	// 	color: "text-blue-600 dark:text-blue-400",
+	// },
+	// {
+	// 	icon: Users,
+	// 	value: "100+",
+	// 	label: "Clientes Satisfechos",
+	// 	color: "text-pink-600 dark:text-pink-400",
+	// },
+	// {
+	// 	icon: MapPin,
+	// 	value: "30+",
+	// 	label: "Propiedades Vendidas",
+	// 	color: "text-purple-600 dark:text-purple-400",
+	// },
+	// {
+	// 	icon: TrendingUp,
+	// 	value: "90%",
+	// 	label: "Tasa de Éxito",
+	// 	color: "text-orange-600 dark:text-orange-400",
+	// },
 ];
 
 export default function AboutUs() {
@@ -100,29 +107,36 @@ export default function AboutUs() {
 				<div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="text-center mb-16">
 						<div className="inline-flex items-center gap-2 bg-zinc-100 dark:bg-zinc-800 rounded-full px-4 py-2 mb-6">
-							<Heart className="w-4 h-4 text-blue-500" />
+							<Users className="w-4 h-4 text-blue-500" />
 							<span className="text-sm font-bold text-zinc-600 dark:text-zinc-400 uppercase tracking-wide">
 								Nuestra Historia
 							</span>
 						</div>
 
-						<h1 className="text-5xl md:text-6xl font-bold text-zinc-900 dark:text-white mb-6 leading-tight">
+						{/* <h1 className="text-5xl md:text-6xl font-bold text-zinc-900 dark:text-white mb-6 leading-tight">
 							Conoce al equipo detrás de{" "}
 							<span className="text-blue-600 dark:text-blue-400">
 								tu nuevo hogar
 							</span>
+						</h1> */}
+
+                        <h1 className="text-5xl md:text-6xl font-bold text-zinc-900 dark:text-white mb-6 leading-tight">
+							Sobre Nosotros{" "}
+							<span className="text-blue-600 dark:text-blue-400">
+								
+							</span>
 						</h1>
 
-						<p className="text-xl text-zinc-600 dark:text-zinc-300 max-w-3xl mx-auto leading-relaxed">
+						{/* <p className="text-xl text-zinc-600 dark:text-zinc-300 max-w-3xl mx-auto leading-relaxed">
 							Somos constructores de futuros y compañeros de
 							viaje en una de las decisiones más importantes de tu
 							vida.
-						</p>
+						</p> */}
 					</div>
 
 					{/* Stats Grid */}
 					<div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-						{stats.map((stat, index) => (
+						{/* {stats.map((stat, index) => (
 							<div
 								key={index}
 								className="group bg-white dark:bg-zinc-800 rounded-2xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300 border border-zinc-200 dark:border-zinc-700"
@@ -141,7 +155,7 @@ export default function AboutUs() {
 									{stat.label}
 								</div>
 							</div>
-						))}
+						))} */}
 					</div>
 				</div>
 			</section>
@@ -196,7 +210,7 @@ export default function AboutUs() {
 										Nuestra Misión
 									</h3>
 									<p className="text-lg text-zinc-600 dark:text-zinc-300 leading-relaxed">
-                                        Asesorarte en cada paso de la compra, venta o arriendo de tu propiedad, resolviendo dudas y generando confianza para ofrecer alternativas que permitan decisiones informadas. Entregamos un servicio prime y dedicado a cada cliente y propiedad.
+                                        Te acompañamos en cada etapa de la compra, venta o arriendo de tu propiedad, resolviendo dudas y brindando confianza. Nuestro objetivo es ofrecerte alternativas claras y decisiones informadas, con un servicio personalizado, dedicado y de primera calidad para cada cliente y propiedad.
 									</p>
 								</div>
 
@@ -250,7 +264,7 @@ export default function AboutUs() {
 
 						<div>
 							<div className="inline-flex items-center gap-2 bg-pink-100 dark:bg-pink-900/30 rounded-full px-4 py-2 mb-6">
-								<Heart className="w-4 h-4 text-pink-500 dark:text-pink-400" />
+								<Handshake className="w-4 h-4 text-pink-500 dark:text-pink-400" />
 								<span className="text-sm font-bold text-pink-600 dark:text-pink-400 uppercase tracking-wide">
 									Nuestros Valores
 								</span>
@@ -271,24 +285,19 @@ export default function AboutUs() {
 							<div className="space-y-6">
 								<div className="bg-white dark:bg-zinc-800 rounded-2xl p-6 shadow-lg border border-zinc-200 dark:border-zinc-700">
 									<h4 className="text-xl font-bold text-zinc-900 dark:text-white mb-3 flex-align">
-										<House /> Pasión por los Hogares
+										<House /> Oportunidad
 									</h4>
 									<p className="text-zinc-600 dark:text-zinc-300">
-										Entendemos que no vendemos propiedades,
-										creamos hogares donde florecerán
-										historias familiares y se construirán
-										futuros.
+										Aprovechamos cada momento para maximizar tus beneficios y sueños.
 									</p>
 								</div>
 
 								<div className="bg-white dark:bg-zinc-800 rounded-2xl p-6 shadow-lg border border-zinc-200 dark:border-zinc-700">
 									<h4 className="text-xl font-bold text-zinc-900 dark:text-white mb-3 flex-align">
-										<HeartHandshake /> Confianza Mutua
+										<HeartHandshake /> Empatía
 									</h4>
 									<p className="text-zinc-600 dark:text-zinc-300">
-										La confianza es el fundamento de toda
-										relación exitosa. La ganamos día a día
-										con acciones, no con promesas.
+										Entendemos y nos ponemos en tu lugar para ofrecerte soluciones hechas a tu medida.
 									</p>
 								</div>
 
@@ -315,14 +324,16 @@ export default function AboutUs() {
 				<div className="absolute bottom-0 left-0 w-64 h-64 bg-purple-300/10 rounded-full blur-2xl"></div>
 
 				<div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-					<div className="text-center mb-12">
-						<h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-							¿Listo para encontrar tu{" "}
-							<span className="text-blue-100">
-								hogar perfecto
-							</span>
-							?
-						</h2>
+                    <div className="text-center mb-12">
+                        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                            ¿Listo para encontrar tu{" "}
+                            <span className="text-blue-100">
+                                hogar perfecto
+                            </span>
+                            ?
+                        </h2>
+                    </div>
+					{/* <div className="text-center mb-12">
 						<p className="text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
 							No esperes más para dar el paso más importante.
 							Nuestro equipo está aquí para acompañarte en cada
@@ -366,7 +377,7 @@ export default function AboutUs() {
 								</p>
 							</div>
 						</div>
-					</div>
+					</div> */}
 
 					<div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
 						<Link

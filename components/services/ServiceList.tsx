@@ -11,14 +11,14 @@ export default function Services({ title = "Nuestros Servicios", darker = true }
     const services = [
         {
             icon: <Lightbulb size={28} />,
-            title: "COMPRA, VENTAS Y ARRIENDOS",
+            title: "COMPRA, VENTA Y ARRIENDO",
             description:
             "Te acompañamos en cada paso del proceso de compra, venta o arriendo, entregando asesoría profesional, atención cercana y soluciones a medida. Ya sea que busques tu hogar ideal o quieras maximizar tu inversión, estamos aquí para hacerlo realidad de forma sencilla, confiable y segura.",
             buttonText: "SOLICITAR SERVICIO",
         },
         {
             icon: <Bell size={28} />,
-            title: "SERVICIO LEGAL E INVERSIONES",
+            title: "ASESORÍA LEGAL",
             description:
             "Te brindamos asesoría legal completa y confiable en cada etapa de tu proyecto. Revisamos y formalizamos todos los documentos necesarios, garantizando transparencia, seguridad y cumplimiento normativo. Nuestro objetivo es que tomes decisiones informadas y tranquilas, sin preocupaciones ni riesgos innecesarios.",
             buttonText: "SOLICITAR SERVICIO",

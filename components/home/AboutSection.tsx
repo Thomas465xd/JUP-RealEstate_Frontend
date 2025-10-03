@@ -170,10 +170,10 @@ export default function AboutSection() {
 								<div className="grid grid-cols-3 gap-4 text-center">
 									<div>
 										<div className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-1">
-											12+
+											30+
 										</div>
 										<div className="text-xs text-zinc-600 dark:text-zinc-400 font-medium">
-											Años
+											Propiedades
 										</div>
 									</div>
 									<div>

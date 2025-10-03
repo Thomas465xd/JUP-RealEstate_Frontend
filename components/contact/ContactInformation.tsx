@@ -9,8 +9,7 @@ export default function ContactInformation() {
                     Ponte en contacto
                 </h2>
                 <p className="text-zinc-300 text-lg leading-relaxed">
-                    ¿Tienes dudas o buscas la propiedad ideal? 
-                    contáctanos y juntos encontraremos la <strong>mejor solución</strong> {" "}
+                    Contáctanos y juntos encontraremos la <strong>mejor solución</strong> {" "}
                     para tus necesidades inmobiliarias. 
                     <br />
                     Tu confianza es <strong>nuestra prioridad</strong>, 
@@ -67,7 +66,7 @@ export default function ContactInformation() {
                     Horarios de Atención
                 </h4>
                 <div className="space-y-1 text-sm text-zinc-300">
-                    <p>Lunes a viernes 09.00 AM – 07:00 PM </p>
+                    <p>Lunes a Viernes 09.00 AM – 07:00 PM </p>
                     <p>Sábados y Domingos 10:00 AM - 1:00  PM</p>
                 </div>
             </div>

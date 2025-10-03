@@ -100,9 +100,9 @@ export default function Hero({ includeImageSection = false, shortHero = false, s
                         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 drop-shadow-lg">
                             Bienvenido a JUP Propiedades
                         </h1>
-                        <p className="text-lg sm:text-xl md:text-2xl font-light drop-shadow-md">
+                        {/* <p className="text-lg sm:text-xl md:text-2xl font-light drop-shadow-md">
                             Vuelve tus sueños realidad
-                        </p>
+                        </p> */}
                     </div>
 
                     {/* Navigation Arrows */}
