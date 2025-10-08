@@ -571,7 +571,7 @@ export default function CreatePropertyForm() {
 
 							<p className="text-sm mb-4 text-zinc-600 dark:text-zinc-400">
 								Sube al menos 4 imágenes de alta calidad de la
-								propiedad
+								propiedad. Si quieres subir mas de 16 imagenes, subelas en paquetes de 8 o menos.
 							</p>
 
 							{/* Upload Button */}
@@ -580,7 +580,7 @@ export default function CreatePropertyForm() {
                                     uploadPreset="next_jup-propiedades" // Replace with your Cloudinary upload preset
                                     options={{
                                     multiple: true,
-                                        maxFiles: 10,
+                                        maxFiles: 30,
                                         resourceType: "image",
                                         folder: "properties", // Optional: organize images in folders
                                     }}

@@ -668,7 +668,7 @@ export default function EditPropertyForm({ propertyId } : EditPropertyFormProps)
                                     uploadPreset="next_jup-propiedades"
                                     options={{
                                         multiple: true,
-                                        maxFiles: 10,
+                                        maxFiles: 30,
                                         resourceType: "image",
                                         folder: "properties",
                                     }}
