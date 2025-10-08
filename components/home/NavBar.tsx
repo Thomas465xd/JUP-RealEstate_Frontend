@@ -17,7 +17,7 @@ export default function NavBar({ mobile = false }: NavBarProps) {
 		{ href: "/home/properties", label: "Propiedades" },
         { href: "/home/categories", label: "Categorías"},
 		{ href: "/home/services", label: "Servicios" },
-		{ href: "/home/about", label: "Sobre Nosotros" },
+		{ href: "/home/about", label: "Quienes Somos" },
 		{ href: "/home/questions", label: "Preguntas Frecuentes" },
 		{ href: "/home/contact", label: "Contacto" },
 	];

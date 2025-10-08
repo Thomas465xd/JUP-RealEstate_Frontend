@@ -203,7 +203,7 @@ export default function Hero({ includeImageSection = false, shortHero = false, s
             )}
 
             {searchBar && (
-                <SearchBar />
+                <SearchBar ufValue={3948565} />
             )}
         </>
     )

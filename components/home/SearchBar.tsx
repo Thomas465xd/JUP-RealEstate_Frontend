@@ -28,11 +28,15 @@ interface SearchFormData {
     searchCode: string;
 }
 
-export default function SearchBar() {
+type SearchBarProps = {
+    ufValue: number;
+}
+
+export default function SearchBar({ ufValue } : SearchBarProps) {
     const router = useRouter();
     const searchParams = useSearchParams();
     
-	const { register, handleSubmit, watch, setValue, reset } = useForm<SearchFormData>({
+	const { register, handleSubmit, watch, setValue } = useForm<SearchFormData>({
 		defaultValues: {
 			operation: "En Venta",
 			propertyType: "",
@@ -41,7 +45,7 @@ export default function SearchBar() {
 			currency: "pesos",
 			minPrice: "",
 			maxPrice: "",
-			condo: "true", // for condo parameter
+			condo: "true",
 			searchCode: "",
             sortBy: "",
             sortOrder: ""
@@ -64,14 +68,23 @@ export default function SearchBar() {
         if (currentParams.get('sortOrder')) setValue('sortOrder', currentParams.get('sortOrder')!);
     }, [searchParams, setValue]);
 
+    const convertCLPtoUF = (clpAmount: string): string => {
+        if (!clpAmount || !ufValue || ufValue === 0) return '';
+        const clpValue = parseFloat(clpAmount);
+        if (isNaN(clpValue)) return '';
+        const ufAmount = clpValue / ufValue;
+        return Math.round(ufAmount).toString();
+    };
+
+    console.log(ufValue)
+
     const buildSearchUrl = (data: SearchFormData, isCodeSearch: boolean = false) => {
         const params = new URLSearchParams();
-        params.set('page', '1'); // Reset to first page on new search
+        params.set('page', '1');
 
         if (isCodeSearch && data.searchCode.trim()) {
             params.set('searchCode', data.searchCode.trim());
         } else {
-            // Map form data to your API parameters
             if (data.operation && data.operation !== "En Venta") {
                 params.set('operation', data.operation);
             }
@@ -88,12 +101,23 @@ export default function SearchBar() {
                 params.set('cityArea', data.cityArea);
             }
             
+            // Convert prices to UF if currency is pesos
             if (data.minPrice) {
-                params.set('minPrice', data.minPrice);
+                const priceInUF = data.currency === 'pesos' 
+                    ? convertCLPtoUF(data.minPrice) 
+                    : data.minPrice;
+                if (priceInUF) {
+                    params.set('minPrice', priceInUF);
+                }
             }
             
             if (data.maxPrice) {
-                params.set('maxPrice', data.maxPrice);
+                const priceInUF = data.currency === 'pesos' 
+                    ? convertCLPtoUF(data.maxPrice) 
+                    : data.maxPrice;
+                if (priceInUF) {
+                    params.set('maxPrice', priceInUF);
+                }
             }
             
             if (data.condo) {
@@ -117,297 +141,259 @@ export default function SearchBar() {
         router.push(searchUrl);
     };
 
-    // TODO: Set search By Code endpoint
-	const onSearchByCode = () => {
+	const onSearchByCode = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
 		const searchCode = watch("searchCode");
         if (!searchCode.trim()) {
             return;
         }
         
-        const data = { ...watch(), searchCode };
-        const searchUrl = buildSearchUrl(data, true);
+        const data = watch();
+        const searchUrl = buildSearchUrl({ ...data, searchCode }, true);
         router.push(searchUrl);
 	};
 
-    // Handle sorting option change
     const handleSortChange = (sortBy: string, sortOrder: string) => {
         setValue('sortBy', sortBy);
         setValue('sortOrder', sortOrder);
     };
 
-    const clearSorting = () => {
+    const clearSorting = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
         setValue('sortBy', '');
         setValue('sortOrder', '');
     };
+
+    const handleSearchClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
+        handleSubmit(onSubmit)();
+    };
     
 	return (
-		<section
-			className={`transition-colors duration-300`}
-		>
-                {/* Search Container */}
-                <div className="w-full">
-                    <div className="bg-white/95 dark:bg-zinc-800/95 backdrop-blur-sm shadow-xl p-6 md:p-8">
-                        {/* Main Search Section */}
-                        <div className="space-y-6">
-                            {/* First Row - Operation, Property Type, Region, CityArea */}
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                                <div className="space-y-2">
-                                    <label className="text-sm font-medium text-gray-700 dark:text-gray-300 flex items-center gap-2">
-                                        <Home size={16} />
-                                        Operación
-                                    </label>
-                                    <select
-                                        {...register("operation")}
-                                        className="input"
-                                    >
-                                        <option value="En Venta">
-                                            En Venta
-                                        </option>
-                                        <option value="En Arriendo">
-                                            En Arriendo
-                                        </option>
-                                    </select>
-                                </div>
-
-                                <div className="space-y-2">
-                                    <label className="text-sm font-medium text-gray-700 dark:text-gray-300 flex items-center gap-2">
-                                        <Grid size={16} />
-                                        Tipo Propiedad
-                                    </label>
-                                    <select
-                                        {...register("propertyType")}
-                                        className="input"
-                                    >
-                                        <option value="">
-                                            Todos los tipos
-                                        </option>
-                                        <option value="casa">Casa</option>
-                                        <option value="departamento">
-                                            Departamento
-                                        </option>
-                                        <option value="oficina">
-                                            Oficina
-                                        </option>
-                                        <option value="local">
-                                            Local Comercial
-                                        </option>
-                                        <option value="terreno">
-                                            Terreno
-                                        </option>
-                                    </select>
-                                </div>
-
-                                <div className="space-y-2">
-                                    <label className="text-sm font-medium text-gray-700 dark:text-gray-300 flex items-center gap-2">
-                                        <MapPin size={16} />
-                                        Región Metropolitana
-                                    </label>
-                                    <select
-                                        {...register("region")}
-                                        className="input"
-                                    >
-                                        <option value="">
-                                            Seleccionar región
-                                        </option>
-                                        <option value="metropolitana">
-                                            Región Metropolitana
-                                        </option>
-                                        <option value="valparaiso">
-                                            Valparaíso
-                                        </option>
-                                        <option value="biobio">
-                                            Biobío
-                                        </option>
-                                    </select>
-                                </div>
-
-                                <div className="space-y-2">
-                                    <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                                        Comuna
-                                    </label>
-                                    <select
-                                        {...register("cityArea")}
-                                        className="input"
-                                    >
-                                        <option value="">
-                                            Seleccionar comuna
-                                        </option>
-                                        <option value="Santiago">
-                                            Santiago
-                                        </option>
-                                        <option value="Providencia">
-                                            Providencia
-                                        </option>
-                                        <option value="Las Condes">
-                                            Las Condes
-                                        </option>
-                                        <option value="Vitacura">
-                                            Vitacura
-                                        </option>
-                                        <option value="Ñunoa">
-                                            Ñuñoa
-                                        </option>
-                                    </select>
-                                </div>
+		<section className="transition-colors duration-300">
+            <div className="w-full">
+                <div className="bg-white/95 dark:bg-zinc-800/95 backdrop-blur-sm shadow-xl p-6 md:p-8">
+                    <div className="space-y-6">
+                        {/* First Row - Operation, Property Type, Region, CityArea */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                            <div className="space-y-2">
+                                <label className="text-sm font-medium text-gray-700 dark:text-gray-300 flex items-center gap-2">
+                                    <Home size={16} />
+                                    Operación
+                                </label>
+                                <select
+                                    {...register("operation")}
+                                    className="input"
+                                >
+                                    <option value="En Venta">En Venta</option>
+                                    <option value="En Arriendo">En Arriendo</option>
+                                </select>
                             </div>
 
-                            {/* Second Row - Currency, Price Range, Condo */}
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                                <div className="space-y-2">
-                                    <label className="text-sm font-medium text-gray-700 dark:text-gray-300 flex items-center gap-2">
-                                        <DollarSign size={16} />
-                                        Moneda
-                                    </label>
-                                    <select
-                                        {...register("currency")}
-                                        className="input"
-                                    >
-                                        {/*<option value="pesos">Pesos</option>*/}
-                                        <option value="uf">UF</option>
-                                        {/*<option value="usd">USD</option>*/}
-                                    </select>
-                                </div>
-
-                                <div className="space-y-2">
-                                    <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                                        Precio Mínimo
-                                    </label>
-                                    <input
-                                        {...register("minPrice")}
-                                        type="number"
-                                        placeholder="Precio mínimo"
-                                        className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-zinc-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent transition-all duration-200"
-                                    />
-                                </div>
-
-                                <div className="space-y-2">
-                                    <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                                        Precio Máximo
-                                    </label>
-                                    <input
-                                        {...register("maxPrice")}
-                                        type="number"
-                                        placeholder="Precio máximo"
-                                        className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-zinc-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent transition-all duration-200"
-                                    />
-                                </div>
-
-                                <div className="space-y-2">
-                                    <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                                        Condominio
-                                    </label>
-                                    <select
-                                        {...register("condo")}
-                                        className="input"
-                                    >
-                                        <option value="true">
-                                            Si
-                                        </option>
-                                        <option value="false">
-                                            No
-                                        </option>
-                                    </select>
-                                </div>
+                            <div className="space-y-2">
+                                <label className="text-sm font-medium text-gray-700 dark:text-gray-300 flex items-center gap-2">
+                                    <Grid size={16} />
+                                    Tipo Propiedad
+                                </label>
+                                <select
+                                    {...register("propertyType")}
+                                    className="input"
+                                >
+                                    <option value="">Todos los tipos</option>
+                                    <option value="casa">Casa</option>
+                                    <option value="departamento">Departamento</option>
+                                    <option value="oficina">Oficina</option>
+                                    <option value="local">Local Comercial</option>
+                                    <option value="terreno">Terreno</option>
+                                </select>
                             </div>
 
-                            {/* Third Row - Price Sorting */}
-                            <div className="flex-between border-t border-gray-200 dark:border-gray-600 pt-6">
-                                <div className="space-y-3">
-                                    <label className="text-sm font-medium text-gray-700 dark:text-gray-300 flex items-center gap-2">
-                                        <ArrowUpDown size={16} />
-                                        Ordenar por Precio
-                                    </label>
-                                    <div className="flex flex-wrap gap-4">
-                                        <label className="flex items-center space-x-2 cursor-pointer">
-                                            <input
-                                                type="radio"
-                                                name="priceSort"
-                                                value="asc"
-                                                checked={watch('sortBy') === 'price' && watch('sortOrder') === 'asc'}
-                                                onChange={() => handleSortChange('price', 'asc')}
-                                                className="w-4 h-4 text-blue-600 dark:text-blue-400 bg-gray-100 dark:bg-zinc-700 border-gray-300 dark:border-gray-600 focus:ring-blue-500 dark:focus:ring-blue-400 focus:ring-2"
-                                            />
-                                            <span className="text-sm text-gray-700 dark:text-gray-300 flex items-center gap-1">
-                                                <ArrowUp size={14} />
-                                                Precio Menor a Mayor
-                                            </span>
-                                        </label>
-                                        <label className="flex items-center space-x-2 cursor-pointer">
-                                            <input
-                                                type="radio"
-                                                name="priceSort"
-                                                value="desc"
-                                                checked={watch('sortBy') === 'price' && watch('sortOrder') === 'desc'}
-                                                onChange={() => handleSortChange('price', 'desc')}
-                                                className="w-4 h-4 text-blue-600 dark:text-blue-400 bg-gray-100 dark:bg-zinc-700 border-gray-300 dark:border-gray-600 focus:ring-blue-500 dark:focus:ring-blue-400 focus:ring-2"
-                                            />
-                                            <span className="text-sm text-gray-700 dark:text-gray-300 flex items-center gap-1">
-                                                <ArrowDown size={14} />
-                                                Precio Mayor a Menor
-                                            </span>
-                                        </label>
-                                        <button
-                                            type="button"
-                                            onClick={clearSorting}
-                                            className="flex items-center space-x-1 text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
-                                        >
-                                            <X size={14} />
-                                            <span>Limpiar</span>
-                                        </button>
-                                    </div>
-                                </div>
+                            <div className="space-y-2">
+                                <label className="text-sm font-medium text-gray-700 dark:text-gray-300 flex items-center gap-2">
+                                    <MapPin size={16} />
+                                    Región Metropolitana
+                                </label>
+                                <select
+                                    {...register("region")}
+                                    className="input"
+                                >
+                                    <option value="">Seleccionar región</option>
+                                    <option value="metropolitana">Región Metropolitana</option>
+                                    <option value="valparaiso">Valparaíso</option>
+                                    <option value="biobio">Biobío</option>
+                                </select>
+                            </div>
 
-                                {/* Search Button */}
-                                <div className="flex-center">
+                            <div className="space-y-2">
+                                <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                                    Comuna
+                                </label>
+                                <select
+                                    {...register("cityArea")}
+                                    className="input"
+                                >
+                                    <option value="">Seleccionar comuna</option>
+                                    <option value="Santiago">Santiago</option>
+                                    <option value="Providencia">Providencia</option>
+                                    <option value="Las Condes">Las Condes</option>
+                                    <option value="Vitacura">Vitacura</option>
+                                    <option value="Ñunoa">Ñuñoa</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        {/* Second Row - Currency, Price Range, Condo */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                            <div className="space-y-2">
+                                <label className="text-sm font-medium text-gray-700 dark:text-gray-300 flex items-center gap-2">
+                                    <DollarSign size={16} />
+                                    Moneda
+                                </label>
+                                <select
+                                    {...register("currency")}
+                                    className="input"
+                                >
+                                    <option value="pesos">Pesos</option>
+                                    <option value="uf">UF</option>
+                                </select>
+                            </div>
+
+                            <div className="space-y-2">
+                                <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                                    Precio Mínimo
+                                </label>
+                                <input
+                                    {...register("minPrice")}
+                                    type="number"
+                                    placeholder="Precio mínimo"
+                                    className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-zinc-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent transition-all duration-200"
+                                />
+                            </div>
+
+                            <div className="space-y-2">
+                                <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                                    Precio Máximo
+                                </label>
+                                <input
+                                    {...register("maxPrice")}
+                                    type="number"
+                                    placeholder="Precio máximo"
+                                    className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-zinc-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent transition-all duration-200"
+                                />
+                            </div>
+
+                            <div className="space-y-2">
+                                <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                                    Condominio
+                                </label>
+                                <select
+                                    {...register("condo")}
+                                    className="input"
+                                >
+                                    <option value="true">Si</option>
+                                    <option value="false">No</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        {/* Third Row - Price Sorting */}
+                        <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-6 border-t border-gray-200 dark:border-gray-600 pt-6">
+                            <div className="space-y-3">
+                                <label className="text-sm font-medium text-gray-700 dark:text-gray-300 flex items-center gap-2">
+                                    <ArrowUpDown size={16} />
+                                    Ordenar por Precio
+                                </label>
+                                <div className="flex flex-wrap gap-4">
+                                    <label className="flex items-center space-x-2 cursor-pointer">
+                                        <input
+                                            type="radio"
+                                            name="priceSort"
+                                            value="asc"
+                                            checked={watch('sortBy') === 'price' && watch('sortOrder') === 'asc'}
+                                            onChange={() => handleSortChange('price', 'asc')}
+                                            className="w-4 h-4 text-blue-600 dark:text-blue-400 bg-gray-100 dark:bg-zinc-700 border-gray-300 dark:border-gray-600 focus:ring-blue-500 dark:focus:ring-blue-400 focus:ring-2"
+                                        />
+                                        <span className="text-sm text-gray-700 dark:text-gray-300 flex items-center gap-1">
+                                            <ArrowUp size={14} />
+                                            Precio Menor a Mayor
+                                        </span>
+                                    </label>
+                                    <label className="flex items-center space-x-2 cursor-pointer">
+                                        <input
+                                            type="radio"
+                                            name="priceSort"
+                                            value="desc"
+                                            checked={watch('sortBy') === 'price' && watch('sortOrder') === 'desc'}
+                                            onChange={() => handleSortChange('price', 'desc')}
+                                            className="w-4 h-4 text-blue-600 dark:text-blue-400 bg-gray-100 dark:bg-zinc-700 border-gray-300 dark:border-gray-600 focus:ring-blue-500 dark:focus:ring-blue-400 focus:ring-2"
+                                        />
+                                        <span className="text-sm text-gray-700 dark:text-gray-300 flex items-center gap-1">
+                                            <ArrowDown size={14} />
+                                            Precio Mayor a Menor
+                                        </span>
+                                    </label>
                                     <button
-                                        onClick={handleSubmit(onSubmit)}
-                                        className="group button-zinc-gradient px-12"
+                                        type="button"
+                                        onClick={clearSorting}
+                                        className="flex items-center space-x-1 text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
                                     >
-                                        <Search size={20} />
-                                        BUSCAR
+                                        <X size={14} />
+                                        <span>Limpiar</span>
                                     </button>
                                 </div>
                             </div>
 
-                        </div>
-
-                        {/* Divider */}
-                        <div className="my-8">
-                            <div className="relative">
-                                <div className="absolute inset-0 flex items-center">
-                                    <div className="w-full border-t border-gray-300 dark:border-gray-600" />
-                                </div>
-                                <div className="relative flex justify-center text-sm">
-                                    <span className="px-4 bg-white dark:bg-zinc-800 text-gray-500 dark:text-gray-400 font-medium">
-                                        O buscar por código
-                                    </span>
-                                </div>
+                            {/* Search Button */}
+                            <div className="flex justify-center lg:justify-end">
+                                <button
+                                    type="button"
+                                    onClick={handleSearchClick}
+                                    className="group button-zinc-gradient px-12"
+                                >
+                                    <Search size={20} />
+                                    BUSCAR
+                                </button>
                             </div>
-                        </div>
-
-                        {/* Search by Code */}
-                        <div className="flex flex-col md:flex-row gap-4 items-end">
-                            <div className="flex-1 space-y-2">
-                                <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                                    Código de Propiedad
-                                </label>
-                                <input
-                                    {...register("searchCode")}
-                                    type="text"
-                                    placeholder="Ingresa el código de la propiedad"
-                                    className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-zinc-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent transition-all duration-200"
-                                />
-                            </div>
-                            <button
-                                onClick={onSearchByCode}
-                                className="group button-zinc-gradient"
-                            >
-                                POR CÓDIGO
-                            </button>
                         </div>
                     </div>
+
+                    {/* Divider */}
+                    <div className="my-8">
+                        <div className="relative">
+                            <div className="absolute inset-0 flex items-center">
+                                <div className="w-full border-t border-gray-300 dark:border-gray-600" />
+                            </div>
+                            <div className="relative flex justify-center text-sm">
+                                <span className="px-4 bg-white dark:bg-zinc-800 text-gray-500 dark:text-gray-400 font-medium">
+                                    O buscar por código
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Search by Code */}
+                    <div className="flex flex-col md:flex-row gap-4 items-end">
+                        <div className="flex-1 space-y-2">
+                            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                                Código de Propiedad
+                            </label>
+                            <input
+                                {...register("searchCode")}
+                                type="text"
+                                placeholder="Ingresa el código de la propiedad"
+                                className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-zinc-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent transition-all duration-200"
+                            />
+                        </div>
+                        <button
+                            type="button"
+                            onClick={onSearchByCode}
+                            className="group button-zinc-gradient"
+                        >
+                            POR CÓDIGO
+                        </button>
+                    </div>
                 </div>
-			
+            </div>
 		</section>
 	);
 }

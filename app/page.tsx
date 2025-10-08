@@ -6,8 +6,9 @@ import AboutSection from "@/components/home/AboutSection";
 import CallToAction from "@/components/home/CallToAction";
 import Services from "@/components/services/ServiceList";
 import Questions from "@/components/questions/QuestionsSection";
+import { getUF } from "@/lib/uf";
 
-export default function page() {
+export default async function page() {
     return (
         <main>
             <Hero searchBar includeImageSection />

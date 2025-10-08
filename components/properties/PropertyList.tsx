@@ -71,7 +71,7 @@ export default function PropertyListing({
                             No hay propiedades disponibles en este momento. Prueba ajustando tus filtros o vuelve más tarde.
                         </p>
                         <button 
-                            onClick={() => router.back()}
+                            onClick={() => router.push("/home/properties")}
                             className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200"
                         >
                             <Search className="w-4 h-4" />

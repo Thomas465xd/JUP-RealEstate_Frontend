@@ -8,7 +8,7 @@ type FounderCardProps = {
 	image: string | StaticImageData;
 	description: string;
 	experience: string;
-	specialties: string[];
+	//specialties: string[];
 	phone?: string;
 	email?: string;
 	linkedin?: string;
@@ -22,7 +22,7 @@ export default function FounderCard({
 	image,
 	description,
 	experience,
-	specialties,
+	//specialties,
 	phone,
 	email,
 	linkedin,
@@ -75,7 +75,7 @@ export default function FounderCard({
 				{/* Bottom Section */}
 				<div className="mt-auto space-y-4">
 					{/* Specialties */}
-					<div className="w-full">
+					{/* <div className="w-full">
 						<h4 className="text-sm text-center font-semibold text-zinc-900 dark:text-white mb-3">
 							Especialidades:
 						</h4>
@@ -89,7 +89,7 @@ export default function FounderCard({
 								</span>
 							))}
 						</div>
-					</div>
+					</div> */}
 
 					{/* Contact Buttons */}
 					<div className="flex gap-3 justify-center pt-2">

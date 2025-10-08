@@ -23,11 +23,11 @@ const founders = [
 		description:
 			"Cuenta con 20 años de trayectoria en el sector de servicios con un enfoque basado en la atención de calidad y cercanía con sus clientes, atributos que la convierten en una destacada corredora de propiedades. Su conocimiento profundo del mercado y su capacidad para entender las necesidades y objetivos de cada cliente facilitan procesos de compra y venta con seguridad y transparencia.  Siempre enfocada en ofrecer soluciones creativas, logra cerrar negocios de forma efectiva. Su compromiso y atención cercana la posicionan como una profesional confiable.",
 		experience: "20+ años de experiencia",
-		specialties: [
-			"Desarrollo Comercial",
-			"Fotografía Inmobiliaria",
-			"Branding",
-		],
+		// specialties: [
+		// 	"Desarrollo Comercial",
+		// 	"Fotografía Inmobiliaria",
+		// 	"Branding",
+		// ],
         phone: "+56 9 8219 2688",
         email: "contacto@jup.cl"
 	},
@@ -38,29 +38,29 @@ const founders = [
 		description:
 			"Con una sólida trayectoria de más de 30 años como ejecutivo de las áreas comerciales de dos de las principales empresas de salud en Chile, ha liderado equipos, diseñado estrategias de crecimiento y fortalecimiento de la relación con clientes y aliados.  Combina su expertise comercial, con un enfoque cercano y profesional comprometido en brindar asesoría de calidad generando valor a largo plazo para los clientes.",
 		experience: "30+ años de experiencia",
-		specialties: [
-			"Propiedades Premium",
-			"Negociación",
-			"Análisis de Mercado",
-		],
+		// specialties: [
+		// 	"Propiedades Premium",
+		// 	"Negociación",
+		// 	"Análisis de Mercado",
+		// ],
         phone: "+56 9 8219 2688", 
         email: "contacto@jup.cl"
 	},
-	{
-		name: "Iñigo Del Campo",
-		role: "Desarrollador y Asesor Tecnológico",
-		image: BlankUser,
-		description:
-			"Apasionado Desarrollador Web Full Stack, especializado en crear aplicaciones robustas y escalables bajo las mejores prácticas de desarrollo. Combino experiencia en front-end y back-end para ofrecer soluciones de calidad que satisfacen tanto las necesidades de los usuarios como los objetivos del negocio sin importar el rubro.",
-		experience: "3+ años de experiencia",
-		specialties: [
-			"Desarrollo Full Stack",
-			"Infraestructuras Resilientes",
-			"Administración de sitios",
-		],
-        email: "tomas.computer.guy@gmail.com", 
-        phone: "+56 9 9212 8901"
-	},
+	// {
+	// 	name: "Iñigo Del Campo",
+	// 	role: "Desarrollador y Asesor Tecnológico",
+	// 	image: BlankUser,
+	// 	description:
+	// 		"Apasionado Desarrollador Web Full Stack, especializado en crear aplicaciones robustas y escalables bajo las mejores prácticas de desarrollo. Combino experiencia en front-end y back-end para ofrecer soluciones de calidad que satisfacen tanto las necesidades de los usuarios como los objetivos del negocio sin importar el rubro.",
+	// 	experience: "3+ años de experiencia",
+	// 	// specialties: [
+	// 	// 	"Desarrollo Full Stack",
+	// 	// 	"Infraestructuras Resilientes",
+	// 	// 	"Administración de sitios",
+	// 	// ],
+    //     email: "tomas.computer.guy@gmail.com", 
+    //     phone: "+56 9 9212 8901"
+	// },
 ];
 
 const stats = [
@@ -115,7 +115,7 @@ export default function AboutUs() {
 						</h1> */}
 
                         <h1 className="text-5xl md:text-6xl font-bold text-zinc-900 dark:text-white mb-6 leading-tight">
-							Nuestra Historia{" "}
+							Quienes Somos{" "}
 							<span className="text-blue-600 dark:text-blue-400">
 								
 							</span>
@@ -179,11 +179,13 @@ export default function AboutUs() {
 						</p> */}
 					</div>
 
-					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
-						{founders.map((founder, index) => (
-							<FounderCard key={index} {...founder} />
-						))}
-					</div>
+                    <div className="flex flex-wrap justify-center gap-8 items-stretch">
+                        {founders.map((founder, index) => (
+                            <div key={index} className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)]">
+                                <FounderCard {...founder} />
+                            </div>
+                        ))}
+                    </div>
 				</div>
 			</section>
 

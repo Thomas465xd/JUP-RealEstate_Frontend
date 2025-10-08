@@ -118,7 +118,7 @@ export default function PropertiesPage() {
 	if (isLoading) {
 		return (
             <>
-                <SearchBar />
+                <SearchBar ufValue={39485} />
                 <PropertiesSkeleton />
             </>
         );
@@ -134,7 +134,7 @@ export default function PropertiesPage() {
         <div className="min-h-screen bg-white dark:bg-zinc-900">
             {/* Search Bar Section */}
             <div className="bg-white dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800">
-                <SearchBar />
+                <SearchBar ufValue={39485} />
             </div>
 
             {/* Main Content */}
