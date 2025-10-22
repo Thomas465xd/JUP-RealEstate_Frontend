@@ -28,7 +28,7 @@ const geistMono = Geist_Mono({
 const siteConfig = {
 	name: "JUP Propiedades",
 	title: "JUP Propiedades ",
-	description: "Encuentra la propiedad de tus sueños con JUP Propiedades. Especialistas en compra, venta y arriendo de propiedades en Chile. Más de X años de experiencia en el mercado inmobiliario.",
+	description: "Te acompañamos desde la búsqueda hasta que recibes tu nuevo hogar",
 	url: "https://www.jup.cl", // Replace with your actual domain
 	siteName: "JUP Propiedades",
 	locale: "es_CL",
