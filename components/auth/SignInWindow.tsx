@@ -1,5 +1,7 @@
 import { SignIn } from "@clerk/nextjs";
+import { Home } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function SignInWindow() {
     return (
@@ -35,6 +37,15 @@ export default function SignInWindow() {
                     redirectUrl="/"
                     signUpUrl="/sign-up"
                 />
+
+                <div className="flex justify-center">
+                    <Link
+                        href="/"
+                        className="flex gap-2 my-4 text-gray-100 hover:text-gray-300 transition-colors"
+                    >
+                        <Home /> Volver a la Página Principal
+                    </Link>
+                </div>
             </div>
         </div>
     );

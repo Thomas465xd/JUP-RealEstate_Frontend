@@ -1,5 +1,7 @@
 import { SignUp } from "@clerk/nextjs";
+import { Home } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function SignInWindow() {
 	return (
@@ -23,7 +25,7 @@ export default function SignInWindow() {
 
 			<div className="absolute inset-0 bg-black/60"></div>
 
-            <div className="my-10">
+            <div className="relative z-10 my-10">
                 <SignUp
                     appearance={{
                         elements: {
@@ -35,6 +37,15 @@ export default function SignInWindow() {
                     redirectUrl="/"
                     signInUrl="/sign-in" // <-- this overrides the default Clerk hosted link
                 />
+
+                <div className="flex justify-center">
+                    <Link
+                        href="/"
+                        className="flex gap-2 my-4 text-gray-100 hover:text-gray-300 transition-colors"
+                    >
+                        <Home /> Volver a la Página Principal
+                    </Link>
+                </div>
             </div>
 		</div>
 	);

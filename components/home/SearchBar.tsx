@@ -238,6 +238,8 @@ export default function SearchBar({ ufValue } : SearchBarProps) {
                                     <option value="Las Condes">Las Condes</option>
                                     <option value="Vitacura">Vitacura</option>
                                     <option value="Ñunoa">Ñuñoa</option>
+                                    <option value="La Reina">La Reina</option>
+                                    <option value="Lo Barnechea">Lo Barnechea</option>
                                 </select>
                             </div>
                         </div>

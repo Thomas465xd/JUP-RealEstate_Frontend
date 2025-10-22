@@ -369,7 +369,7 @@ export default function PropertyDetails({ propertyId, ufValue }: PropertyDetails
                                 />
 							</div>
 							<h5 className="font-semibold">
-								Javiera Urbina Propiedades
+								JUP Propiedades
 							</h5>
 							<p className="text-gray-400 dark:text-gray-500 text-sm">
 								Agente Inmobiliario

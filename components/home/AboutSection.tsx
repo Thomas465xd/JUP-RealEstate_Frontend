@@ -59,19 +59,17 @@ export default function AboutSection() {
 						{/* Description */}
 						<div className="space-y-4 text-zinc-600 dark:text-zinc-300 text-lg leading-relaxed mb-8">
 							<p>
-								En Javiera Urbina & Asociados, transformamos la
-								búsqueda de propiedades en una experiencia
-								excepcional. Nuestro equipo de profesionales
-								altamente calificados combina conocimiento del
-								mercado local con un servicio personalizado.
+                                En Javiera Urbina & Asociados, transformamos la 
+                                búsqueda de propiedades en una experiencia placentera. 
+                                Nuestro equipo, experto en el mercado local, ofrece un 
+                                servicio personalizado adaptado a tus necesidades.
 							</p>
 
 							<p>
-								Desde apartamentos modernos en el corazón de
-								Santiago hasta casas familiares en los mejores
-								barrios, te acompañamos en cada paso del proceso
-								para encontrar la propiedad perfecta que se
-								adapte a tu estilo de vida y presupuesto.
+								Ya sea que busques un pequeño departamento de inversión o 
+                                una casa familiar en un barrio tranquilo, te apoyamos en 
+                                cada etapa para encontrar el hogar ideal que se ajuste 
+                                a tu estilo de vida y presupuesto.
 							</p>
 						</div>
 
@@ -131,8 +129,7 @@ export default function AboutSection() {
 										Soporte Completo
 									</h4>
 									<p className="text-sm text-zinc-600 dark:text-zinc-400">
-										Te acompañamos desde la búsqueda hasta
-										la escritura
+										Te acompañamos desde la búsqueda hasta que recibes tu nuevo hogar
 									</p>
 								</div>
 							</div>
@@ -166,7 +163,7 @@ export default function AboutSection() {
 							<div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
 
 							{/* Floating Stats Card */}
-							<div className="absolute bottom-6 left-6 right-6 bg-white/95 dark:bg-zinc-800/95 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-white/20">
+							{/* <div className="absolute bottom-6 left-6 right-6 bg-white/95 dark:bg-zinc-800/95 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-white/20">
 								<div className="grid grid-cols-3 gap-4 text-center">
 									<div>
 										<div className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-1">
@@ -193,7 +190,7 @@ export default function AboutSection() {
 										</div>
 									</div>
 								</div>
-							</div>
+							</div> */}
 						</div>
 
 						{/* Floating Badge */}

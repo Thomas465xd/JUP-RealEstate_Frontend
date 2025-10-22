@@ -165,6 +165,7 @@ export default function EditPropertyForm({ propertyId } : EditPropertyFormProps)
 				description: property.description ?? "",
 				type: mapApiTypeToFormType(property.type ?? "casa") as PropertyForm["type"], // Cast to correct union type
 				status: mapApiStatusToFormStatus(property.status ?? "disponible") as PropertyForm["status"], // Cast to correct union type
+                operation: property.operation ?? "En Venta",
 				price: property.price ?? 0,
 				address: property.address ?? "",
 				area: property.area ?? 0,
