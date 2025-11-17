@@ -120,14 +120,14 @@ export const metadata: Metadata = {
 	},
 
 	// Verification (add your verification codes)
-	verification: {
-		google: "your-google-verification-code", // Replace with actual code
-		yandex: "your-yandex-verification-code", // Replace with actual code
-		yahoo: "your-yahoo-verification-code", // Replace with actual code
-		other: {
-			"facebook-domain-verification": "your-facebook-verification-code", // Replace with actual code
-		}
-	},
+	// verification: {
+	// 	google: "your-google-verification-code", // Replace with actual code
+	// 	yandex: "your-yandex-verification-code", // Replace with actual code
+	// 	yahoo: "your-yahoo-verification-code", // Replace with actual code
+	// 	other: {
+	// 		"facebook-domain-verification": "your-facebook-verification-code", // Replace with actual code
+	// 	}
+	// },
 
 	// App-specific
 	alternates: {

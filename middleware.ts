@@ -6,7 +6,7 @@ const isPublicRoute = createRouteMatcher([
     "/sign-in(.*)", 
     "/sign-up(.*)", 
     "/home(.*)",
-    "/api/webhooks(.*)", // Add webhook routes if you have them
+    "/api/webhooks(.*)",
     "/",
 ]);
 
@@ -15,22 +15,26 @@ const isAdminRoute = createRouteMatcher([
 ])
 
 export default clerkMiddleware(async (auth, req) => {
-    // Allow public routes without authentication
+    // IMPORTANT: Check public routes FIRST before doing ANY auth operations
     if (isPublicRoute(req)) {
         return NextResponse.next();
     }
 
+    // Only now get auth info for protected routes
     const { sessionClaims, userId } = await auth();
     
-    // Protect admin routes
+    // Protect admin routes with specific logic
     if (isAdminRoute(req)) {
         if (!userId || sessionClaims?.metadata?.role !== 'admin') {
             return NextResponse.redirect(new URL('/', req.url));
         }
+        return NextResponse.next(); // Explicitly allow admin access
     }
 
     // Protect all other non-public routes
     await auth.protect();
+    
+    return NextResponse.next(); // Explicitly allow authenticated users
 });
 
 export const config = {
