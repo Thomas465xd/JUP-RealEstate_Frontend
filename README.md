@@ -10,7 +10,7 @@
 [![React](https://img.shields.io/badge/React-19.1-blue?logo=react)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?logo=typescript)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.0-38bdf8?logo=tailwind-css)](https://tailwindcss.com/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![License](https://img.shields.io/badge/License-Private-red.svg)](#-licencia)
 
 [Sitio Web](https://www.jup.cl) • [Reportar Bug](https://github.com/Thomas465xd/JUP-RealEstate_Frontend/issues) • [Solicitar Feature](https://github.com/Thomas465xd/JUP-RealEstate_Frontend/issues)
 
