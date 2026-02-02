@@ -4,342 +4,212 @@
 
 ![JUP Propiedades Logo](./public/logo-color.png)
 
-**Tu broker de confianza - Plataforma de bienes raíces moderna y profesional**
+**Your trusted broker - Modern and professional real estate platform**
 
 [![Next.js](https://img.shields.io/badge/Next.js-15.4-black?logo=next.js)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-19.1-blue?logo=react)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?logo=typescript)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.0-38bdf8?logo=tailwind-css)](https://tailwindcss.com/)
-[![License](https://img.shields.io/badge/License-Private-red.svg)](#-licencia)
+[![License](https://img.shields.io/badge/License-Private-red.svg)](#-license)
 
-[Sitio Web](https://www.jup.cl) • [Reportar Bug](https://github.com/Thomas465xd/JUP-RealEstate_Frontend/issues) • [Solicitar Feature](https://github.com/Thomas465xd/JUP-RealEstate_Frontend/issues)
+[Website](https://www.jup.cl) • [Report Bug](https://github.com/Thomas465xd/JUP-RealEstate_Frontend/issues) • [Request Feature](https://github.com/Thomas465xd/JUP-RealEstate_Frontend/issues)
 
 </div>
 
 ---
 
-## 📋 Tabla de Contenidos
+## 📋 Table of Contents
 
-- [Acerca del Proyecto](#-acerca-del-proyecto)
-- [Características](#-características)
-- [Tecnologías](#️-tecnologías)
-- [Estructura del Proyecto](#-estructura-del-proyecto)
-- [Instalación](#-instalación)
-- [Configuración](#️-configuración)
-- [Uso](#-uso)
-- [Scripts Disponibles](#-scripts-disponibles)
-- [Licencia](#-licencia)
-- [Contacto](#-contacto)
+- [About the Project](#-about-the-project)
+- [Features](#-features)
+- [Technologies](#️-technologies)
+- [Project Structure](#-project-structure)
+- [Usage](#-usage)
+- [License](#-license)
 
 ---
 
-## 🏠 Acerca del Proyecto
+## 🏠 About the Project
 
-**JUP Propiedades** es una plataforma web moderna de bienes raíces diseñada para facilitar la búsqueda, visualización y gestión de propiedades en Chile. El proyecto ofrece una experiencia de usuario intuitiva y profesional tanto para clientes que buscan propiedades como para administradores que gestionan el contenido.
+**JUP Propiedades** is a modern real estate web platform designed to facilitate the search, visualization, and management of properties in Chile. The project offers an intuitive and professional user experience for both clients looking for properties and administrators managing the content.
 
-### Propósito
+### Purpose
 
-Este proyecto frontend proporciona:
-- **Para Clientes**: Una interfaz moderna para buscar y explorar propiedades, ver detalles completos, contactar a agentes, y acceder a servicios inmobiliarios
-- **Para Administradores**: Panel de control completo para gestionar propiedades, testimonios, y contenido del sitio
-- **Para el Negocio**: Presencia digital profesional con SEO optimizado, análisis integrado, y comunicación directa vía WhatsApp
-
----
-
-## ✨ Características
-
-### 🔍 Para Usuarios
-- **Búsqueda Avanzada**: Filtros por tipo de propiedad, ubicación, precio, y características
-- **Propiedades Destacadas**: Visualización de las mejores ofertas disponibles
-- **Galería de Imágenes**: Visualización profesional de fotos de propiedades con integración de Cloudinary
-- **Información Detallada**: Fichas completas con descripción, especificaciones, y ubicación
-- **Contacto Directo**: Formularios de contacto y botón flotante de WhatsApp
-- **Sección de Servicios**: Información sobre servicios inmobiliarios ofrecidos
-- **Testimonios**: Reseñas de clientes satisfechos
-- **FAQ**: Sección de preguntas frecuentes
-- **Tema Claro/Oscuro**: Soporte para preferencias de visualización del usuario
-
-### 🔐 Para Administradores
-- **Panel de Administración**: Dashboard completo para gestión de contenido
-- **CRUD de Propiedades**: Crear, editar, eliminar y gestionar propiedades
-- **Editor Enriquecido**: Quill editor para descripciones detalladas
-- **Autenticación Segura**: Integración con Clerk para gestión de usuarios
-- **Carga de Imágenes**: Upload de múltiples imágenes con Cloudinary
-
-### 🚀 Características Técnicas
-- **SSR y SSG**: Renderizado del lado del servidor con Next.js 15
-- **SEO Optimizado**: Meta tags, Open Graph, y structured data
-- **Responsive Design**: Adaptado a todos los dispositivos
-- **Performance**: Optimización de imágenes y carga diferida
-- **Analytics**: Integración con Vercel Analytics
-- **Type Safety**: TypeScript para código robusto y mantenible
+This frontend project provides:
+- **For Clients**: A modern interface to search and explore properties, view complete details, contact agents, and access real estate services
+- **For Administrators**: Complete control panel to manage properties, testimonials, and site content
+- **For the Business**: Professional digital presence with optimized SEO, integrated analytics, and direct communication via WhatsApp
 
 ---
 
-## 🛠️ Tecnologías
+## ✨ Features
+
+### 🔍 For Users
+- **Advanced Search**: Filters by property type, location, price, and features
+- **Featured Properties**: Visualization of the best available offers
+- **Image Gallery**: Professional display of property photos with Cloudinary integration
+- **Detailed Information**: Complete listings with description, specifications, and location
+- **Direct Contact**: Contact forms and floating WhatsApp button
+- **Services Section**: Information about real estate services offered
+- **Testimonials**: Reviews from satisfied clients
+- **FAQ**: Frequently asked questions section
+- **Light/Dark Theme**: Support for user display preferences
+
+### 🔐 For Administrators
+- **Administration Panel**: Complete dashboard for content management
+- **Property CRUD**: Create, edit, delete, and manage properties
+- **Rich Editor**: Quill editor for detailed descriptions
+- **Secure Authentication**: Clerk integration for user management
+- **Image Upload**: Upload multiple images with Cloudinary
+
+### 🚀 Technical Features
+- **SSR and SSG**: Server-side rendering with Next.js 15
+- **Optimized SEO**: Meta tags, Open Graph, and structured data
+- **Responsive Design**: Adapted to all devices
+- **Performance**: Image optimization and lazy loading
+- **Analytics**: Vercel Analytics integration
+- **Type Safety**: TypeScript for robust and maintainable code
+
+---
+
+## 🛠️ Technologies
 
 ### Core Framework
-- **[Next.js 15.4](https://nextjs.org/)** - Framework React con SSR y SSG
-- **[React 19.1](https://react.dev/)** - Librería UI
+- **[Next.js 15.4](https://nextjs.org/)** - React framework with SSR and SSG
+- **[React 19.1](https://react.dev/)** - UI library
 - **[TypeScript 5](https://www.typescriptlang.org/)** - Type safety
 
 ### Styling
-- **[Tailwind CSS 4](https://tailwindcss.com/)** - Framework CSS utility-first
-- **[Radix UI](https://www.radix-ui.com/)** - Componentes UI accesibles
-- **[Lucide React](https://lucide.dev/)** - Iconos modernos
-- **[next-themes](https://github.com/pacocoursey/next-themes)** - Sistema de temas
+- **[Tailwind CSS 4](https://tailwindcss.com/)** - Utility-first CSS framework
+- **[Radix UI](https://www.radix-ui.com/)** - Accessible UI components
+- **[Lucide React](https://lucide.dev/)** - Modern icons
+- **[next-themes](https://github.com/pacocoursey/next-themes)** - Theme system
 
 ### State Management & Data Fetching
-- **[TanStack Query (React Query)](https://tanstack.com/query)** - Data fetching y caching
-- **[Axios](https://axios-http.com/)** - Cliente HTTP
-- **[React Hook Form](https://react-hook-form.com/)** - Gestión de formularios
-- **[Zod](https://zod.dev/)** - Validación de schemas
+- **[TanStack Query (React Query)](https://tanstack.com/query)** - Data fetching and caching
+- **[Axios](https://axios-http.com/)** - HTTP client
+- **[React Hook Form](https://react-hook-form.com/)** - Form management
+- **[Zod](https://zod.dev/)** - Schema validation
 
 ### Authentication & Security
-- **[Clerk](https://clerk.com/)** - Autenticación y gestión de usuarios
-- **[DOMPurify](https://github.com/cure53/DOMPurify)** - Sanitización de HTML
+- **[Clerk](https://clerk.com/)** - Authentication and user management
+- **[DOMPurify](https://github.com/cure53/DOMPurify)** - HTML sanitization
 
 ### Media & Content
-- **[Cloudinary](https://cloudinary.com/)** - Gestión y optimización de imágenes
-- **[React Quill](https://github.com/zenoamaro/react-quill)** - Editor de texto enriquecido
+- **[Cloudinary](https://cloudinary.com/)** - Image management and optimization
+- **[React Quill](https://github.com/zenoamaro/react-quill)** - Rich text editor
 
 ### UI/UX Enhancements
-- **[SweetAlert2](https://sweetalert2.github.io/)** - Modales y alertas elegantes
-- **[React Toastify](https://fkhadra.github.io/react-toastify/)** - Notificaciones toast
-- **[React Floating WhatsApp](https://github.com/awran5/react-floating-whatsapp)** - Widget de WhatsApp flotante
+- **[SweetAlert2](https://sweetalert2.github.io/)** - Elegant modals and alerts
+- **[React Toastify](https://fkhadra.github.io/react-toastify/)** - Toast notifications
+- **[React Floating WhatsApp](https://github.com/awran5/react-floating-whatsapp)** - Floating WhatsApp widget
 
 ### Analytics & Monitoring
-- **[Vercel Analytics](https://vercel.com/analytics)** - Análisis de tráfico y performance
+- **[Vercel Analytics](https://vercel.com/analytics)** - Traffic and performance analytics
 
 ### Development Tools
 - **[ESLint](https://eslint.org/)** - Linting
-- **[PostCSS](https://postcss.org/)** - Procesamiento CSS
+- **[PostCSS](https://postcss.org/)** - CSS processing
 
 ---
 
-## 📁 Estructura del Proyecto
+## 📁 Project Structure
 
 ```
 JUP-RealEstate_Frontend/
-├── app/                          # App Router de Next.js 15
-│   ├── admin/                   # Rutas del panel de administración
-│   ├── home/                    # Rutas de páginas principales
-│   ├── sign-in/                 # Página de inicio de sesión
-│   ├── sign-up/                 # Página de registro
-│   ├── layout.tsx               # Layout raíz con providers
-│   ├── page.tsx                 # Página principal (Home)
-│   ├── globals.css              # Estilos globales
-│   └── not-found.tsx            # Página 404
+├── app/                          # Next.js 15 App Router
+│   ├── admin/                   # Admin panel routes
+│   ├── home/                    # Main page routes
+│   ├── sign-in/                 # Sign-in page
+│   ├── sign-up/                 # Sign-up page
+│   ├── layout.tsx               # Root layout with providers
+│   ├── page.tsx                 # Home page
+│   ├── globals.css              # Global styles
+│   └── not-found.tsx            # 404 page
 │
-├── components/                   # Componentes React reutilizables
-│   ├── about/                   # Componentes de sección "Acerca de"
-│   ├── admin/                   # Componentes del panel admin
-│   ├── auth/                    # Componentes de autenticación
-│   ├── contact/                 # Componentes de contacto
-│   ├── featured/                # Componentes de propiedades destacadas
-│   ├── home/                    # Componentes de la página principal
-│   ├── properties/              # Componentes de propiedades
+├── components/                   # Reusable React components
+│   ├── about/                   # About section components
+│   ├── admin/                   # Admin panel components
+│   ├── auth/                    # Authentication components
+│   ├── contact/                 # Contact components
+│   ├── featured/                # Featured properties components
+│   ├── home/                    # Home page components
+│   ├── properties/              # Property components
 │   ├── providers/               # Context providers (Theme, Query, Toast, etc.)
-│   ├── questions/               # Componentes de FAQ
-│   ├── services/                # Componentes de servicios
+│   ├── questions/               # FAQ components
+│   ├── services/                # Services components
 │   ├── skeletons/               # Loading skeletons
-│   └── utility/                 # Componentes utilitarios (WhatsApp, BackToTop)
+│   └── utility/                 # Utility components (WhatsApp, BackToTop)
 │
 ├── src/
-│   ├── api/                     # Servicios API (Axios)
-│   │   ├── FeaturedAPI.ts       # API de propiedades destacadas
-│   │   ├── PropertyAPI.ts       # API de propiedades
-│   │   └── SearchAPI.ts         # API de búsqueda
+│   ├── api/                     # API services (Axios)
+│   │   ├── FeaturedAPI.ts       # Featured properties API
+│   │   ├── PropertyAPI.ts       # Properties API
+│   │   └── SearchAPI.ts         # Search API
 │   ├── hooks/                   # Custom React hooks
-│   ├── types/                   # Definiciones de tipos TypeScript
-│   └── utils/                   # Funciones utilitarias
+│   ├── types/                   # TypeScript type definitions
+│   └── utils/                   # Utility functions
 │
-├── lib/                         # Librerías y configuraciones
-├── public/                      # Assets estáticos
-│   ├── logo-color.png           # Logo de JUP
-│   ├── hero-image-*.jpg         # Imágenes hero
-│   └── ...                      # Otras imágenes
+├── lib/                         # Libraries and configurations
+├── public/                      # Static assets
+│   ├── logo-color.png           # JUP logo
+│   ├── hero-image-*.jpg         # Hero images
+│   └── ...                      # Other images
 │
-├── middleware.ts                # Middleware de Next.js
-├── next.config.ts               # Configuración de Next.js
-├── tailwind.config.ts           # Configuración de Tailwind
-├── tsconfig.json                # Configuración de TypeScript
-├── eslint.config.mjs            # Configuración de ESLint
-├── postcss.config.mjs           # Configuración de PostCSS
-├── components.json              # Configuración de componentes UI
-└── package.json                 # Dependencias y scripts
+├── middleware.ts                # Next.js middleware
+├── next.config.ts               # Next.js configuration
+├── tailwind.config.ts           # Tailwind configuration
+├── tsconfig.json                # TypeScript configuration
+├── eslint.config.mjs            # ESLint configuration
+├── postcss.config.mjs           # PostCSS configuration
+├── components.json              # UI components configuration
+└── package.json                 # Dependencies and scripts
 ```
 
 ---
 
-## 🚀 Instalación
+## 💻 Usage
 
-### Prerrequisitos
-
-- **Node.js** 20.x o superior
-- **npm** o **yarn** o **pnpm**
-- Cuenta en [Clerk](https://clerk.com/) para autenticación
-- Cuenta en [Cloudinary](https://cloudinary.com/) para gestión de imágenes
-- (Opcional) Cuenta en [EmailJS](https://www.emailjs.com/) para formularios de contacto
-
-### Pasos de Instalación
-
-1. **Clonar el repositorio**
-   ```bash
-   git clone https://github.com/Thomas465xd/JUP-RealEstate_Frontend.git
-   cd JUP-RealEstate_Frontend
-   ```
-
-2. **Instalar dependencias**
-   ```bash
-   npm install
-   # o
-   yarn install
-   # o
-   pnpm install
-   ```
-
-3. **Configurar variables de entorno**
-   
-   Crear un archivo `.env.local` en la raíz del proyecto:
-   ```env
-   # Ver sección de Configuración para detalles completos
-   NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=tu_clerk_publishable_key
-   CLERK_SECRET_KEY=tu_clerk_secret_key
-   NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=tu_cloudinary_cloud_name
-   # ... (ver sección de Configuración)
-   ```
-
-4. **Ejecutar en modo desarrollo**
-   ```bash
-   npm run dev
-   ```
-
-5. **Abrir en el navegador**
-   
-   Navega a [http://localhost:3000](http://localhost:3000)
-
----
-
-## ⚙️ Configuración
-
-### Variables de Entorno
-
-Crear un archivo `.env.local` con las siguientes variables:
-
-```env
-# Clerk Authentication
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_...
-CLERK_SECRET_KEY=sk_test_...
-NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
-NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
-
-# Cloudinary (Image Management)
-NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=your_cloud_name
-NEXT_PUBLIC_CLOUDINARY_API_KEY=your_api_key
-CLOUDINARY_API_SECRET=your_api_secret
-
-# API Backend (si aplica)
-NEXT_PUBLIC_API_URL=https://api.jup.cl
-# o para desarrollo local
-# NEXT_PUBLIC_API_URL=http://localhost:8080
-
-# EmailJS (Contact Forms)
-NEXT_PUBLIC_EMAILJS_SERVICE_ID=your_service_id
-NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=your_template_id
-NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your_public_key
-
-# WhatsApp
-NEXT_PUBLIC_WHATSAPP_NUMBER=+56982192688
-
-# Site Configuration
-NEXT_PUBLIC_SITE_URL=https://www.jup.cl
-```
-
-### Configuración de Clerk
-
-1. Crear una cuenta en [Clerk](https://clerk.com/)
-2. Crear una nueva aplicación
-3. Copiar las API keys al archivo `.env.local`
-4. Configurar rutas de sign-in y sign-up en el dashboard de Clerk
-
-### Configuración de Cloudinary
-
-1. Crear una cuenta en [Cloudinary](https://cloudinary.com/)
-2. Obtener Cloud Name y API credentials
-3. Agregar las credenciales al archivo `.env.local`
-
----
-
-## 💻 Uso
-
-### Desarrollo
+### Development
 
 ```bash
-# Iniciar servidor de desarrollo (con Turbopack)
+# Start development server (with Turbopack)
 npm run dev
 
-# El servidor estará disponible en http://localhost:3000
+# Server will be available at http://localhost:3000
 ```
 
-### Producción
+### Production
 
 ```bash
-# Build para producción
+# Build for production
 npm run build
 
-# Iniciar servidor de producción
+# Start production server
 npm run start
 ```
 
 ### Linting
 
 ```bash
-# Ejecutar ESLint
+# Run ESLint
 npm run lint
 ```
 
 ---
 
-## 📜 Scripts Disponibles
+## 📄 License
 
-| Script | Descripción |
-|--------|-------------|
-| `npm run dev` | Inicia el servidor de desarrollo con Turbopack |
-| `npm run build` | Construye la aplicación para producción |
-| `npm run start` | Inicia el servidor de producción |
-| `npm run lint` | Ejecuta ESLint para verificar el código |
+This project is **private** and belongs to **JUP Propiedades**. All rights reserved.
 
----
-
-## 📄 Licencia
-
-Este proyecto es **privado** y pertenece a **JUP Propiedades**. Todos los derechos reservados.
-
-Para uso, distribución o modificación de este código, contactar directamente con el propietario.
-
----
-
-## 📞 Contacto
-
-**JUP Propiedades**
-
-- 🌐 Sitio Web: [www.jup.cl](https://www.jup.cl)
-- 📧 Email: contacto@jup.cl
-- 📱 WhatsApp: [+56 9 8219 2688](https://wa.me/56982192688)
-- 📍 Dirección: San Carlos de Apoquindo #2991, Las Condes, Santiago, Chile
-
-**Desarrollador**
-
-- GitHub: [@Thomas465xd](https://github.com/Thomas465xd)
-- Repositorio: [JUP-RealEstate_Frontend](https://github.com/Thomas465xd/JUP-RealEstate_Frontend)
+For use, distribution, or modification of this code, please contact the owner directly.
 
 ---
 
 <div align="center">
 
-**Hecho con ❤️ para JUP Propiedades**
+**Made with ❤️ for JUP Propiedades**
 
-*Tu broker de confianza - Te acompañamos desde la búsqueda hasta que recibes tu nuevo hogar*
+*Your trusted broker - We accompany you from the search until you receive your new home*
 
 </div>
