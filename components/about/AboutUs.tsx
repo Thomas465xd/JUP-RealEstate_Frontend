@@ -14,12 +14,11 @@ import Link from "next/link";
 import FounderOne from "@/public/founder-2.jpg";
 import BlankUser from "@/public/blank-user.jpg";
 
-// TODO: Use actual info
 const founders = [
 	{
 		name: "Javiera Urbina",
 		role: "Socia Fundadora",
-		image: BlankUser,
+		image: BlankUser, // TODO: Client needs to provide an image
 		description:
 			"Cuenta con 20 años de trayectoria en el sector de servicios con un enfoque basado en la atención de calidad y cercanía con sus clientes, atributos que la convierten en una destacada corredora de propiedades. Su conocimiento profundo del mercado y su capacidad para entender las necesidades y objetivos de cada cliente facilitan procesos de compra y venta con seguridad y transparencia.  Siempre enfocada en ofrecer soluciones creativas, logra cerrar negocios de forma efectiva. Su compromiso y atención cercana la posicionan como una profesional confiable.",
 		experience: "20+ años de experiencia",
@@ -31,21 +30,21 @@ const founders = [
         phone: "+56 9 8219 2688",
         email: "contacto@jup.cl"
 	},
-	{
-		name: "Francisco Fernández",
-		role: "Socio Fundador",
-		image: FounderOne,
-		description:
-			"Con una sólida trayectoria de más de 30 años como ejecutivo de las áreas comerciales de dos de las principales empresas de salud en Chile, ha liderado equipos, diseñado estrategias de crecimiento y fortalecimiento de la relación con clientes y aliados.  Combina su expertise comercial, con un enfoque cercano y profesional comprometido en brindar asesoría de calidad generando valor a largo plazo para los clientes.",
-		experience: "30+ años de experiencia",
-		// specialties: [
-		// 	"Propiedades Premium",
-		// 	"Negociación",
-		// 	"Análisis de Mercado",
-		// ],
-        phone: "+56 9 8219 2688", 
-        email: "contacto@jup.cl"
-	},
+	// {
+	// 	name: "Francisco Fernández",
+	// 	role: "Socio Fundador",
+	// 	image: FounderOne,
+	// 	description:
+	// 		"Con una sólida trayectoria de más de 30 años como ejecutivo de las áreas comerciales de dos de las principales empresas de salud en Chile, ha liderado equipos, diseñado estrategias de crecimiento y fortalecimiento de la relación con clientes y aliados.  Combina su expertise comercial, con un enfoque cercano y profesional comprometido en brindar asesoría de calidad generando valor a largo plazo para los clientes.",
+	// 	experience: "30+ años de experiencia",
+	// 	// specialties: [
+	// 	// 	"Propiedades Premium",
+	// 	// 	"Negociación",
+	// 	// 	"Análisis de Mercado",
+	// 	// ],
+    //     phone: "+56 9 8219 2688", 
+    //     email: "contacto@jup.cl"
+	// },
 	// {
 	// 	name: "Iñigo Del Campo",
 	// 	role: "Desarrollador y Asesor Tecnológico",
